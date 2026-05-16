@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "card": {
+      "CARD00": {
+        "id": "CARD00",
+        "mana_cost": "s65",
+        "name": "s66",
+        "obsolete": false,
+        "power": "s68",
+        "rarity": "s69",
+        "set_code": "s6a",
+        "text": "s6b",
+        "toughness": "s6c",
+        "type": "s6d"
+      },
+      "CARD01": {
+        "id": "CARD01",
+        "mana_cost": "sc9",
+        "name": "sca",
+        "obsolete": false,
+        "power": "scc",
+        "rarity": "scd",
+        "set_code": "sce",
+        "text": "scf",
+        "toughness": "sd0",
+        "type": "sd1"
+      },
+      "CARD02": {
+        "id": "CARD02",
+        "mana_cost": "s12d",
+        "name": "s12e",
+        "obsolete": false,
+        "power": "s130",
+        "rarity": "s131",
+        "set_code": "s132",
+        "text": "s133",
+        "toughness": "s134",
+        "type": "s135"
+      }
+    }
+  },
+  "new": {
+    "card": {
+      "card_ref01": {
+        "mana_cost": "s191",
+        "name": "s192",
+        "obsolete": false,
+        "power": "s194",
+        "rarity": "s195",
+        "set_code": "s196",
+        "text": "s197",
+        "toughness": "s198",
+        "type": "s199"
+      }
+    }
+  }
+}

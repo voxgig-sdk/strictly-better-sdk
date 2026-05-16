@@ -1,0 +1,279 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Strictly Better API",
+    "description": "This API allows users to retrieve and search for obsolete cards in JSON format. Users can also find functional reprints and access various endpoints with a limit on the number of results per request.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://www.strictlybetter.eu/api-guide"
+    }
+  },
+  "externalDocs": {
+    "description": "API Guide",
+    "url": "https://www.strictlybetter.eu/api-guide"
+  },
+  "servers": [
+    {
+      "url": "https://www.strictlybetter.eu",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/cards": {
+      "get": {
+        "summary": "Retrieve obsolete cards",
+        "description": "Retrieve a list of obsolete cards in JSON format. Results can be limited using query parameters.",
+        "operationId": "getObsoleteCards",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return per request",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Number of results to skip for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search term to filter cards by name or text",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of obsolete cards",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Cards"
+        ]
+      }
+    },
+    "/api/reprints": {
+      "get": {
+        "summary": "Find functional reprints",
+        "description": "Retrieve a list of functional reprints for cards. Results can be limited using query parameters.",
+        "operationId": "getFunctionalReprints",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return per request",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Number of results to skip for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          },
+          {
+            "name": "cardName",
+            "in": "query",
+            "description": "Name of the card to find reprints for",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of functional reprints",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Reprint"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Reprints"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Card": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the card"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the card"
+          },
+          "manaCost": {
+            "type": "string",
+            "description": "Mana cost of the card"
+          },
+          "type": {
+            "type": "string",
+            "description": "Card type"
+          },
+          "text": {
+            "type": "string",
+            "description": "Card text and abilities"
+          },
+          "power": {
+            "type": "string",
+            "description": "Power value for creatures"
+          },
+          "toughness": {
+            "type": "string",
+            "description": "Toughness value for creatures"
+          },
+          "setCode": {
+            "type": "string",
+            "description": "Set code where the card appears"
+          },
+          "rarity": {
+            "type": "string",
+            "description": "Card rarity"
+          },
+          "obsolete": {
+            "type": "boolean",
+            "description": "Whether the card is considered obsolete"
+          }
+        }
+      },
+      "Reprint": {
+        "type": "object",
+        "properties": {
+          "originalCard": {
+            "type": "string",
+            "description": "Name of the original card"
+          },
+          "reprintCard": {
+            "type": "string",
+            "description": "Name of the reprint card"
+          },
+          "functionallyIdentical": {
+            "type": "boolean",
+            "description": "Whether the reprint is functionally identical"
+          },
+          "originalSetCode": {
+            "type": "string",
+            "description": "Set code of the original card"
+          },
+          "reprintSetCode": {
+            "type": "string",
+            "description": "Set code of the reprint"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "code": {
+            "type": "integer",
+            "description": "Error code"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Cards",
+      "description": "Operations related to obsolete cards"
+    },
+    {
+      "name": "Reprints",
+      "description": "Operations related to functional reprints"
+    }
+  ]
+}

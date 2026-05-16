@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "reprint": {
+      "REPRINT00": {
+        "functionally_identical": true,
+        "original_card": "s33",
+        "original_set_code": "s34",
+        "reprint_card": "s35",
+        "reprint_set_code": "s36"
+      },
+      "REPRINT01": {
+        "functionally_identical": true,
+        "original_card": "s65",
+        "original_set_code": "s66",
+        "reprint_card": "s67",
+        "reprint_set_code": "s68"
+      },
+      "REPRINT02": {
+        "functionally_identical": true,
+        "original_card": "s97",
+        "original_set_code": "s98",
+        "reprint_card": "s99",
+        "reprint_set_code": "s9a"
+      }
+    }
+  },
+  "new": {
+    "reprint": {
+      "reprint_ref01": {
+        "functionally_identical": true,
+        "original_card": "sc9",
+        "original_set_code": "sca",
+        "reprint_card": "scb",
+        "reprint_set_code": "scc"
+      }
+    }
+  }
+}

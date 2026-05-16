@@ -1,0 +1,20 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 2
+  metrics: count: method: 2
+
+  entity: card: {
+    path: "/api/cards": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: reprint: {
+    path: "/api/reprints": {
+      op: list: method: *GET
+    }
+  }
+
+}

@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+// StrictlyBetter SDK base feature
+
+class StrictlyBetterBaseFeature
+{
+    public string $version;
+    public string $name;
+    public bool $active;
+
+    public function __construct()
+    {
+        $this->version = '0.0.1';
+        $this->name = 'base';
+        $this->active = true;
+    }
+
+    public function get_version(): string { return $this->version; }
+    public function get_name(): string { return $this->name; }
+    public function get_active(): bool { return $this->active; }
+
+    public function init(StrictlyBetterContext $ctx, array $options): void {}
+    public function PostConstruct(StrictlyBetterContext $ctx): void {}
+    public function PostConstructEntity(StrictlyBetterContext $ctx): void {}
+    public function SetData(StrictlyBetterContext $ctx): void {}
+    public function GetData(StrictlyBetterContext $ctx): void {}
+    public function GetMatch(StrictlyBetterContext $ctx): void {}
+    public function SetMatch(StrictlyBetterContext $ctx): void {}
+    public function PrePoint(StrictlyBetterContext $ctx): void {}
+    public function PreSpec(StrictlyBetterContext $ctx): void {}
+    public function PreRequest(StrictlyBetterContext $ctx): void {}
+    public function PreResponse(StrictlyBetterContext $ctx): void {}
+    public function PreResult(StrictlyBetterContext $ctx): void {}
+    public function PreDone(StrictlyBetterContext $ctx): void {}
+    public function PreUnexpected(StrictlyBetterContext $ctx): void {}
+}

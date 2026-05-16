@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://www.strictlybetter.eu/api-guide"
+      }
+      description: "This API allows users to retrieve and search for obsolete cards in JSON format. Users can also find functional reprints and access various endpoints with a limit on the number of results per request."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://www.strictlybetter.eu"
+        }
+      ]
+      title: "Strictly Better API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

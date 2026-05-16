@@ -1,0 +1,312 @@
+
+import { BaseFeature } from './feature/base/BaseFeature'
+import { TestFeature } from './feature/test/TestFeature'
+
+
+
+const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
+   test: TestFeature
+
+}
+
+
+class Config {
+
+  makeFeature(this: any, fn: string) {
+    const fc = FEATURE_CLASS[fn]
+    const fi = new fc()
+    // TODO: errors etc
+    return fi
+  }
+
+
+  main = {
+    name: 'ProjectName',
+  }
+
+
+  feature = {
+     test:     {
+      "options": {
+        "active": false
+      }
+    }
+
+  }
+
+
+  options = {
+    base: 'https://www.strictlybetter.eu',
+
+    auth: {
+      prefix: 'Bearer',
+    },
+
+    headers: {
+      "content-type": "application/json"
+    },
+
+    entity: {
+      
+      card: {
+      },
+
+      reprint: {
+      },
+
+    }
+  }
+
+
+  entity = {
+    "card": {
+      "fields": [
+        {
+          "name": "id",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 0
+        },
+        {
+          "name": "mana_cost",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 1
+        },
+        {
+          "name": "name",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 2
+        },
+        {
+          "name": "obsolete",
+          "req": false,
+          "type": "`$BOOLEAN`",
+          "active": true,
+          "index$": 3
+        },
+        {
+          "name": "power",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 4
+        },
+        {
+          "name": "rarity",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 5
+        },
+        {
+          "name": "set_code",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 6
+        },
+        {
+          "name": "text",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 7
+        },
+        {
+          "name": "toughness",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 8
+        },
+        {
+          "name": "type",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 9
+        }
+      ],
+      "name": "card",
+      "op": {
+        "list": {
+          "name": "list",
+          "points": [
+            {
+              "args": {
+                "query": [
+                  {
+                    "example": 100,
+                    "kind": "query",
+                    "name": "limit",
+                    "orig": "limit",
+                    "reqd": false,
+                    "type": "`$INTEGER`",
+                    "active": true
+                  },
+                  {
+                    "example": 0,
+                    "kind": "query",
+                    "name": "offset",
+                    "orig": "offset",
+                    "reqd": false,
+                    "type": "`$INTEGER`",
+                    "active": true
+                  },
+                  {
+                    "kind": "query",
+                    "name": "search",
+                    "orig": "search",
+                    "reqd": false,
+                    "type": "`$STRING`",
+                    "active": true
+                  }
+                ]
+              },
+              "method": "GET",
+              "orig": "/api/cards",
+              "parts": [
+                "api",
+                "cards"
+              ],
+              "select": {
+                "exist": [
+                  "limit",
+                  "offset",
+                  "search"
+                ]
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "active": true,
+              "index$": 0
+            }
+          ],
+          "input": "data",
+          "key$": "list"
+        }
+      },
+      "relations": {
+        "ancestors": []
+      }
+    },
+    "reprint": {
+      "fields": [
+        {
+          "name": "functionally_identical",
+          "req": false,
+          "type": "`$BOOLEAN`",
+          "active": true,
+          "index$": 0
+        },
+        {
+          "name": "original_card",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 1
+        },
+        {
+          "name": "original_set_code",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 2
+        },
+        {
+          "name": "reprint_card",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 3
+        },
+        {
+          "name": "reprint_set_code",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 4
+        }
+      ],
+      "name": "reprint",
+      "op": {
+        "list": {
+          "name": "list",
+          "points": [
+            {
+              "args": {
+                "query": [
+                  {
+                    "kind": "query",
+                    "name": "card_name",
+                    "orig": "card_name",
+                    "reqd": false,
+                    "type": "`$STRING`",
+                    "active": true
+                  },
+                  {
+                    "example": 100,
+                    "kind": "query",
+                    "name": "limit",
+                    "orig": "limit",
+                    "reqd": false,
+                    "type": "`$INTEGER`",
+                    "active": true
+                  },
+                  {
+                    "example": 0,
+                    "kind": "query",
+                    "name": "offset",
+                    "orig": "offset",
+                    "reqd": false,
+                    "type": "`$INTEGER`",
+                    "active": true
+                  }
+                ]
+              },
+              "method": "GET",
+              "orig": "/api/reprints",
+              "parts": [
+                "api",
+                "reprints"
+              ],
+              "select": {
+                "exist": [
+                  "card_name",
+                  "limit",
+                  "offset"
+                ]
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "active": true,
+              "index$": 0
+            }
+          ],
+          "input": "data",
+          "key$": "list"
+        }
+      },
+      "relations": {
+        "ancestors": []
+      }
+    }
+  }
+}
+
+
+const config = new Config()
+
+export {
+  config
+}
+
