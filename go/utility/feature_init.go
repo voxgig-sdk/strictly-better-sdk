@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/strictly-better-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/strictly-better-sdk/core"
+	"github.com/voxgig-sdk/strictly-better-sdk/go/core"
 )
 
 func featureInitUtil(ctx *core.Context, f core.Feature) {

@@ -1,10 +1,10 @@
 package voxgigstrictlybettersdk
 
 import (
-	"github.com/voxgig-sdk/strictly-better-sdk/core"
-	"github.com/voxgig-sdk/strictly-better-sdk/entity"
-	"github.com/voxgig-sdk/strictly-better-sdk/feature"
-	_ "github.com/voxgig-sdk/strictly-better-sdk/utility"
+	"github.com/voxgig-sdk/strictly-better-sdk/go/core"
+	"github.com/voxgig-sdk/strictly-better-sdk/go/entity"
+	"github.com/voxgig-sdk/strictly-better-sdk/go/feature"
+	_ "github.com/voxgig-sdk/strictly-better-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

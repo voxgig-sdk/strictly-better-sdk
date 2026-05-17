@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/strictly-better-sdk"
+	sdk "github.com/voxgig-sdk/strictly-better-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {
