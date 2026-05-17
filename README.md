@@ -11,8 +11,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Card** |  | `/api/cards` |
-| **Reprint** |  | `/api/reprints` |
+| **FunctionalReprint** |  | `/api/functional_reprints` |
+| **Obsolete** |  | `/api/obsoletes` |
 
 Each entity supports the following operations where available: **load**, **list**, **create**,
 **update**, and **remove**.
@@ -66,8 +66,8 @@ client := sdk.NewStrictlyBetterSDK(map[string]any{
     "apikey": os.Getenv("STRICTLY-BETTER_APIKEY"),
 })
 
-// List all cards
-cards, err := client.Card(nil).List(nil, nil)
+// List all functionalreprints
+functionalreprints, err := client.FunctionalReprint(nil).List(nil, nil)
 ```
 
 ### Lua
@@ -79,8 +79,8 @@ local client = sdk.new({
   apikey = os.getenv("STRICTLY-BETTER_APIKEY"),
 })
 
--- List all cards
-local cards, err = client:Card(nil):list(nil, nil)
+-- List all functionalreprints
+local functionalreprints, err = client:FunctionalReprint(nil):list(nil, nil)
 ```
 
 ### PHP
@@ -93,8 +93,8 @@ $client = new StrictlyBetterSDK([
     "apikey" => getenv("STRICTLY-BETTER_APIKEY"),
 ]);
 
-// List all cards
-[$cards, $err] = $client->Card(null)->list(null, null);
+// List all functionalreprints
+[$functionalreprints, $err] = $client->FunctionalReprint(null)->list(null, null);
 ```
 
 ### Python
@@ -107,8 +107,8 @@ client = StrictlyBetterSDK({
     "apikey": os.environ.get("STRICTLY-BETTER_APIKEY"),
 })
 
-# List all cards
-cards, err = client.Card(None).list(None, None)
+# List all functionalreprints
+functionalreprints, err = client.FunctionalReprint(None).list(None, None)
 ```
 
 ### Ruby
@@ -120,8 +120,8 @@ client = StrictlyBetterSDK.new({
   "apikey" => ENV["STRICTLY-BETTER_APIKEY"],
 })
 
-# List all cards
-cards, err = client.Card(nil).list(nil, nil)
+# List all functionalreprints
+functionalreprints, err = client.FunctionalReprint(nil).list(nil, nil)
 ```
 
 ### TypeScript
@@ -133,8 +133,8 @@ const client = new StrictlyBetterSDK({
   apikey: process.env.STRICTLY-BETTER_APIKEY,
 })
 
-// List all cards
-const cards = await client.Card().list()
+// List all functionalreprints
+const functionalreprints = await client.FunctionalReprint().list()
 ```
 
 
@@ -147,7 +147,7 @@ in-memory mock, so tests run without a network connection.
 
 ```go
 client := sdk.TestSDK(nil, nil)
-result, err := client.Card(nil).Load(
+result, err := client.FunctionalReprint(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
 ```
@@ -156,7 +156,7 @@ result, err := client.Card(nil).Load(
 
 ```lua
 local client = sdk.test(nil, nil)
-local result, err = client:Card(nil):load(
+local result, err = client:FunctionalReprint(nil):load(
   { id = "test01" }, nil
 )
 ```
@@ -165,7 +165,7 @@ local result, err = client:Card(nil):load(
 
 ```php
 $client = StrictlyBetterSDK::test(null, null);
-[$result, $err] = $client->Card(null)->load(
+[$result, $err] = $client->FunctionalReprint(null)->load(
     ["id" => "test01"], null
 );
 ```
@@ -174,7 +174,7 @@ $client = StrictlyBetterSDK::test(null, null);
 
 ```python
 client = StrictlyBetterSDK.test(None, None)
-result, err = client.Card(None).load(
+result, err = client.FunctionalReprint(None).load(
     {"id": "test01"}, None
 )
 ```
@@ -183,7 +183,7 @@ result, err = client.Card(None).load(
 
 ```ruby
 client = StrictlyBetterSDK.test(nil, nil)
-result, err = client.Card(nil).load(
+result, err = client.FunctionalReprint(nil).load(
   { "id" => "test01" }, nil
 )
 ```
@@ -192,7 +192,7 @@ result, err = client.Card(nil).load(
 
 ```ts
 const client = StrictlyBetterSDK.test()
-const result = await client.Card().load({ id: 'test01' })
+const result = await client.FunctionalReprint().load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 

@@ -1,0 +1,22 @@
+# BasicObsoleteFlow
+
+main: kit: flow: BasicObsoleteFlow:
+{
+  entity: "obsolete",
+  kind: "basic",
+  name: "BasicObsoleteFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "obsolete_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicObsoleteFlow"
+}

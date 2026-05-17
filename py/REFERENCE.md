@@ -42,13 +42,13 @@ client = StrictlyBetterSDK.test()
 
 ### Instance Methods
 
-#### `Card(data=None)`
+#### `FunctionalReprint(data=None)`
 
-Create a new `CardEntity` instance. Pass `None` for no initial data.
+Create a new `FunctionalReprintEntity` instance. Pass `None` for no initial data.
 
-#### `Reprint(data=None)`
+#### `Obsolete(data=None)`
 
-Create a new `ReprintEntity` instance. Pass `None` for no initial data.
+Create a new `ObsoleteEntity` instance. Pass `None` for no initial data.
 
 #### `options_map() -> dict`
 
@@ -82,10 +82,65 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 
 ---
 
-## CardEntity
+## FunctionalReprintEntity
 
 ```python
-card = client.Card()
+functional_reprint = client.FunctionalReprint()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `functionally_identical` | ``$BOOLEAN`` | No |  |
+| `original_card` | ``$STRING`` | No |  |
+| `original_set_code` | ``$STRING`` | No |  |
+| `reprint_card` | ``$STRING`` | No |  |
+| `reprint_set_code` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.FunctionalReprint().list({})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `FunctionalReprintEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ObsoleteEntity
+
+```python
+obsolete = client.Obsolete()
 ```
 
 ### Fields
@@ -110,7 +165,7 @@ card = client.Card()
 List entities matching the given criteria. Returns an array.
 
 ```python
-results, err = client.Card().list({})
+results, err = client.Obsolete().list({})
 ```
 
 ### Common Methods
@@ -133,62 +188,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `CardEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## ReprintEntity
-
-```python
-reprint = client.Reprint()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` | No |  |
-| `original_card` | ``$STRING`` | No |  |
-| `original_set_code` | ``$STRING`` | No |  |
-| `reprint_card` | ``$STRING`` | No |  |
-| `reprint_set_code` | ``$STRING`` | No |  |
-
-### Operations
-
-#### `list(reqmatch, ctrl=None) -> tuple`
-
-List entities matching the given criteria. Returns an array.
-
-```python
-results, err = client.Reprint().list({})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `ReprintEntity` instance with the same options.
+Create a new `ObsoleteEntity` instance with the same options.
 
 #### `get_name() -> str`
 

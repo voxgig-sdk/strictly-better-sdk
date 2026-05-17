@@ -5,14 +5,14 @@ guide: {
   metrics: count: path: 2
   metrics: count: method: 2
 
-  entity: card: {
-    path: "/api/cards": {
+  entity: functional_reprint: {
+    path: "/api/functional_reprints": {
       op: list: method: *GET
     }
   }
 
-  entity: reprint: {
-    path: "/api/reprints": {
+  entity: obsolete: {
+    path: "/api/obsoletes": {
       op: list: method: *GET
     }
   }

@@ -199,15 +199,15 @@ class StrictlyBetterSDK
   end
 
 
-  def Card(data = nil)
-    require_relative 'entity/card_entity'
-    CardEntity.new(self, data)
+  def FunctionalReprint(data = nil)
+    require_relative 'entity/functional_reprint_entity'
+    FunctionalReprintEntity.new(self, data)
   end
 
 
-  def Reprint(data = nil)
-    require_relative 'entity/reprint_entity'
-    ReprintEntity.new(self, data)
+  def Obsolete(data = nil)
+    require_relative 'entity/obsolete_entity'
+    ObsoleteEntity.new(self, data)
   end
 
 

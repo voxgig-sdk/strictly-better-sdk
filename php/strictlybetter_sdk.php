@@ -223,17 +223,17 @@ class StrictlyBetterSDK
     }
 
 
-    public function Card($data = null)
+    public function FunctionalReprint($data = null)
     {
-        require_once __DIR__ . '/entity/card_entity.php';
-        return new CardEntity($this, $data);
+        require_once __DIR__ . '/entity/functional_reprint_entity.php';
+        return new FunctionalReprintEntity($this, $data);
     }
 
 
-    public function Reprint($data = null)
+    public function Obsolete($data = null)
     {
-        require_once __DIR__ . '/entity/reprint_entity.php';
-        return new ReprintEntity($this, $data);
+        require_once __DIR__ . '/entity/obsolete_entity.php';
+        return new ObsoleteEntity($this, $data);
     }
 
 

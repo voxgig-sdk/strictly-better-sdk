@@ -213,14 +213,14 @@ class StrictlyBetterSDK:
         }, None
 
 
-    def Card(self, data=None):
-        from entity.card_entity import CardEntity
-        return CardEntity(self, data)
+    def FunctionalReprint(self, data=None):
+        from entity.functional_reprint_entity import FunctionalReprintEntity
+        return FunctionalReprintEntity(self, data)
 
 
-    def Reprint(self, data=None):
-        from entity.reprint_entity import ReprintEntity
-        return ReprintEntity(self, data)
+    def Obsolete(self, data=None):
+        from entity.obsolete_entity import ObsoleteEntity
+        return ObsoleteEntity(self, data)
 
 
 

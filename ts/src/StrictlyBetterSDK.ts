@@ -1,7 +1,7 @@
 // StrictlyBetter Ts SDK
 
-import { CardEntity } from './entity/CardEntity'
-import { ReprintEntity } from './entity/ReprintEntity'
+import { FunctionalReprintEntity } from './entity/FunctionalReprintEntity'
+import { ObsoleteEntity } from './entity/ObsoleteEntity'
 
 
 import { inspect } from 'node:util'
@@ -203,15 +203,15 @@ class StrictlyBetterSDK {
 
 
 
-  Card(data?: any) {
+  FunctionalReprint(data?: any) {
     const self = this
-    return new CardEntity(self,data)
+    return new FunctionalReprintEntity(self,data)
   }
 
 
-  Reprint(data?: any) {
+  Obsolete(data?: any) {
     const self = this
-    return new ReprintEntity(self,data)
+    return new ObsoleteEntity(self,data)
   }
 
 

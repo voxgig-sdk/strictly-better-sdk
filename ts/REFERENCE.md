@@ -49,21 +49,9 @@ const client = StrictlyBetterSDK.test()
 
 ### Instance Methods
 
-#### `Card(data?: object)`
+#### `FunctionalReprint(data?: object)`
 
-Create a new `Card` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `CardEntity` instance.
-
-#### `Reprint(data?: object)`
-
-Create a new `Reprint` entity instance.
+Create a new `FunctionalReprint` entity instance.
 
 **Parameters:**
 
@@ -71,7 +59,19 @@ Create a new `Reprint` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `ReprintEntity` instance.
+**Returns:** `FunctionalReprintEntity` instance.
+
+#### `Obsolete(data?: object)`
+
+Create a new `Obsolete` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ObsoleteEntity` instance.
 
 #### `options()`
 
@@ -119,10 +119,64 @@ Alias for `StrictlyBetterSDK.test()`.
 
 ---
 
-## CardEntity
+## FunctionalReprintEntity
 
 ```ts
-const card = client.Card()
+const functional_reprint = client.FunctionalReprint()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `functionally_identical` | ``$BOOLEAN`` | No |  |
+| `original_card` | ``$STRING`` | No |  |
+| `original_set_code` | ``$STRING`` | No |  |
+| `reprint_card` | ``$STRING`` | No |  |
+| `reprint_set_code` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.FunctionalReprint().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `FunctionalReprintEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `StrictlyBetterSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ObsoleteEntity
+
+```ts
+const obsolete = client.Obsolete()
 ```
 
 ### Fields
@@ -147,7 +201,7 @@ const card = client.Card()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Card().list()
+const results = await client.Obsolete().list()
 ```
 
 ### Common Methods
@@ -164,61 +218,7 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `CardEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `StrictlyBetterSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## ReprintEntity
-
-```ts
-const reprint = client.Reprint()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` | No |  |
-| `original_card` | ``$STRING`` | No |  |
-| `original_set_code` | ``$STRING`` | No |  |
-| `reprint_card` | ``$STRING`` | No |  |
-| `reprint_set_code` | ``$STRING`` | No |  |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.Reprint().list()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `ReprintEntity` instance with the same client and
+Create a new `ObsoleteEntity` instance with the same client and
 options.
 
 #### `client()`

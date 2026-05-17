@@ -41,13 +41,13 @@ local client = sdk.test(nil, nil)
 
 ### Instance Methods
 
-#### `Card(data)`
+#### `FunctionalReprint(data)`
 
-Create a new `Card` entity instance. Pass `nil` for no initial data.
+Create a new `FunctionalReprint` entity instance. Pass `nil` for no initial data.
 
-#### `Reprint(data)`
+#### `Obsolete(data)`
 
-Create a new `Reprint` entity instance. Pass `nil` for no initial data.
+Create a new `Obsolete` entity instance. Pass `nil` for no initial data.
 
 #### `options_map() -> table`
 
@@ -85,10 +85,66 @@ same parameters as `direct()`.
 
 ---
 
-## CardEntity
+## FunctionalReprintEntity
 
 ```lua
-local card = client:Card(nil)
+local functional_reprint = client:FunctionalReprint(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `functionally_identical` | ``$BOOLEAN`` | No |  |
+| `original_card` | ``$STRING`` | No |  |
+| `original_set_code` | ``$STRING`` | No |  |
+| `reprint_card` | ``$STRING`` | No |  |
+| `reprint_set_code` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:FunctionalReprint(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `FunctionalReprintEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ObsoleteEntity
+
+```lua
+local obsolete = client:Obsolete(nil)
 ```
 
 ### Fields
@@ -113,7 +169,7 @@ local card = client:Card(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Card(nil):list(nil, nil)
+local results, err = client:Obsolete(nil):list(nil, nil)
 ```
 
 ### Common Methods
@@ -136,63 +192,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `CardEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## ReprintEntity
-
-```lua
-local reprint = client:Reprint(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` | No |  |
-| `original_card` | ``$STRING`` | No |  |
-| `original_set_code` | ``$STRING`` | No |  |
-| `reprint_card` | ``$STRING`` | No |  |
-| `reprint_set_code` | ``$STRING`` | No |  |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array.
-
-```lua
-local results, err = client:Reprint(nil):list(nil, nil)
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `ReprintEntity` instance with the same client and
+Create a new `ObsoleteEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

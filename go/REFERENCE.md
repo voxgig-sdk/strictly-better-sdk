@@ -40,13 +40,13 @@ client := sdk.TestSDK(nil, nil)
 
 ### Instance Methods
 
-#### `Card(data map[string]any) StrictlyBetterEntity`
+#### `FunctionalReprint(data map[string]any) StrictlyBetterEntity`
 
-Create a new `Card` entity instance. Pass `nil` for no initial data.
+Create a new `FunctionalReprint` entity instance. Pass `nil` for no initial data.
 
-#### `Reprint(data map[string]any) StrictlyBetterEntity`
+#### `Obsolete(data map[string]any) StrictlyBetterEntity`
 
-Create a new `Reprint` entity instance. Pass `nil` for no initial data.
+Create a new `Obsolete` entity instance. Pass `nil` for no initial data.
 
 #### `OptionsMap() map[string]any`
 
@@ -84,10 +84,60 @@ same parameters as `Direct()`.
 
 ---
 
-## CardEntity
+## FunctionalReprintEntity
 
 ```go
-card := client.Card(nil)
+functional_reprint := client.FunctionalReprint(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `functionally_identical` | ``$BOOLEAN`` | No |  |
+| `original_card` | ``$STRING`` | No |  |
+| `original_set_code` | ``$STRING`` | No |  |
+| `reprint_card` | ``$STRING`` | No |  |
+| `reprint_set_code` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns an array.
+
+```go
+results, err := client.FunctionalReprint(nil).List(nil, nil)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `FunctionalReprintEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## ObsoleteEntity
+
+```go
+obsolete := client.Obsolete(nil)
 ```
 
 ### Fields
@@ -112,7 +162,7 @@ card := client.Card(nil)
 List entities matching the given criteria. Returns an array.
 
 ```go
-results, err := client.Card(nil).List(nil, nil)
+results, err := client.Obsolete(nil).List(nil, nil)
 ```
 
 ### Common Methods
@@ -129,57 +179,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `CardEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## ReprintEntity
-
-```go
-reprint := client.Reprint(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` | No |  |
-| `original_card` | ``$STRING`` | No |  |
-| `original_set_code` | ``$STRING`` | No |  |
-| `reprint_card` | ``$STRING`` | No |  |
-| `reprint_set_code` | ``$STRING`` | No |  |
-
-### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns an array.
-
-```go
-results, err := client.Reprint(nil).List(nil, nil)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `ReprintEntity` instance with the same client and
+Create a new `ObsoleteEntity` instance with the same client and
 options.
 
 #### `GetName() string`

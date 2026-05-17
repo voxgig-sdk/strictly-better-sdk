@@ -27,7 +27,107 @@
         }
       },
       "entity": {
-        "card": {
+        "functional_reprint": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "functionally_identical",
+              "req": false,
+              "type": "`$BOOLEAN`",
+              "active": true
+            },
+            {
+              "name": "original_card",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "original_set_code",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "reprint_card",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "reprint_set_code",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "functional_reprint",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "kind": "query",
+                        "name": "card_name",
+                        "orig": "card_name",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "example": 100,
+                        "kind": "query",
+                        "name": "limit",
+                        "orig": "limit",
+                        "reqd": false,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "example": 0,
+                        "kind": "query",
+                        "name": "offset",
+                        "orig": "offset",
+                        "reqd": false,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/functional_reprints",
+                  "parts": [
+                    "api",
+                    "functional_reprints"
+                  ],
+                  "select": {
+                    "exist": [
+                      "card_name",
+                      "limit",
+                      "offset"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "obsolete": {
           "alias": {
             "field": {}
           },
@@ -97,7 +197,7 @@
             "field": "id",
             "name": "id"
           },
-          "name": "card",
+          "name": "obsolete",
           "op": {
             "list": {
               "name": "list",
@@ -134,116 +234,16 @@
                     ]
                   },
                   "method": "GET",
-                  "orig": "/api/cards",
+                  "orig": "/api/obsoletes",
                   "parts": [
                     "api",
-                    "cards"
+                    "obsoletes"
                   ],
                   "select": {
                     "exist": [
                       "limit",
                       "offset",
                       "search"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true
-                }
-              ],
-              "input": "data"
-            }
-          },
-          "active": true,
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "reprint": {
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "name": "functionally_identical",
-              "req": false,
-              "type": "`$BOOLEAN`",
-              "active": true
-            },
-            {
-              "name": "original_card",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "original_set_code",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "reprint_card",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "reprint_set_code",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            }
-          ],
-          "name": "reprint",
-          "op": {
-            "list": {
-              "name": "list",
-              "points": [
-                {
-                  "args": {
-                    "query": [
-                      {
-                        "kind": "query",
-                        "name": "card_name",
-                        "orig": "card_name",
-                        "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
-                      },
-                      {
-                        "example": 100,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
-                      },
-                      {
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
-                      }
-                    ]
-                  },
-                  "method": "GET",
-                  "orig": "/api/reprints",
-                  "parts": [
-                    "api",
-                    "reprints"
-                  ],
-                  "select": {
-                    "exist": [
-                      "card_name",
-                      "limit",
-                      "offset"
                     ]
                   },
                   "transform": {
@@ -351,10 +351,10 @@
         }
       },
       "flow": {
-        "BasicCardFlow": {
-          "entity": "card",
+        "BasicFunctionalReprintFlow": {
+          "entity": "functional_reprint",
           "kind": "basic",
-          "name": "BasicCardFlow",
+          "name": "BasicFunctionalReprintFlow",
           "step": [
             {
               "op": "list",
@@ -362,7 +362,7 @@
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "card_ref01"
+                    "ref": "functional_reprint_ref01"
                   }
                 }
               ],
@@ -373,14 +373,14 @@
               "spec": []
             }
           ],
-          "key$": "BasicCardFlow",
+          "key$": "BasicFunctionalReprintFlow",
           "active": true,
           "param": {}
         },
-        "BasicReprintFlow": {
-          "entity": "reprint",
+        "BasicObsoleteFlow": {
+          "entity": "obsolete",
           "kind": "basic",
-          "name": "BasicReprintFlow",
+          "name": "BasicObsoleteFlow",
           "step": [
             {
               "op": "list",
@@ -388,7 +388,7 @@
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "reprint_ref01"
+                    "ref": "obsolete_ref01"
                   }
                 }
               ],
@@ -399,7 +399,7 @@
               "spec": []
             }
           ],
-          "key$": "BasicReprintFlow",
+          "key$": "BasicObsoleteFlow",
           "active": true,
           "param": {}
         }

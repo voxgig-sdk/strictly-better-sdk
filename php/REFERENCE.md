@@ -42,13 +42,13 @@ $client = StrictlyBetterSDK::test();
 
 ### Instance Methods
 
-#### `Card($data = null)`
+#### `FunctionalReprint($data = null)`
 
-Create a new `CardEntity` instance. Pass `null` for no initial data.
+Create a new `FunctionalReprintEntity` instance. Pass `null` for no initial data.
 
-#### `Reprint($data = null)`
+#### `Obsolete($data = null)`
 
-Create a new `ReprintEntity` instance. Pass `null` for no initial data.
+Create a new `ObsoleteEntity` instance. Pass `null` for no initial data.
 
 #### `optionsMap(): array`
 
@@ -83,10 +83,66 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 
 ---
 
-## CardEntity
+## FunctionalReprintEntity
 
 ```php
-$card = $client->Card();
+$functional_reprint = $client->FunctionalReprint();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `functionally_identical` | ``$BOOLEAN`` | No |  |
+| `original_card` | ``$STRING`` | No |  |
+| `original_set_code` | ``$STRING`` | No |  |
+| `reprint_card` | ``$STRING`` | No |  |
+| `reprint_set_code` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->FunctionalReprint()->list([]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): FunctionalReprintEntity`
+
+Create a new `FunctionalReprintEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## ObsoleteEntity
+
+```php
+$obsolete = $client->Obsolete();
 ```
 
 ### Fields
@@ -111,7 +167,7 @@ $card = $client->Card();
 List entities matching the given criteria. Returns an array.
 
 ```php
-[$results, $err] = $client->Card()->list([]);
+[$results, $err] = $client->Obsolete()->list([]);
 ```
 
 ### Common Methods
@@ -132,65 +188,9 @@ Get the entity match criteria.
 
 Set the entity match criteria.
 
-#### `make(): CardEntity`
+#### `make(): ObsoleteEntity`
 
-Create a new `CardEntity` instance with the same client and
-options.
-
-#### `getName(): string`
-
-Return the entity name.
-
-
----
-
-## ReprintEntity
-
-```php
-$reprint = $client->Reprint();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` | No |  |
-| `original_card` | ``$STRING`` | No |  |
-| `original_set_code` | ``$STRING`` | No |  |
-| `reprint_card` | ``$STRING`` | No |  |
-| `reprint_set_code` | ``$STRING`` | No |  |
-
-### Operations
-
-#### `list(array $reqmatch, ?array $ctrl = null): array`
-
-List entities matching the given criteria. Returns an array.
-
-```php
-[$results, $err] = $client->Reprint()->list([]);
-```
-
-### Common Methods
-
-#### `dataGet(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `dataSet($data): void`
-
-Set the entity data.
-
-#### `matchGet(): array`
-
-Get the entity match criteria.
-
-#### `matchSet($match): void`
-
-Set the entity match criteria.
-
-#### `make(): ReprintEntity`
-
-Create a new `ReprintEntity` instance with the same client and
+Create a new `ObsoleteEntity` instance with the same client and
 options.
 
 #### `getName(): string`

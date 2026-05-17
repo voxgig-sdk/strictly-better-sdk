@@ -1,4 +1,4 @@
 # Entity Models
 
-@"card.jsonic"
-@"reprint.jsonic"
+@"functional_reprint.jsonic"
+@"obsolete.jsonic"

@@ -244,14 +244,14 @@ end
 
 
 
-function StrictlyBetterSDK:Card(data)
-  local EntityMod = require("entity.card_entity")
+function StrictlyBetterSDK:FunctionalReprint(data)
+  local EntityMod = require("entity.functional_reprint_entity")
   return EntityMod.new(self, data)
 end
 
 
-function StrictlyBetterSDK:Reprint(data)
-  local EntityMod = require("entity.reprint_entity")
+function StrictlyBetterSDK:Obsolete(data)
+  local EntityMod = require("entity.obsolete_entity")
   return EntityMod.new(self, data)
 end
 

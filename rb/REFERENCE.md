@@ -42,13 +42,13 @@ client = StrictlyBetterSDK.test
 
 ### Instance Methods
 
-#### `Card(data = nil)`
+#### `FunctionalReprint(data = nil)`
 
-Create a new `Card` entity instance. Pass `nil` for no initial data.
+Create a new `FunctionalReprint` entity instance. Pass `nil` for no initial data.
 
-#### `Reprint(data = nil)`
+#### `Obsolete(data = nil)`
 
-Create a new `Reprint` entity instance. Pass `nil` for no initial data.
+Create a new `Obsolete` entity instance. Pass `nil` for no initial data.
 
 #### `options_map -> Hash`
 
@@ -86,10 +86,66 @@ same parameters as `direct()`.
 
 ---
 
-## CardEntity
+## FunctionalReprintEntity
 
 ```ruby
-card = client.Card
+functional_reprint = client.FunctionalReprint
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `functionally_identical` | ``$BOOLEAN`` | No |  |
+| `original_card` | ``$STRING`` | No |  |
+| `original_set_code` | ``$STRING`` | No |  |
+| `reprint_card` | ``$STRING`` | No |  |
+| `reprint_set_code` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.FunctionalReprint.list(nil)
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `FunctionalReprintEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ObsoleteEntity
+
+```ruby
+obsolete = client.Obsolete
 ```
 
 ### Fields
@@ -114,7 +170,7 @@ card = client.Card
 List entities matching the given criteria. Returns an array.
 
 ```ruby
-results, err = client.Card.list(nil)
+results, err = client.Obsolete.list(nil)
 ```
 
 ### Common Methods
@@ -137,63 +193,7 @@ Set the entity match criteria.
 
 #### `make -> Entity`
 
-Create a new `CardEntity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
-## ReprintEntity
-
-```ruby
-reprint = client.Reprint
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` | No |  |
-| `original_card` | ``$STRING`` | No |  |
-| `original_set_code` | ``$STRING`` | No |  |
-| `reprint_card` | ``$STRING`` | No |  |
-| `reprint_set_code` | ``$STRING`` | No |  |
-
-### Operations
-
-#### `list(reqmatch, ctrl = nil) -> result, err`
-
-List entities matching the given criteria. Returns an array.
-
-```ruby
-results, err = client.Reprint.list(nil)
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `ReprintEntity` instance with the same client and
+Create a new `ObsoleteEntity` instance with the same client and
 options.
 
 #### `get_name -> String`

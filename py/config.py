@@ -22,12 +22,115 @@ def make_config():
         "content-type": "application/json",
       },
             "entity": {
-                "card": {},
-                "reprint": {},
+                "functional_reprint": {},
+                "obsolete": {},
             },
         },
         "entity": {
-      "card": {
+      "functional_reprint": {
+        "fields": [
+          {
+            "name": "functionally_identical",
+            "req": False,
+            "type": "`$BOOLEAN`",
+            "active": True,
+            "index$": 0,
+          },
+          {
+            "name": "original_card",
+            "req": False,
+            "type": "`$STRING`",
+            "active": True,
+            "index$": 1,
+          },
+          {
+            "name": "original_set_code",
+            "req": False,
+            "type": "`$STRING`",
+            "active": True,
+            "index$": 2,
+          },
+          {
+            "name": "reprint_card",
+            "req": False,
+            "type": "`$STRING`",
+            "active": True,
+            "index$": 3,
+          },
+          {
+            "name": "reprint_set_code",
+            "req": False,
+            "type": "`$STRING`",
+            "active": True,
+            "index$": 4,
+          },
+        ],
+        "name": "functional_reprint",
+        "op": {
+          "list": {
+            "name": "list",
+            "points": [
+              {
+                "args": {
+                  "query": [
+                    {
+                      "kind": "query",
+                      "name": "card_name",
+                      "orig": "card_name",
+                      "reqd": False,
+                      "type": "`$STRING`",
+                      "active": True,
+                    },
+                    {
+                      "example": 100,
+                      "kind": "query",
+                      "name": "limit",
+                      "orig": "limit",
+                      "reqd": False,
+                      "type": "`$INTEGER`",
+                      "active": True,
+                    },
+                    {
+                      "example": 0,
+                      "kind": "query",
+                      "name": "offset",
+                      "orig": "offset",
+                      "reqd": False,
+                      "type": "`$INTEGER`",
+                      "active": True,
+                    },
+                  ],
+                },
+                "method": "GET",
+                "orig": "/api/functional_reprints",
+                "parts": [
+                  "api",
+                  "functional_reprints",
+                ],
+                "select": {
+                  "exist": [
+                    "card_name",
+                    "limit",
+                    "offset",
+                  ],
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "active": True,
+                "index$": 0,
+              },
+            ],
+            "input": "data",
+            "key$": "list",
+          },
+        },
+        "relations": {
+          "ancestors": [],
+        },
+      },
+      "obsolete": {
         "fields": [
           {
             "name": "id",
@@ -100,7 +203,7 @@ def make_config():
             "index$": 9,
           },
         ],
-        "name": "card",
+        "name": "obsolete",
         "op": {
           "list": {
             "name": "list",
@@ -137,119 +240,16 @@ def make_config():
                   ],
                 },
                 "method": "GET",
-                "orig": "/api/cards",
+                "orig": "/api/obsoletes",
                 "parts": [
                   "api",
-                  "cards",
+                  "obsoletes",
                 ],
                 "select": {
                   "exist": [
                     "limit",
                     "offset",
                     "search",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "active": True,
-                "index$": 0,
-              },
-            ],
-            "input": "data",
-            "key$": "list",
-          },
-        },
-        "relations": {
-          "ancestors": [],
-        },
-      },
-      "reprint": {
-        "fields": [
-          {
-            "name": "functionally_identical",
-            "req": False,
-            "type": "`$BOOLEAN`",
-            "active": True,
-            "index$": 0,
-          },
-          {
-            "name": "original_card",
-            "req": False,
-            "type": "`$STRING`",
-            "active": True,
-            "index$": 1,
-          },
-          {
-            "name": "original_set_code",
-            "req": False,
-            "type": "`$STRING`",
-            "active": True,
-            "index$": 2,
-          },
-          {
-            "name": "reprint_card",
-            "req": False,
-            "type": "`$STRING`",
-            "active": True,
-            "index$": 3,
-          },
-          {
-            "name": "reprint_set_code",
-            "req": False,
-            "type": "`$STRING`",
-            "active": True,
-            "index$": 4,
-          },
-        ],
-        "name": "reprint",
-        "op": {
-          "list": {
-            "name": "list",
-            "points": [
-              {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "card_name",
-                      "orig": "card_name",
-                      "reqd": False,
-                      "type": "`$STRING`",
-                      "active": True,
-                    },
-                    {
-                      "example": 100,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "reqd": False,
-                      "type": "`$INTEGER`",
-                      "active": True,
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "offset",
-                      "orig": "offset",
-                      "reqd": False,
-                      "type": "`$INTEGER`",
-                      "active": True,
-                    },
-                  ],
-                },
-                "method": "GET",
-                "orig": "/api/reprints",
-                "parts": [
-                  "api",
-                  "reprints",
-                ],
-                "select": {
-                  "exist": [
-                    "card_name",
-                    "limit",
-                    "offset",
                   ],
                 },
                 "transform": {

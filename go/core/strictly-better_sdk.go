@@ -245,13 +245,13 @@ func (sdk *StrictlyBetterSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
-func (sdk *StrictlyBetterSDK) Card(data map[string]any) StrictlyBetterEntity {
-	return NewCardEntityFunc(sdk, data)
+func (sdk *StrictlyBetterSDK) FunctionalReprint(data map[string]any) StrictlyBetterEntity {
+	return NewFunctionalReprintEntityFunc(sdk, data)
 }
 
 
-func (sdk *StrictlyBetterSDK) Reprint(data map[string]any) StrictlyBetterEntity {
-	return NewReprintEntityFunc(sdk, data)
+func (sdk *StrictlyBetterSDK) Obsolete(data map[string]any) StrictlyBetterEntity {
+	return NewObsoleteEntityFunc(sdk, data)
 }
 
 

@@ -40,10 +40,10 @@ func main() {
     })
 ```
 
-### 2. List cards
+### 2. List functionalreprints
 
 ```go
-    result, err := client.Card(nil).List(nil, nil)
+    result, err := client.FunctionalReprint(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
@@ -186,8 +186,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Card` | `(data map[string]any) StrictlyBetterEntity` | Create a Card entity instance. |
-| `Reprint` | `(data map[string]any) StrictlyBetterEntity` | Create a Reprint entity instance. |
+| `FunctionalReprint` | `(data map[string]any) StrictlyBetterEntity` | Create a FunctionalReprint entity instance. |
+| `Obsolete` | `(data map[string]any) StrictlyBetterEntity` | Create a Obsolete entity instance. |
 
 ### Entity interface (StrictlyBetterEntity)
 
@@ -221,7 +221,21 @@ On error, `"ok"` is `false` and `"err"` contains the error value.
 
 ### Entities
 
-#### Card
+#### FunctionalReprint
+
+| Field | Description |
+| --- | --- |
+| `"functionally_identical"` |  |
+| `"original_card"` |  |
+| `"original_set_code"` |  |
+| `"reprint_card"` |  |
+| `"reprint_set_code"` |  |
+
+Operations: List.
+
+API path: `/api/functional_reprints`
+
+#### Obsolete
 
 | Field | Description |
 | --- | --- |
@@ -238,30 +252,43 @@ On error, `"ok"` is `false` and `"err"` contains the error value.
 
 Operations: List.
 
-API path: `/api/cards`
-
-#### Reprint
-
-| Field | Description |
-| --- | --- |
-| `"functionally_identical"` |  |
-| `"original_card"` |  |
-| `"original_set_code"` |  |
-| `"reprint_card"` |  |
-| `"reprint_set_code"` |  |
-
-Operations: List.
-
-API path: `/api/reprints`
+API path: `/api/obsoletes`
 
 
 
 ## Entities
 
 
-### Card
+### FunctionalReprint
 
-Create an instance: `card := client.Card(nil)`
+Create an instance: `functional_reprint := client.FunctionalReprint(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `functionally_identical` | ``$BOOLEAN`` |  |
+| `original_card` | ``$STRING`` |  |
+| `original_set_code` | ``$STRING`` |  |
+| `reprint_card` | ``$STRING`` |  |
+| `reprint_set_code` | ``$STRING`` |  |
+
+#### Example: List
+
+```go
+results, err := client.FunctionalReprint(nil).List(nil, nil)
+```
+
+
+### Obsolete
+
+Create an instance: `obsolete := client.Obsolete(nil)`
 
 #### Operations
 
@@ -287,34 +314,7 @@ Create an instance: `card := client.Card(nil)`
 #### Example: List
 
 ```go
-results, err := client.Card(nil).List(nil, nil)
-```
-
-
-### Reprint
-
-Create an instance: `reprint := client.Reprint(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` |  |
-| `original_card` | ``$STRING`` |  |
-| `original_set_code` | ``$STRING`` |  |
-| `reprint_card` | ``$STRING`` |  |
-| `reprint_set_code` | ``$STRING`` |  |
-
-#### Example: List
-
-```go
-results, err := client.Reprint(nil).List(nil, nil)
+results, err := client.Obsolete(nil).List(nil, nil)
 ```
 
 

@@ -32,11 +32,11 @@ func init() {
 	core.NewTestFeatureFunc = func() core.Feature {
 		return feature.NewTestFeature()
 	}
-	core.NewCardEntityFunc = func(client *core.StrictlyBetterSDK, entopts map[string]any) core.StrictlyBetterEntity {
-		return entity.NewCardEntity(client, entopts)
+	core.NewFunctionalReprintEntityFunc = func(client *core.StrictlyBetterSDK, entopts map[string]any) core.StrictlyBetterEntity {
+		return entity.NewFunctionalReprintEntity(client, entopts)
 	}
-	core.NewReprintEntityFunc = func(client *core.StrictlyBetterSDK, entopts map[string]any) core.StrictlyBetterEntity {
-		return entity.NewReprintEntity(client, entopts)
+	core.NewObsoleteEntityFunc = func(client *core.StrictlyBetterSDK, entopts map[string]any) core.StrictlyBetterEntity {
+		return entity.NewObsoleteEntity(client, entopts)
 	}
 }
 

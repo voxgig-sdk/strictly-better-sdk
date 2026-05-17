@@ -21,12 +21,115 @@ local function make_config()
         ["content-type"] = "application/json",
       },
       entity = {
-        ["card"] = {},
-        ["reprint"] = {},
+        ["functional_reprint"] = {},
+        ["obsolete"] = {},
       },
     },
     entity = {
-      ["card"] = {
+      ["functional_reprint"] = {
+        ["fields"] = {
+          {
+            ["name"] = "functionally_identical",
+            ["req"] = false,
+            ["type"] = "`$BOOLEAN`",
+            ["active"] = true,
+            ["index$"] = 0,
+          },
+          {
+            ["name"] = "original_card",
+            ["req"] = false,
+            ["type"] = "`$STRING`",
+            ["active"] = true,
+            ["index$"] = 1,
+          },
+          {
+            ["name"] = "original_set_code",
+            ["req"] = false,
+            ["type"] = "`$STRING`",
+            ["active"] = true,
+            ["index$"] = 2,
+          },
+          {
+            ["name"] = "reprint_card",
+            ["req"] = false,
+            ["type"] = "`$STRING`",
+            ["active"] = true,
+            ["index$"] = 3,
+          },
+          {
+            ["name"] = "reprint_set_code",
+            ["req"] = false,
+            ["type"] = "`$STRING`",
+            ["active"] = true,
+            ["index$"] = 4,
+          },
+        },
+        ["name"] = "functional_reprint",
+        ["op"] = {
+          ["list"] = {
+            ["name"] = "list",
+            ["points"] = {
+              {
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["kind"] = "query",
+                      ["name"] = "card_name",
+                      ["orig"] = "card_name",
+                      ["reqd"] = false,
+                      ["type"] = "`$STRING`",
+                      ["active"] = true,
+                    },
+                    {
+                      ["example"] = 100,
+                      ["kind"] = "query",
+                      ["name"] = "limit",
+                      ["orig"] = "limit",
+                      ["reqd"] = false,
+                      ["type"] = "`$INTEGER`",
+                      ["active"] = true,
+                    },
+                    {
+                      ["example"] = 0,
+                      ["kind"] = "query",
+                      ["name"] = "offset",
+                      ["orig"] = "offset",
+                      ["reqd"] = false,
+                      ["type"] = "`$INTEGER`",
+                      ["active"] = true,
+                    },
+                  },
+                },
+                ["method"] = "GET",
+                ["orig"] = "/api/functional_reprints",
+                ["parts"] = {
+                  "api",
+                  "functional_reprints",
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "card_name",
+                    "limit",
+                    "offset",
+                  },
+                },
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["active"] = true,
+                ["index$"] = 0,
+              },
+            },
+            ["input"] = "data",
+            ["key$"] = "list",
+          },
+        },
+        ["relations"] = {
+          ["ancestors"] = {},
+        },
+      },
+      ["obsolete"] = {
         ["fields"] = {
           {
             ["name"] = "id",
@@ -99,7 +202,7 @@ local function make_config()
             ["index$"] = 9,
           },
         },
-        ["name"] = "card",
+        ["name"] = "obsolete",
         ["op"] = {
           ["list"] = {
             ["name"] = "list",
@@ -136,119 +239,16 @@ local function make_config()
                   },
                 },
                 ["method"] = "GET",
-                ["orig"] = "/api/cards",
+                ["orig"] = "/api/obsoletes",
                 ["parts"] = {
                   "api",
-                  "cards",
+                  "obsoletes",
                 },
                 ["select"] = {
                   ["exist"] = {
                     "limit",
                     "offset",
                     "search",
-                  },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["active"] = true,
-                ["index$"] = 0,
-              },
-            },
-            ["input"] = "data",
-            ["key$"] = "list",
-          },
-        },
-        ["relations"] = {
-          ["ancestors"] = {},
-        },
-      },
-      ["reprint"] = {
-        ["fields"] = {
-          {
-            ["name"] = "functionally_identical",
-            ["req"] = false,
-            ["type"] = "`$BOOLEAN`",
-            ["active"] = true,
-            ["index$"] = 0,
-          },
-          {
-            ["name"] = "original_card",
-            ["req"] = false,
-            ["type"] = "`$STRING`",
-            ["active"] = true,
-            ["index$"] = 1,
-          },
-          {
-            ["name"] = "original_set_code",
-            ["req"] = false,
-            ["type"] = "`$STRING`",
-            ["active"] = true,
-            ["index$"] = 2,
-          },
-          {
-            ["name"] = "reprint_card",
-            ["req"] = false,
-            ["type"] = "`$STRING`",
-            ["active"] = true,
-            ["index$"] = 3,
-          },
-          {
-            ["name"] = "reprint_set_code",
-            ["req"] = false,
-            ["type"] = "`$STRING`",
-            ["active"] = true,
-            ["index$"] = 4,
-          },
-        },
-        ["name"] = "reprint",
-        ["op"] = {
-          ["list"] = {
-            ["name"] = "list",
-            ["points"] = {
-              {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "card_name",
-                      ["orig"] = "card_name",
-                      ["reqd"] = false,
-                      ["type"] = "`$STRING`",
-                      ["active"] = true,
-                    },
-                    {
-                      ["example"] = 100,
-                      ["kind"] = "query",
-                      ["name"] = "limit",
-                      ["orig"] = "limit",
-                      ["reqd"] = false,
-                      ["type"] = "`$INTEGER`",
-                      ["active"] = true,
-                    },
-                    {
-                      ["example"] = 0,
-                      ["kind"] = "query",
-                      ["name"] = "offset",
-                      ["orig"] = "offset",
-                      ["reqd"] = false,
-                      ["type"] = "`$INTEGER`",
-                      ["active"] = true,
-                    },
-                  },
-                },
-                ["method"] = "GET",
-                ["orig"] = "/api/reprints",
-                ["parts"] = {
-                  "api",
-                  "reprints",
-                },
-                ["select"] = {
-                  ["exist"] = {
-                    "card_name",
-                    "limit",
-                    "offset",
                   },
                 },
                 ["transform"] = {

@@ -86,10 +86,10 @@ func runOp(client *sdk.StrictlyBetterSDK, op string, query *eng.Value, entityAto
 // emits one `case "<name>":` per entity defined in the SDK model.
 func entityFor(client *sdk.StrictlyBetterSDK, name string) (sdk.StrictlyBetterEntity, error) {
 	switch strings.ToLower(name) {
-	case "card":
-		return client.Card(nil), nil
-	case "reprint":
-		return client.Reprint(nil), nil
+	case "functional_reprint":
+		return client.FunctionalReprint(nil), nil
+	case "obsolete":
+		return client.Obsolete(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

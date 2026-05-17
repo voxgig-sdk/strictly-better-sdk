@@ -19,7 +19,7 @@
     }
   ],
   "paths": {
-    "/api/cards": {
+    "/api/obsoletes": {
       "get": {
         "summary": "Retrieve obsolete cards",
         "description": "Retrieve a list of obsolete cards in JSON format. Results can be limited using query parameters.",
@@ -97,7 +97,7 @@
         ]
       }
     },
-    "/api/reprints": {
+    "/api/functional_reprints": {
       "get": {
         "summary": "Find functional reprints",
         "description": "Retrieve a list of functional reprints for cards. Results can be limited using query parameters.",

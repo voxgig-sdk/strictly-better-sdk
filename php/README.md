@@ -25,10 +25,10 @@ $client = new StrictlyBetterSDK([
 ]);
 ```
 
-### 2. List cards
+### 2. List functionalreprints
 
 ```php
-[$result, $err] = $client->Card(null)->list(null, null);
+[$result, $err] = $client->FunctionalReprint(null)->list(null, null);
 if ($err) { throw new \Exception($err); }
 
 if (is_array($result)) {
@@ -166,8 +166,8 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Card` | `($data): CardEntity` | Create a Card entity instance. |
-| `Reprint` | `($data): ReprintEntity` | Create a Reprint entity instance. |
+| `FunctionalReprint` | `($data): FunctionalReprintEntity` | Create a FunctionalReprint entity instance. |
+| `Obsolete` | `($data): ObsoleteEntity` | Create a Obsolete entity instance. |
 
 ### Entity interface
 
@@ -203,7 +203,21 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 ### Entities
 
-#### Card
+#### FunctionalReprint
+
+| Field | Description |
+| --- | --- |
+| `functionally_identical` |  |
+| `original_card` |  |
+| `original_set_code` |  |
+| `reprint_card` |  |
+| `reprint_set_code` |  |
+
+Operations: List.
+
+API path: `/api/functional_reprints`
+
+#### Obsolete
 
 | Field | Description |
 | --- | --- |
@@ -220,30 +234,43 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 Operations: List.
 
-API path: `/api/cards`
-
-#### Reprint
-
-| Field | Description |
-| --- | --- |
-| `functionally_identical` |  |
-| `original_card` |  |
-| `original_set_code` |  |
-| `reprint_card` |  |
-| `reprint_set_code` |  |
-
-Operations: List.
-
-API path: `/api/reprints`
+API path: `/api/obsoletes`
 
 
 
 ## Entities
 
 
-### Card
+### FunctionalReprint
 
-Create an instance: `const card = client.Card()`
+Create an instance: `const functional_reprint = client.FunctionalReprint()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `functionally_identical` | ``$BOOLEAN`` |  |
+| `original_card` | ``$STRING`` |  |
+| `original_set_code` | ``$STRING`` |  |
+| `reprint_card` | ``$STRING`` |  |
+| `reprint_set_code` | ``$STRING`` |  |
+
+#### Example: List
+
+```ts
+const functional_reprints = await client.FunctionalReprint().list()
+```
+
+
+### Obsolete
+
+Create an instance: `const obsolete = client.Obsolete()`
 
 #### Operations
 
@@ -269,34 +296,7 @@ Create an instance: `const card = client.Card()`
 #### Example: List
 
 ```ts
-const cards = await client.Card().list()
-```
-
-
-### Reprint
-
-Create an instance: `const reprint = client.Reprint()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` |  |
-| `original_card` | ``$STRING`` |  |
-| `original_set_code` | ``$STRING`` |  |
-| `reprint_card` | ``$STRING`` |  |
-| `reprint_set_code` | ``$STRING`` |  |
-
-#### Example: List
-
-```ts
-const reprints = await client.Reprint().list()
+const obsoletes = await client.Obsolete().list()
 ```
 
 
