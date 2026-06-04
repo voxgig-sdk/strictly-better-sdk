@@ -16,7 +16,16 @@
           }
         ],
         "title": "Strictly Better API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Find functional reprints and strictly-better alternatives for Magic: The Gathering cards",
+        "homepage": "https://www.strictlybetter.eu",
+        "docs_url": "https://freepublicapis.com/strictly-better-api",
+        "about_md": "[Strictly Better](https://www.strictlybetter.eu) is a community-driven Magic: The Gathering site that catalogues card upgrades — pairs of cards where one is functionally identical to or strictly stronger than another. The site lets players browse suggestions by tribe and format, vote on disputed entries, and submit new proposals; the JSON API exposes the underlying upgrade data so other tools and deck builders can consume it.\n\nWhat you get from the API:\n\n- A list of functional reprints (cards that play identically to an earlier printing).\n- Obsolete-card lookups by card name, including partial-name matches, returning cards that have a strictly better counterpart.\n\nThe service is hosted at `https://www.strictlybetter.eu` and responses are JSON. CORS is enabled, so the endpoints can be called directly from browser code. No authentication is documented.",
+        "entity_desc": {
+          "functional_reprint": "Pairs of Magic: The Gathering cards that are functionally identical reprints of one another, served from `GET /api/functional_reprints`.",
+          "obsolete": "Cards that have a strictly better counterpart, looked up by (partial) card name via `GET /api/obsoletes/{CardName}`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -24,7 +33,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "functional_reprint": {

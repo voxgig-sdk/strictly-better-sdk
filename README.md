@@ -1,9 +1,97 @@
 # StrictlyBetter SDK
 
+Find functional reprints and strictly-better alternatives for Magic: The Gathering cards
 
+> TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-Available for [Golang](go/) and [Go CLI](go-cli/) and [Go MCP server](go-mcp/) and [Lua](lua/) and [PHP](php/) and [Python](py/) and [Ruby](rb/) and [TypeScript](ts/).
+## About Strictly Better API
 
+[Strictly Better](https://www.strictlybetter.eu) is a community-driven Magic: The Gathering site that catalogues card upgrades — pairs of cards where one is functionally identical to or strictly stronger than another. The site lets players browse suggestions by tribe and format, vote on disputed entries, and submit new proposals; the JSON API exposes the underlying upgrade data so other tools and deck builders can consume it.
+
+What you get from the API:
+
+- A list of functional reprints (cards that play identically to an earlier printing).
+- Obsolete-card lookups by card name, including partial-name matches, returning cards that have a strictly better counterpart.
+
+The service is hosted at `https://www.strictlybetter.eu` and responses are JSON. CORS is enabled, so the endpoints can be called directly from browser code. No authentication is documented.
+
+## Try it
+
+**TypeScript**
+```bash
+npm install strictly-better
+```
+
+**Python**
+```bash
+pip install strictly-better-sdk
+```
+
+**PHP**
+```bash
+composer require voxgig/strictly-better-sdk
+```
+
+**Golang**
+```bash
+go get github.com/voxgig-sdk/strictly-better-sdk/go
+```
+
+**Ruby**
+```bash
+gem install strictly-better-sdk
+```
+
+**Lua**
+```bash
+luarocks install strictly-better-sdk
+```
+
+## 30-second quickstart
+
+### TypeScript
+
+```ts
+import { StrictlyBetterSDK } from 'strictly-better'
+
+const client = new StrictlyBetterSDK({})
+
+// List all functionalreprints
+const functionalreprints = await client.FunctionalReprint().list()
+```
+
+See the [TypeScript README](ts/README.md) for the
+full guide, or scroll down for the same example in other languages.
+
+## What's in the box
+
+| Surface | Use it for | Path |
+| --- | --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
+| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+
+## Use it from an AI agent (MCP)
+
+The generated MCP server exposes every operation in this SDK as an
+[MCP](https://modelcontextprotocol.io) tool that Claude, Cursor or Cline
+can call directly. Build and register it:
+
+```bash
+cd go-mcp && go build -o strictly-better-mcp .
+```
+
+Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
+
+```json
+{
+  "mcpServers": {
+    "strictly-better": {
+      "command": "/abs/path/to/strictly-better-mcp"
+    }
+  }
+}
+```
 
 ## Entities
 
@@ -11,76 +99,23 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **FunctionalReprint** |  | `/api/functional_reprints` |
-| **Obsolete** |  | `/api/obsoletes` |
+| **FunctionalReprint** | Pairs of Magic: The Gathering cards that are functionally identical reprints of one another, served from `GET /api/functional_reprints`. | `/api/functional_reprints` |
+| **Obsolete** | Cards that have a strictly better counterpart, looked up by (partial) card name via `GET /api/obsoletes/{CardName}`. | `/api/obsoletes` |
 
-Each entity supports the following operations where available: **load**, **list**, **create**,
-**update**, and **remove**.
+Each entity supports the following operations where available: **load**,
+**list**, **create**, **update**, and **remove**.
 
+## Quickstart in other languages
 
-## Architecture
+### Python
 
-### Entity-operation model
+```python
+from strictlybetter_sdk import StrictlyBetterSDK
 
-Every SDK call follows the same pipeline:
+client = StrictlyBetterSDK({})
 
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
-
-At each stage a feature hook fires (e.g. `PrePoint`, `PreSpec`,
-`PreRequest`), allowing features to inspect or modify the pipeline.
-
-### Features
-
-Features are hook-based middleware that extend SDK behaviour.
-
-| Feature | Purpose |
-| --- | --- |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-
-You can add custom features by passing them in the `extend` option at
-construction time.
-
-### Direct and Prepare
-
-For endpoints not covered by the entity model, use the low-level methods:
-
-- **`direct(fetchargs)`** — build and send an HTTP request in one step.
-- **`prepare(fetchargs)`** — build the request without sending it.
-
-Both accept a map with `path`, `method`, `params`, `query`, `headers`,
-and `body`.
-
-
-## Quick start
-
-### Golang
-
-```go
-import sdk "github.com/voxgig-sdk/strictly-better-sdk/go"
-
-client := sdk.NewStrictlyBetterSDK(map[string]any{
-    "apikey": os.Getenv("STRICTLY-BETTER_APIKEY"),
-})
-
-// List all functionalreprints
-functionalreprints, err := client.FunctionalReprint(nil).List(nil, nil)
-```
-
-### Lua
-
-```lua
-local sdk = require("strictly-better_sdk")
-
-local client = sdk.new({
-  apikey = os.getenv("STRICTLY-BETTER_APIKEY"),
-})
-
--- List all functionalreprints
-local functionalreprints, err = client:FunctionalReprint(nil):list(nil, nil)
+# List all functionalreprints
+functionalreprints, err = client.FunctionalReprint(None).list(None, None)
 ```
 
 ### PHP
@@ -89,26 +124,21 @@ local functionalreprints, err = client:FunctionalReprint(nil):list(nil, nil)
 <?php
 require_once 'strictlybetter_sdk.php';
 
-$client = new StrictlyBetterSDK([
-    "apikey" => getenv("STRICTLY-BETTER_APIKEY"),
-]);
+$client = new StrictlyBetterSDK([]);
 
 // List all functionalreprints
 [$functionalreprints, $err] = $client->FunctionalReprint(null)->list(null, null);
 ```
 
-### Python
+### Golang
 
-```python
-import os
-from strictlybetter_sdk import StrictlyBetterSDK
+```go
+import sdk "github.com/voxgig-sdk/strictly-better-sdk/go"
 
-client = StrictlyBetterSDK({
-    "apikey": os.environ.get("STRICTLY-BETTER_APIKEY"),
-})
+client := sdk.NewStrictlyBetterSDK(map[string]any{})
 
-# List all functionalreprints
-functionalreprints, err = client.FunctionalReprint(None).list(None, None)
+// List all functionalreprints
+functionalreprints, err := client.FunctionalReprint(nil).List(nil, nil)
 ```
 
 ### Ruby
@@ -116,48 +146,42 @@ functionalreprints, err = client.FunctionalReprint(None).list(None, None)
 ```ruby
 require_relative "StrictlyBetter_sdk"
 
-client = StrictlyBetterSDK.new({
-  "apikey" => ENV["STRICTLY-BETTER_APIKEY"],
-})
+client = StrictlyBetterSDK.new({})
 
 # List all functionalreprints
 functionalreprints, err = client.FunctionalReprint(nil).list(nil, nil)
 ```
 
-### TypeScript
-
-```ts
-import { StrictlyBetterSDK } from 'strictly-better'
-
-const client = new StrictlyBetterSDK({
-  apikey: process.env.STRICTLY-BETTER_APIKEY,
-})
-
-// List all functionalreprints
-const functionalreprints = await client.FunctionalReprint().list()
-```
-
-
-## Testing
-
-Both SDKs provide a test mode that replaces the HTTP transport with an
-in-memory mock, so tests run without a network connection.
-
-### Golang
-
-```go
-client := sdk.TestSDK(nil, nil)
-result, err := client.FunctionalReprint(nil).Load(
-    map[string]any{"id": "test01"}, nil,
-)
-```
-
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:FunctionalReprint(nil):load(
-  { id = "test01" }, nil
+local sdk = require("strictly-better_sdk")
+
+local client = sdk.new({})
+
+-- List all functionalreprints
+local functionalreprints, err = client:FunctionalReprint(nil):list(nil, nil)
+```
+
+## Unit testing in offline mode
+
+Every SDK ships a test mode that swaps the HTTP transport for an
+in-memory mock, so unit tests run offline.
+
+### TypeScript
+
+```ts
+const client = StrictlyBetterSDK.test()
+const result = await client.FunctionalReprint().load({ id: 'test01' })
+// result.ok === true, result.data contains mock data
+```
+
+### Python
+
+```python
+client = StrictlyBetterSDK.test(None, None)
+result, err = client.FunctionalReprint(None).load(
+    {"id": "test01"}, None
 )
 ```
 
@@ -170,12 +194,12 @@ $client = StrictlyBetterSDK::test(null, null);
 );
 ```
 
-### Python
+### Golang
 
-```python
-client = StrictlyBetterSDK.test(None, None)
-result, err = client.FunctionalReprint(None).load(
-    {"id": "test01"}, None
+```go
+client := sdk.TestSDK(nil, nil)
+result, err := client.FunctionalReprint(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -188,14 +212,46 @@ result, err = client.FunctionalReprint(nil).load(
 )
 ```
 
-### TypeScript
+### Lua
 
-```ts
-const client = StrictlyBetterSDK.test()
-const result = await client.FunctionalReprint().load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+```lua
+local client = sdk.test(nil, nil)
+local result, err = client:FunctionalReprint(nil):load(
+  { id = "test01" }, nil
+)
 ```
 
+## How it works
+
+Every SDK call runs the same five-stage pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), so features can inspect or modify the pipeline without
+forking the SDK.
+
+### Features
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+Pass custom features via the `extend` option at construction time.
+
+### Direct and Prepare
+
+For endpoints the entity model doesn't cover, use the low-level methods:
+
+- **`direct(fetchargs)`** — build and send an HTTP request in one step.
+- **`prepare(fetchargs)`** — build the request without sending it.
+
+Both accept a map with `path`, `method`, `params`, `query`,
+`headers`, and `body`. See the [How-to guides](#how-to-guides) below.
 
 ## How-to guides
 
@@ -203,21 +259,22 @@ const result = await client.FunctionalReprint().load({ id: 'test01' })
 
 When the entity interface does not cover an endpoint, use `direct`:
 
-**Go:**
-```go
-result, err := client.Direct(map[string]any{
-    "path":   "/api/resource/{id}",
-    "method": "GET",
-    "params": map[string]any{"id": "example"},
+**TypeScript:**
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example' },
 })
+console.log(result.data)
 ```
 
-**Lua:**
-```lua
-local result, err = client:direct({
-  path = "/api/resource/{id}",
-  method = "GET",
-  params = { id = "example" },
+**Python:**
+```python
+result, err = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example"},
 })
 ```
 
@@ -230,12 +287,12 @@ local result, err = client:direct({
 ]);
 ```
 
-**Python:**
-```python
-result, err = client.direct({
-    "path": "/api/resource/{id}",
+**Go:**
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
     "method": "GET",
-    "params": {"id": "example"},
+    "params": map[string]any{"id": "example"},
 })
 ```
 
@@ -248,25 +305,29 @@ result, err = client.direct({
 })
 ```
 
-**TypeScript:**
-```ts
-const result = await client.direct({
-  path: '/api/resource/{id}',
-  method: 'GET',
-  params: { id: 'example' },
+**Lua:**
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example" },
 })
-console.log(result.data)
 ```
 
+## Per-language documentation
 
-## Language-specific documentation
+- [TypeScript](ts/README.md)
+- [Python](py/README.md)
+- [PHP](php/README.md)
+- [Golang](go/README.md)
+- [Ruby](rb/README.md)
+- [Lua](lua/README.md)
 
-- [Golang SDK](go/README.md)
-- [Go CLI SDK](go-cli/README.md)
-- [Go MCP server SDK](go-mcp/README.md)
-- [Lua SDK](lua/README.md)
-- [PHP SDK](php/README.md)
-- [Python SDK](py/README.md)
-- [Ruby SDK](rb/README.md)
-- [TypeScript SDK](ts/README.md)
+## Using the Strictly Better API
 
+- Upstream: [https://www.strictlybetter.eu](https://www.strictlybetter.eu)
+- API docs: [https://freepublicapis.com/strictly-better-api](https://freepublicapis.com/strictly-better-api)
+
+---
+
+Generated from the Strictly Better API OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).

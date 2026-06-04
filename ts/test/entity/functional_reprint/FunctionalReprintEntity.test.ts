@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'STRICTLY_BETTER_TEST_FUNCTIONAL_REPRINT_ENTID': idmap,
     'STRICTLY_BETTER_TEST_LIVE': 'FALSE',
     'STRICTLY_BETTER_TEST_EXPLAIN': 'FALSE',
-    'STRICTLY_BETTER_APIKEY': 'NONE',
   })
 
   idmap = env['STRICTLY_BETTER_TEST_FUNCTIONAL_REPRINT_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new StrictlyBetterSDK(merge([
       {
-        apikey: env.STRICTLY_BETTER_APIKEY,
       },
       extra
     ]))

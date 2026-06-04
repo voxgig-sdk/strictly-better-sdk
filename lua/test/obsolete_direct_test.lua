@@ -63,14 +63,12 @@ function obsolete_direct_setup(mockres)
   local env = runner.env_override({
     ["STRICTLYBETTER_TEST_OBSOLETE_ENTID"] = {},
     ["STRICTLYBETTER_TEST_LIVE"] = "FALSE",
-    ["STRICTLYBETTER_APIKEY"] = "NONE",
   })
 
   local live = env["STRICTLYBETTER_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["STRICTLYBETTER_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

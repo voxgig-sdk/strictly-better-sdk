@@ -93,14 +93,12 @@ func obsoleteDirectSetup(mockres any) *obsoleteDirectSetupResult {
 	env := envOverride(map[string]any{
 		"STRICTLYBETTER_TEST_OBSOLETE_ENTID": map[string]any{},
 		"STRICTLYBETTER_TEST_LIVE":    "FALSE",
-		"STRICTLYBETTER_APIKEY":       "NONE",
 	})
 
 	live := env["STRICTLYBETTER_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["STRICTLYBETTER_APIKEY"],
 		}
 		client := sdk.NewStrictlyBetterSDK(mergedOpts)
 

@@ -68,14 +68,12 @@ function functional_reprint_direct_setup($mockres)
     $env = Runner::env_override([
         "STRICTLYBETTER_TEST_FUNCTIONAL_REPRINT_ENTID" => [],
         "STRICTLYBETTER_TEST_LIVE" => "FALSE",
-        "STRICTLYBETTER_APIKEY" => "NONE",
     ]);
 
     $live = $env["STRICTLYBETTER_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["STRICTLYBETTER_APIKEY"],
         ];
         $client = new StrictlyBetterSDK($merged_opts);
         return [
