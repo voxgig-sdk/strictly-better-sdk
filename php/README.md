@@ -10,7 +10,7 @@ The PHP SDK for the StrictlyBetter API — an entity-oriented client using PHP c
 
 ## Install
 ```bash
-composer require voxgig/strictly-better-sdk
+composer require voxgig-sdk/strictly-better
 ```
 
 

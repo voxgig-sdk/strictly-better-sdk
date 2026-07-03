@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/strictly-better",
-  "description": "StrictlyBetter SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the Strictly Better public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "strictly-better"],
+  "homepage": "https://github.com/voxgig-sdk/strictly-better-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/strictly-better-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/strictly-better-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

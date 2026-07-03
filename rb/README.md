@@ -10,13 +10,13 @@ The Ruby SDK for the StrictlyBetter API — an entity-oriented client using idio
 
 ## Install
 ```bash
-gem install strictly-better-sdk
+gem install voxgig-sdk-strictly-better
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "strictly-better-sdk"
+gem "voxgig-sdk-strictly-better"
 ```
 
 Then run:

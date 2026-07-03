@@ -10,7 +10,7 @@ The Lua SDK for the StrictlyBetter API — an entity-oriented client using Lua c
 
 ## Install
 ```bash
-luarocks install strictly-better-sdk
+luarocks install voxgig-sdk-strictly-better
 ```
 
 If the module is not yet published, add the source directory to

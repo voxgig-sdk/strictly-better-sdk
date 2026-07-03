@@ -10,7 +10,7 @@ The Python SDK for the StrictlyBetter API — an entity-oriented client followin
 
 ## Install
 ```bash
-pip install strictly-better-sdk
+pip install voxgig-sdk-strictly-better
 ```
 
 Or install from source:

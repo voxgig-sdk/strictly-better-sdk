@@ -10,7 +10,7 @@ The TypeScript SDK for the StrictlyBetter API — a type-safe, entity-oriented c
 
 ## Install
 ```bash
-npm install strictly-better
+npm install @voxgig-sdk/strictly-better
 ```
 ## Tutorial: your first API call
 
