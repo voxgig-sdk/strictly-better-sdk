@@ -92,6 +92,7 @@ function obsolete_basic_setup(extra)
     ["STRICTLYBETTER_TEST_OBSOLETE_ENTID"] = idmap,
     ["STRICTLYBETTER_TEST_LIVE"] = "FALSE",
     ["STRICTLYBETTER_TEST_EXPLAIN"] = "FALSE",
+    ["STRICTLYBETTER_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,6 +104,7 @@ function obsolete_basic_setup(extra)
   if env["STRICTLYBETTER_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["STRICTLYBETTER_APIKEY"],
       },
       extra or {},
     })

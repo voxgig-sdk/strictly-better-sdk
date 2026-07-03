@@ -61,12 +61,14 @@ def _obsolete_direct_setup(mockres):
     env = runner.env_override({
         "STRICTLYBETTER_TEST_OBSOLETE_ENTID": {},
         "STRICTLYBETTER_TEST_LIVE": "FALSE",
+        "STRICTLYBETTER_APIKEY": "NONE",
     })
 
     live = env.get("STRICTLYBETTER_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("STRICTLYBETTER_APIKEY"),
         }
         client = StrictlyBetterSDK(merged_opts)
         return {

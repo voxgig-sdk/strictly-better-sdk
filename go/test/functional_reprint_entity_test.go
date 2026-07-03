@@ -119,6 +119,7 @@ func functional_reprintBasicSetup(extra map[string]any) *entityTestSetup {
 		"STRICTLYBETTER_TEST_FUNCTIONAL_REPRINT_ENTID": idmap,
 		"STRICTLYBETTER_TEST_LIVE":      "FALSE",
 		"STRICTLYBETTER_TEST_EXPLAIN":   "FALSE",
+		"STRICTLYBETTER_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["STRICTLYBETTER_TEST_FUNCTIONAL_REPRINT_ENTID"])
@@ -129,6 +130,7 @@ func functional_reprintBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["STRICTLYBETTER_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["STRICTLYBETTER_APIKEY"],
 			},
 			extra,
 		})

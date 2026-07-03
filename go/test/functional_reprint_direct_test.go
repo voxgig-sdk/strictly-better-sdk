@@ -93,12 +93,14 @@ func functional_reprintDirectSetup(mockres any) *functional_reprintDirectSetupRe
 	env := envOverride(map[string]any{
 		"STRICTLYBETTER_TEST_FUNCTIONAL_REPRINT_ENTID": map[string]any{},
 		"STRICTLYBETTER_TEST_LIVE":    "FALSE",
+		"STRICTLYBETTER_APIKEY":       "NONE",
 	})
 
 	live := env["STRICTLYBETTER_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["STRICTLYBETTER_APIKEY"],
 		}
 		client := sdk.NewStrictlyBetterSDK(mergedOpts)
 

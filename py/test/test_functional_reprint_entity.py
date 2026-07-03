@@ -92,6 +92,7 @@ def _functional_reprint_basic_setup(extra):
         "STRICTLYBETTER_TEST_FUNCTIONAL_REPRINT_ENTID": idmap,
         "STRICTLYBETTER_TEST_LIVE": "FALSE",
         "STRICTLYBETTER_TEST_EXPLAIN": "FALSE",
+        "STRICTLYBETTER_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ def _functional_reprint_basic_setup(extra):
     if env.get("STRICTLYBETTER_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("STRICTLYBETTER_APIKEY"),
             },
             extra or {},
         ])

@@ -1,19 +1,8 @@
 # StrictlyBetter SDK
 
-Find functional reprints and strictly-better alternatives for Magic: The Gathering cards
+Strictly Better API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Strictly Better API
-
-[Strictly Better](https://www.strictlybetter.eu) is a community-driven Magic: The Gathering site that catalogues card upgrades — pairs of cards where one is functionally identical to or strictly stronger than another. The site lets players browse suggestions by tribe and format, vote on disputed entries, and submit new proposals; the JSON API exposes the underlying upgrade data so other tools and deck builders can consume it.
-
-What you get from the API:
-
-- A list of functional reprints (cards that play identically to an earlier printing).
-- Obsolete-card lookups by card name, including partial-name matches, returning cards that have a strictly better counterpart.
-
-The service is hosted at `https://www.strictlybetter.eu` and responses are JSON. CORS is enabled, so the endpoints can be called directly from browser code. No authentication is documented.
 
 ## Try it
 
@@ -47,29 +36,31 @@ gem install strictly-better-sdk
 luarocks install strictly-better-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { StrictlyBetterSDK } from 'strictly-better'
 
-const client = new StrictlyBetterSDK({})
+const client = new StrictlyBetterSDK({
+  apikey: process.env.STRICTLY-BETTER_APIKEY,
+})
 
 // List all functionalreprints
 const functionalreprints = await client.FunctionalReprint().list()
+console.log(functionalreprints.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **FunctionalReprint** | Pairs of Magic: The Gathering cards that are functionally identical reprints of one another, served from `GET /api/functional_reprints`. | `/api/functional_reprints` |
-| **Obsolete** | Cards that have a strictly better counterpart, looked up by (partial) card name via `GET /api/obsoletes/{CardName}`. | `/api/obsoletes` |
+| **FunctionalReprint** |  | `/api/functional_reprints` |
+| **Obsolete** |  | `/api/obsoletes` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,12 +101,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from strictlybetter_sdk import StrictlyBetterSDK
 
-client = StrictlyBetterSDK({})
+client = StrictlyBetterSDK({
+    "apikey": os.environ.get("STRICTLY-BETTER_APIKEY"),
+})
 
 # List all functionalreprints
-functionalreprints, err = client.FunctionalReprint(None).list(None, None)
+functionalreprints, err = client.FunctionalReprint().list()
+print(functionalreprints)
 ```
 
 ### PHP
@@ -124,10 +119,13 @@ functionalreprints, err = client.FunctionalReprint(None).list(None, None)
 <?php
 require_once 'strictlybetter_sdk.php';
 
-$client = new StrictlyBetterSDK([]);
+$client = new StrictlyBetterSDK([
+    "apikey" => getenv("STRICTLY-BETTER_APIKEY"),
+]);
 
 // List all functionalreprints
-[$functionalreprints, $err] = $client->FunctionalReprint(null)->list(null, null);
+[$functionalreprints, $err] = $client->FunctionalReprint()->list();
+print_r($functionalreprints);
 ```
 
 ### Golang
@@ -135,10 +133,13 @@ $client = new StrictlyBetterSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/strictly-better-sdk/go"
 
-client := sdk.NewStrictlyBetterSDK(map[string]any{})
+client := sdk.NewStrictlyBetterSDK(map[string]any{
+    "apikey": os.Getenv("STRICTLY-BETTER_APIKEY"),
+})
 
 // List all functionalreprints
 functionalreprints, err := client.FunctionalReprint(nil).List(nil, nil)
+fmt.Println(functionalreprints)
 ```
 
 ### Ruby
@@ -146,10 +147,13 @@ functionalreprints, err := client.FunctionalReprint(nil).List(nil, nil)
 ```ruby
 require_relative "StrictlyBetter_sdk"
 
-client = StrictlyBetterSDK.new({})
+client = StrictlyBetterSDK.new({
+  "apikey" => ENV["STRICTLY-BETTER_APIKEY"],
+})
 
 # List all functionalreprints
-functionalreprints, err = client.FunctionalReprint(nil).list(nil, nil)
+functionalreprints, err = client.FunctionalReprint().list
+puts functionalreprints
 ```
 
 ### Lua
@@ -157,10 +161,13 @@ functionalreprints, err = client.FunctionalReprint(nil).list(nil, nil)
 ```lua
 local sdk = require("strictly-better_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("STRICTLY-BETTER_APIKEY"),
+})
 
 -- List all functionalreprints
-local functionalreprints, err = client:FunctionalReprint(nil):list(nil, nil)
+local functionalreprints, err = client:FunctionalReprint():list()
+print(functionalreprints)
 ```
 
 ## Unit testing in offline mode
@@ -179,25 +186,21 @@ const result = await client.FunctionalReprint().load({ id: 'test01' })
 ### Python
 
 ```python
-client = StrictlyBetterSDK.test(None, None)
-result, err = client.FunctionalReprint(None).load(
-    {"id": "test01"}, None
-)
+client = StrictlyBetterSDK.test()
+result, err = client.FunctionalReprint().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = StrictlyBetterSDK::test(null, null);
-[$result, $err] = $client->FunctionalReprint(null)->load(
-    ["id" => "test01"], null
-);
+$client = StrictlyBetterSDK::test();
+[$result, $err] = $client->FunctionalReprint()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.FunctionalReprint(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -206,19 +209,15 @@ result, err := client.FunctionalReprint(nil).Load(
 ### Ruby
 
 ```ruby
-client = StrictlyBetterSDK.test(nil, nil)
-result, err = client.FunctionalReprint(nil).load(
-  { "id" => "test01" }, nil
-)
+client = StrictlyBetterSDK.test
+result, err = client.FunctionalReprint().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:FunctionalReprint(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:FunctionalReprint():load({ id = "test01" })
 ```
 
 ## How it works
@@ -322,11 +321,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Strictly Better API
-
-- Upstream: [https://www.strictlybetter.eu](https://www.strictlybetter.eu)
-- API docs: [https://freepublicapis.com/strictly-better-api](https://freepublicapis.com/strictly-better-api)
 
 ---
 
