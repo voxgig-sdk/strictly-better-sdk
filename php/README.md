@@ -9,9 +9,10 @@ The PHP SDK for the StrictlyBetter API — an entity-oriented client using PHP c
 
 
 ## Install
-```bash
-composer require voxgig-sdk/strictly-better
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/strictly-better-sdk/releases](https://github.com/voxgig-sdk/strictly-better-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,22 +26,22 @@ loading a specific record.
 <?php
 require_once 'strictlybetter_sdk.php';
 
-$client = new StrictlyBetterSDK([
-    "apikey" => getenv("STRICTLY-BETTER_APIKEY"),
-]);
+$client = new StrictlyBetterSDK();
 ```
 
 ### 2. List functionalreprints
 
 ```php
-[$result, $err] = $client->FunctionalReprint()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->functionalreprint()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
@@ -52,28 +53,31 @@ if (is_array($result)) {
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -87,7 +91,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = StrictlyBetterSDK::test();
 
-[$result, $err] = $client->StrictlyBetter()->load(["id" => "test01"]);
+$result = $client->functionalreprint()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -121,8 +125,7 @@ $client = new StrictlyBetterSDK([
 Create a `.env.local` file at the project root:
 
 ```
-STRICTLY-BETTER_TEST_LIVE=TRUE
-STRICTLY-BETTER_APIKEY=<your-key>
+STRICTLY_BETTER_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -145,7 +148,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -192,8 +194,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -246,7 +252,7 @@ API path: `/api/obsoletes`
 
 ### FunctionalReprint
 
-Create an instance: `const functional_reprint = client.FunctionalReprint()`
+Create an instance: `const functional_reprint = client.functional_reprint`
 
 #### Operations
 
@@ -267,13 +273,13 @@ Create an instance: `const functional_reprint = client.FunctionalReprint()`
 #### Example: List
 
 ```ts
-const functional_reprints = await client.FunctionalReprint().list()
+const functional_reprints = await client.functional_reprint.list()
 ```
 
 
 ### Obsolete
 
-Create an instance: `const obsolete = client.Obsolete()`
+Create an instance: `const obsolete = client.obsolete`
 
 #### Operations
 
@@ -299,7 +305,7 @@ Create an instance: `const obsolete = client.Obsolete()`
 #### Example: List
 
 ```ts
-const obsoletes = await client.Obsolete().list()
+const obsoletes = await client.obsolete.list()
 ```
 
 
@@ -374,11 +380,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$functionalreprint = $client->functionalreprint();
+$functionalreprint->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $functionalreprint->dataGet() now returns the loaded functionalreprint data
+// $functionalreprint->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

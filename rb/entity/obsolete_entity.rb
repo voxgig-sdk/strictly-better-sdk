@@ -45,6 +45,7 @@ class ObsoleteEntity
     end
   end
 
+  # @return [Obsolete, Hash] the current Obsolete data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class ObsoleteEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Obsolete fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class ObsoleteEntity
   
 
   
+  # List Obsolete items matching the given filter.
+  #
+  # @param reqmatch [ObsoleteListMatch, Hash, nil] match filter (any subset of Obsolete fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Obsolete>, Array] the matching Obsolete items; raises StrictlyBetterError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

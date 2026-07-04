@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://www.strictlybetter.eu',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

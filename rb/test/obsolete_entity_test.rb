@@ -43,8 +43,7 @@ class ObsoleteEntityTest < Minitest::Test
     obsolete_ref01_ent = client.Obsolete(nil)
     obsolete_ref01_match = {}
 
-    obsolete_ref01_list_result, err = obsolete_ref01_ent.list(obsolete_ref01_match, nil)
-    assert_nil err
+    obsolete_ref01_list_result = obsolete_ref01_ent.list(obsolete_ref01_match, nil)
     assert obsolete_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def obsolete_basic_setup(extra)
     "STRICTLYBETTER_TEST_OBSOLETE_ENTID" => idmap,
     "STRICTLYBETTER_TEST_LIVE" => "FALSE",
     "STRICTLYBETTER_TEST_EXPLAIN" => "FALSE",
-    "STRICTLYBETTER_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def obsolete_basic_setup(extra)
   if env["STRICTLYBETTER_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["STRICTLYBETTER_APIKEY"],
       },
       extra || {},
     ])

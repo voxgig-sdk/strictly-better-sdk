@@ -9,9 +9,12 @@ The TypeScript SDK for the StrictlyBetter API — a type-safe, entity-oriented c
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/strictly-better
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/strictly-better-sdk/releases](https://github.com/voxgig-sdk/strictly-better-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { StrictlyBetterSDK } from 'strictly-better'
+import { StrictlyBetterSDK } from '@voxgig-sdk/strictly-better'
 
-const client = new StrictlyBetterSDK({
-  apikey: process.env.STRICTLY-BETTER_APIKEY,
-})
+const client = new StrictlyBetterSDK()
 ```
 
 ### 2. List functionalreprints
 
 ```ts
-const result = await client.FunctionalReprint().list()
+const result = await client.functionalreprint.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = StrictlyBetterSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.functionalreprint.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new StrictlyBetterSDK({ apikey: '...' })
+const client = new StrictlyBetterSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.functionalreprint
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new StrictlyBetterSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -135,8 +135,7 @@ const client = new StrictlyBetterSDK({
 Create a `.env.local` file at the project root:
 
 ```
-STRICTLY-BETTER_TEST_LIVE=TRUE
-STRICTLY-BETTER_APIKEY=<your-key>
+STRICTLY_BETTER_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new StrictlyBetterSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new StrictlyBetterSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -292,7 +289,7 @@ API path: `/api/obsoletes`
 
 ### FunctionalReprint
 
-Create an instance: `const functional_reprint = client.FunctionalReprint()`
+Create an instance: `const functional_reprint = client.functional_reprint`
 
 #### Operations
 
@@ -313,13 +310,13 @@ Create an instance: `const functional_reprint = client.FunctionalReprint()`
 #### Example: List
 
 ```ts
-const functional_reprints = await client.FunctionalReprint().list()
+const functional_reprints = await client.functional_reprint.list()
 ```
 
 
 ### Obsolete
 
-Create an instance: `const obsolete = client.Obsolete()`
+Create an instance: `const obsolete = client.obsolete`
 
 #### Operations
 
@@ -345,7 +342,7 @@ Create an instance: `const obsolete = client.Obsolete()`
 #### Example: List
 
 ```ts
-const obsoletes = await client.Obsolete().list()
+const obsoletes = await client.obsolete.list()
 ```
 
 
@@ -406,7 +403,7 @@ strictly-better/
 Import the SDK from the package root:
 
 ```ts
-import { StrictlyBetterSDK } from 'strictly-better'
+import { StrictlyBetterSDK } from '@voxgig-sdk/strictly-better'
 ```
 
 ### Entity state
@@ -416,11 +413,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const functionalreprint = client.functionalreprint
+await functionalreprint.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// functionalreprint.data() now returns the loaded functionalreprint data
+// functionalreprint.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

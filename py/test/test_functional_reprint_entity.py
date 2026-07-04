@@ -50,8 +50,7 @@ class TestFunctionalReprintEntity:
         functional_reprint_ref01_ent = client.FunctionalReprint(None)
         functional_reprint_ref01_match = {}
 
-        functional_reprint_ref01_list_result, err = functional_reprint_ref01_ent.list(functional_reprint_ref01_match, None)
-        assert err is None
+        functional_reprint_ref01_list_result = functional_reprint_ref01_ent.list(functional_reprint_ref01_match, None)
         assert isinstance(functional_reprint_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _functional_reprint_basic_setup(extra):
         "STRICTLYBETTER_TEST_FUNCTIONAL_REPRINT_ENTID": idmap,
         "STRICTLYBETTER_TEST_LIVE": "FALSE",
         "STRICTLYBETTER_TEST_EXPLAIN": "FALSE",
-        "STRICTLYBETTER_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _functional_reprint_basic_setup(extra):
     if env.get("STRICTLYBETTER_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STRICTLYBETTER_APIKEY"),
             },
             extra or {},
         ])

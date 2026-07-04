@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `StrictlyBetterSDK.test()`.
 ## FunctionalReprintEntity
 
 ```ts
-const functional_reprint = client.FunctionalReprint()
+const functional_reprint = client.functional_reprint
 ```
 
 ### Fields
@@ -142,7 +141,7 @@ const functional_reprint = client.FunctionalReprint()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.FunctionalReprint().list()
+const results = await client.functional_reprint.list()
 ```
 
 ### Common Methods
@@ -176,7 +175,7 @@ Return a copy of the entity options.
 ## ObsoleteEntity
 
 ```ts
-const obsolete = client.Obsolete()
+const obsolete = client.obsolete
 ```
 
 ### Fields
@@ -201,7 +200,7 @@ const obsolete = client.Obsolete()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Obsolete().list()
+const results = await client.obsolete.list()
 ```
 
 ### Common Methods

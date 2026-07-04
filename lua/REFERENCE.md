@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## FunctionalReprintEntity
 
 ```lua
-local functional_reprint = client:FunctionalReprint(nil)
+local functional_reprint = client:functional_reprint(nil)
 ```
 
 ### Fields
@@ -108,7 +107,7 @@ local functional_reprint = client:FunctionalReprint(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:FunctionalReprint():list()
+local results, err = client:functional_reprint():list()
 ```
 
 ### Common Methods
@@ -144,7 +143,7 @@ Return the entity name.
 ## ObsoleteEntity
 
 ```lua
-local obsolete = client:Obsolete(nil)
+local obsolete = client:obsolete(nil)
 ```
 
 ### Fields
@@ -169,7 +168,7 @@ local obsolete = client:Obsolete(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Obsolete():list()
+local results, err = client:obsolete():list()
 ```
 
 ### Common Methods

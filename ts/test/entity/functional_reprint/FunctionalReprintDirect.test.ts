@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'STRICTLYBETTER_TEST_FUNCTIONAL_REPRINT_ENTID': {},
     'STRICTLYBETTER_TEST_LIVE': 'FALSE',
-    'STRICTLYBETTER_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.STRICTLYBETTER_TEST_LIVE
 
   if (live) {
     const client = new StrictlyBetterSDK({
-      apikey: env.STRICTLYBETTER_APIKEY,
     })
 
     let idmap: any = env['STRICTLYBETTER_TEST_FUNCTIONAL_REPRINT_ENTID']

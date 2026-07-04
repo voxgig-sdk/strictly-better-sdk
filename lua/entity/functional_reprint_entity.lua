@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch FunctionalReprintListMatch
+---@param ctrl? table
+---@return FunctionalReprint[]
+---@return string? err
 function FunctionalReprintEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -245,11 +245,17 @@ func (sdk *StrictlyBetterSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
+// FunctionalReprint returns a FunctionalReprint entity bound to this client.
+// Idiomatic usage: client.FunctionalReprint(nil).List(nil, nil) or
+// client.FunctionalReprint(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StrictlyBetterSDK) FunctionalReprint(data map[string]any) StrictlyBetterEntity {
 	return NewFunctionalReprintEntityFunc(sdk, data)
 }
 
 
+// Obsolete returns a Obsolete entity bound to this client.
+// Idiomatic usage: client.Obsolete(nil).List(nil, nil) or
+// client.Obsolete(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StrictlyBetterSDK) Obsolete(data map[string]any) StrictlyBetterEntity {
 	return NewObsoleteEntityFunc(sdk, data)
 }

@@ -50,8 +50,7 @@ class FunctionalReprintEntityTest extends TestCase
         $functional_reprint_ref01_ent = $client->FunctionalReprint(null);
         $functional_reprint_ref01_match = [];
 
-        [$functional_reprint_ref01_list_result, $err] = $functional_reprint_ref01_ent->list($functional_reprint_ref01_match, null);
-        $this->assertNull($err);
+        $functional_reprint_ref01_list_result = $functional_reprint_ref01_ent->list($functional_reprint_ref01_match, null);
         $this->assertIsArray($functional_reprint_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function functional_reprint_basic_setup($extra)
         "STRICTLYBETTER_TEST_FUNCTIONAL_REPRINT_ENTID" => $idmap,
         "STRICTLYBETTER_TEST_LIVE" => "FALSE",
         "STRICTLYBETTER_TEST_EXPLAIN" => "FALSE",
-        "STRICTLYBETTER_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function functional_reprint_basic_setup($extra)
     if ($env["STRICTLYBETTER_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STRICTLYBETTER_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -119,7 +119,6 @@ func obsoleteBasicSetup(extra map[string]any) *entityTestSetup {
 		"STRICTLYBETTER_TEST_OBSOLETE_ENTID": idmap,
 		"STRICTLYBETTER_TEST_LIVE":      "FALSE",
 		"STRICTLYBETTER_TEST_EXPLAIN":   "FALSE",
-		"STRICTLYBETTER_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["STRICTLYBETTER_TEST_OBSOLETE_ENTID"])
@@ -130,7 +129,6 @@ func obsoleteBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["STRICTLYBETTER_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["STRICTLYBETTER_APIKEY"],
 			},
 			extra,
 		})

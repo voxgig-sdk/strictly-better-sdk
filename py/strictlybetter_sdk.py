@@ -144,16 +144,23 @@ class StrictlyBetterSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class StrictlyBetterSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,20 +212,42 @@ class StrictlyBetterSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def functional_reprint(self):
+        """Idiomatic facade: client.functional_reprint.list() / client.functional_reprint.load({"id": ...})."""
+        from entity.functional_reprint_entity import FunctionalReprintEntity
+        cached = getattr(self, "_functional_reprint", None)
+        if cached is None:
+            cached = FunctionalReprintEntity(self, None)
+            self._functional_reprint = cached
+        return cached
 
     def FunctionalReprint(self, data=None):
+        # Deprecated: use client.functional_reprint instead.
         from entity.functional_reprint_entity import FunctionalReprintEntity
         return FunctionalReprintEntity(self, data)
 
 
+    @property
+    def obsolete(self):
+        """Idiomatic facade: client.obsolete.list() / client.obsolete.load({"id": ...})."""
+        from entity.obsolete_entity import ObsoleteEntity
+        cached = getattr(self, "_obsolete", None)
+        if cached is None:
+            cached = ObsoleteEntity(self, None)
+            self._obsolete = cached
+        return cached
+
     def Obsolete(self, data=None):
+        # Deprecated: use client.obsolete instead.
         from entity.obsolete_entity import ObsoleteEntity
         return ObsoleteEntity(self, data)
 

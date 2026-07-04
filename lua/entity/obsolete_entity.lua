@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch ObsoleteListMatch
+---@param ctrl? table
+---@return Obsolete[]
+---@return string? err
 function ObsoleteEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

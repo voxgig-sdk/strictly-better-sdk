@@ -50,8 +50,7 @@ class TestObsoleteEntity:
         obsolete_ref01_ent = client.Obsolete(None)
         obsolete_ref01_match = {}
 
-        obsolete_ref01_list_result, err = obsolete_ref01_ent.list(obsolete_ref01_match, None)
-        assert err is None
+        obsolete_ref01_list_result = obsolete_ref01_ent.list(obsolete_ref01_match, None)
         assert isinstance(obsolete_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _obsolete_basic_setup(extra):
         "STRICTLYBETTER_TEST_OBSOLETE_ENTID": idmap,
         "STRICTLYBETTER_TEST_LIVE": "FALSE",
         "STRICTLYBETTER_TEST_EXPLAIN": "FALSE",
-        "STRICTLYBETTER_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _obsolete_basic_setup(extra):
     if env.get("STRICTLYBETTER_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STRICTLYBETTER_APIKEY"),
             },
             extra or {},
         ])

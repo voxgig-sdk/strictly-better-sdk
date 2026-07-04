@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:functional_reprint():list() / client:functional_reprint():load({ id = ... })
+function StrictlyBetterSDK:functional_reprint(data)
+  local EntityMod = require("entity.functional_reprint_entity")
+  if data == nil then
+    if self._functional_reprint == nil then
+      self._functional_reprint = EntityMod.new(self, nil)
+    end
+    return self._functional_reprint
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:functional_reprint() instead.
 function StrictlyBetterSDK:FunctionalReprint(data)
   local EntityMod = require("entity.functional_reprint_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:obsolete():list() / client:obsolete():load({ id = ... })
+function StrictlyBetterSDK:obsolete(data)
+  local EntityMod = require("entity.obsolete_entity")
+  if data == nil then
+    if self._obsolete == nil then
+      self._obsolete = EntityMod.new(self, nil)
+    end
+    return self._obsolete
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:obsolete() instead.
 function StrictlyBetterSDK:Obsolete(data)
   local EntityMod = require("entity.obsolete_entity")
   return EntityMod.new(self, data)
