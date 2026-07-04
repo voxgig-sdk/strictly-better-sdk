@@ -31,17 +31,17 @@ local sdk = require("strictly-better_sdk")
 local client = sdk.new()
 ```
 
-### 2. List functionalreprints
+### 2. List functionalreprint records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:functionalreprint():list()
+local functionalreprints, err = client:FunctionalReprint():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(functionalreprints) do
+  print(item["id"], item["name"])
 end
 ```
 
@@ -88,8 +88,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:functionalreprint():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:FunctionalReprint():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -168,7 +168,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
 | `FunctionalReprint` | `(data) -> FunctionalReprintEntity` | Create a FunctionalReprint entity instance. |
-| `Obsolete` | `(data) -> ObsoleteEntity` | Create a Obsolete entity instance. |
+| `Obsolete` | `(data) -> ObsoleteEntity` | Create an Obsolete entity instance. |
 
 ### Entity interface
 
@@ -190,17 +190,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local functional_reprint, err = client:FunctionalReprint():load({ id = "example_id" })
+    if err then error(err) end
+    -- functional_reprint is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -244,7 +249,7 @@ API path: `/api/obsoletes`
 
 ### FunctionalReprint
 
-Create an instance: `const functional_reprint = client.functional_reprint`
+Create an instance: `local functional_reprint = client:FunctionalReprint(nil)`
 
 #### Operations
 
@@ -264,14 +269,14 @@ Create an instance: `const functional_reprint = client.functional_reprint`
 
 #### Example: List
 
-```ts
-const functional_reprints = await client.functional_reprint.list()
+```lua
+local functional_reprints, err = client:FunctionalReprint():list()
 ```
 
 
 ### Obsolete
 
-Create an instance: `const obsolete = client.obsolete`
+Create an instance: `local obsolete = client:Obsolete(nil)`
 
 #### Operations
 
@@ -296,8 +301,8 @@ Create an instance: `const obsolete = client.obsolete`
 
 #### Example: List
 
-```ts
-const obsoletes = await client.obsolete.list()
+```lua
+local obsoletes, err = client:Obsolete():list()
 ```
 
 
@@ -372,7 +377,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local functionalreprint = client:functionalreprint()
+local functionalreprint = client:FunctionalReprint()
 functionalreprint:load({ id = "example_id" })
 
 -- functionalreprint:data_get() now returns the loaded functionalreprint data

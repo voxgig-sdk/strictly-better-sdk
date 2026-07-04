@@ -29,18 +29,16 @@ require_once 'strictlybetter_sdk.php';
 $client = new StrictlyBetterSDK();
 ```
 
-### 2. List functionalreprints
+### 2. List functionalreprint records
 
 ```php
 try {
-    $result = $client->functionalreprint()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of FunctionalReprint records — iterate directly.
+    $functionalreprints = $client->FunctionalReprint()->list();
+    foreach ($functionalreprints as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = StrictlyBetterSDK::test();
+$client = StrictlyBetterSDK::test([
+    "entity" => ["functionalreprint" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->functionalreprint()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$functionalreprint = $client->FunctionalReprint()->load(["id" => "test01"]);
+print_r($functionalreprint);
 ```
 
 ### Use a custom fetch function
@@ -172,7 +174,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
 | `FunctionalReprint` | `($data): FunctionalReprintEntity` | Create a FunctionalReprint entity instance. |
-| `Obsolete` | `($data): ObsoleteEntity` | Create a Obsolete entity instance. |
+| `Obsolete` | `($data): ObsoleteEntity` | Create an Obsolete entity instance. |
 
 ### Entity interface
 
@@ -252,7 +254,7 @@ API path: `/api/obsoletes`
 
 ### FunctionalReprint
 
-Create an instance: `const functional_reprint = client.functional_reprint`
+Create an instance: `$functional_reprint = $client->FunctionalReprint();`
 
 #### Operations
 
@@ -272,14 +274,15 @@ Create an instance: `const functional_reprint = client.functional_reprint`
 
 #### Example: List
 
-```ts
-const functional_reprints = await client.functional_reprint.list()
+```php
+// list() returns an array of FunctionalReprint records (throws on error).
+$functional_reprints = $client->FunctionalReprint()->list();
 ```
 
 
 ### Obsolete
 
-Create an instance: `const obsolete = client.obsolete`
+Create an instance: `$obsolete = $client->Obsolete();`
 
 #### Operations
 
@@ -304,8 +307,9 @@ Create an instance: `const obsolete = client.obsolete`
 
 #### Example: List
 
-```ts
-const obsoletes = await client.obsolete.list()
+```php
+// list() returns an array of Obsolete records (throws on error).
+$obsoletes = $client->Obsolete()->list();
 ```
 
 
@@ -380,7 +384,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$functionalreprint = $client->functionalreprint();
+$functionalreprint = $client->FunctionalReprint();
 $functionalreprint->load(["id" => "example_id"]);
 
 // $functionalreprint->dataGet() now returns the loaded functionalreprint data

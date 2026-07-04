@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## FunctionalReprintEntity
 
 ```ruby
-functional_reprint = client.functional_reprint
+functional_reprint = client.FunctionalReprint
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ functional_reprint = client.functional_reprint
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.functional_reprint.list(nil)
+results = client.FunctionalReprint.list(nil)
 ```
 
 ### Common Methods
@@ -146,7 +146,7 @@ Return the entity name.
 ## ObsoleteEntity
 
 ```ruby
-obsolete = client.obsolete
+obsolete = client.Obsolete
 ```
 
 ### Fields
@@ -171,7 +171,7 @@ obsolete = client.obsolete
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.obsolete.list(nil)
+results = client.Obsolete.list(nil)
 ```
 
 ### Common Methods

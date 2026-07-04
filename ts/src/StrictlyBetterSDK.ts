@@ -205,28 +205,14 @@ class StrictlyBetterSDK {
 
 
 
-  _functional_reprint?: FunctionalReprintEntity
-
-  // Idiomatic facade: `client.functional_reprint.list()` / `client.functional_reprint.load({ id })`.
-  get functional_reprint(): FunctionalReprintEntity {
-    return (this._functional_reprint ??= new FunctionalReprintEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.functional_reprint` instead. */
+  // Entity access: `client.FunctionalReprint().list()` / `client.FunctionalReprint().load({ id })`.
   FunctionalReprint(data?: any) {
     const self = this
     return new FunctionalReprintEntity(self,data)
   }
 
 
-  _obsolete?: ObsoleteEntity
-
-  // Idiomatic facade: `client.obsolete.list()` / `client.obsolete.load({ id })`.
-  get obsolete(): ObsoleteEntity {
-    return (this._obsolete ??= new ObsoleteEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.obsolete` instead. */
+  // Entity access: `client.Obsolete().list()` / `client.Obsolete().load({ id })`.
   Obsolete(data?: any) {
     const self = this
     return new ObsoleteEntity(self,data)

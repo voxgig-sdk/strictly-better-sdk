@@ -28,16 +28,14 @@ require_relative "StrictlyBetter_sdk"
 client = StrictlyBetterSDK.new
 ```
 
-### 2. List functionalreprints
+### 2. List functionalreprint records
 
 ```ruby
 begin
-  result = client.functionalreprint.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of FunctionalReprint records — iterate directly.
+  functionalreprints = client.FunctionalReprint.list
+  functionalreprints.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = StrictlyBetterSDK.test
+client = StrictlyBetterSDK.test({
+  "entity" => { "functionalreprint" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.functionalreprint.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+functionalreprint = client.FunctionalReprint.load({ "id" => "test01" })
+puts functionalreprint
 ```
 
 ### Use a custom fetch function
@@ -168,7 +170,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `FunctionalReprint` | `(data) -> FunctionalReprintEntity` | Create a FunctionalReprint entity instance. |
-| `Obsolete` | `(data) -> ObsoleteEntity` | Create a Obsolete entity instance. |
+| `Obsolete` | `(data) -> ObsoleteEntity` | Create an Obsolete entity instance. |
 
 ### Entity interface
 
@@ -247,7 +249,7 @@ API path: `/api/obsoletes`
 
 ### FunctionalReprint
 
-Create an instance: `const functional_reprint = client.functional_reprint`
+Create an instance: `functional_reprint = client.FunctionalReprint`
 
 #### Operations
 
@@ -267,14 +269,15 @@ Create an instance: `const functional_reprint = client.functional_reprint`
 
 #### Example: List
 
-```ts
-const functional_reprints = await client.functional_reprint.list()
+```ruby
+# list returns an Array of FunctionalReprint records (raises on error).
+functional_reprints = client.FunctionalReprint.list
 ```
 
 
 ### Obsolete
 
-Create an instance: `const obsolete = client.obsolete`
+Create an instance: `obsolete = client.Obsolete`
 
 #### Operations
 
@@ -299,8 +302,9 @@ Create an instance: `const obsolete = client.obsolete`
 
 #### Example: List
 
-```ts
-const obsoletes = await client.obsolete.list()
+```ruby
+# list returns an Array of Obsolete records (raises on error).
+obsoletes = client.Obsolete.list
 ```
 
 
@@ -375,7 +379,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-functionalreprint = client.functionalreprint
+functionalreprint = client.FunctionalReprint
 functionalreprint.load({ "id" => "example_id" })
 
 # functionalreprint.data_get now returns the loaded functionalreprint data

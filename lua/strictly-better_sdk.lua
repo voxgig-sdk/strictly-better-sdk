@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:functional_reprint():list() / client:functional_reprint():load({ id = ... })
-function StrictlyBetterSDK:functional_reprint(data)
+-- Idiomatic facade: client:FunctionalReprint():list() / client:FunctionalReprint():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StrictlyBetterSDK:FunctionalReprint(data)
   local EntityMod = require("entity.functional_reprint_entity")
   if data == nil then
     if self._functional_reprint == nil then
@@ -256,15 +257,10 @@ function StrictlyBetterSDK:functional_reprint(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:functional_reprint() instead.
-function StrictlyBetterSDK:FunctionalReprint(data)
-  local EntityMod = require("entity.functional_reprint_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:obsolete():list() / client:obsolete():load({ id = ... })
-function StrictlyBetterSDK:obsolete(data)
+-- Idiomatic facade: client:Obsolete():list() / client:Obsolete():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StrictlyBetterSDK:Obsolete(data)
   local EntityMod = require("entity.obsolete_entity")
   if data == nil then
     if self._obsolete == nil then
@@ -272,12 +268,6 @@ function StrictlyBetterSDK:obsolete(data)
     end
     return self._obsolete
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:obsolete() instead.
-function StrictlyBetterSDK:Obsolete(data)
-  local EntityMod = require("entity.obsolete_entity")
   return EntityMod.new(self, data)
 end
 

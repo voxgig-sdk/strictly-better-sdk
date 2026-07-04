@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## FunctionalReprintEntity
 
 ```python
-functional_reprint = client.functional_reprint
+functional_reprint = client.FunctionalReprint()
 ```
 
 ### Fields
@@ -104,7 +104,9 @@ functional_reprint = client.functional_reprint
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.functional_reprint.list({})
+results = client.FunctionalReprint().list({})
+for functional_reprint in results:
+    print(functional_reprint)
 ```
 
 ### Common Methods
@@ -139,7 +141,7 @@ Return the entity name.
 ## ObsoleteEntity
 
 ```python
-obsolete = client.obsolete
+obsolete = client.Obsolete()
 ```
 
 ### Fields
@@ -164,7 +166,9 @@ obsolete = client.obsolete
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.obsolete.list({})
+results = client.Obsolete().list({})
+for obsolete in results:
+    print(obsolete)
 ```
 
 ### Common Methods

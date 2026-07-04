@@ -4,55 +4,55 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class FunctionalReprint:
-    functionally_identical: Optional[bool] = None
-    original_card: Optional[str] = None
-    original_set_code: Optional[str] = None
-    reprint_card: Optional[str] = None
-    reprint_set_code: Optional[str] = None
+class FunctionalReprint(TypedDict, total=False):
+    functionally_identical: bool
+    original_card: str
+    original_set_code: str
+    reprint_card: str
+    reprint_set_code: str
 
 
-@dataclass
-class FunctionalReprintListMatch:
-    functionally_identical: Optional[bool] = None
-    original_card: Optional[str] = None
-    original_set_code: Optional[str] = None
-    reprint_card: Optional[str] = None
-    reprint_set_code: Optional[str] = None
+class FunctionalReprintListMatch(TypedDict, total=False):
+    functionally_identical: bool
+    original_card: str
+    original_set_code: str
+    reprint_card: str
+    reprint_set_code: str
 
 
-@dataclass
-class Obsolete:
-    id: Optional[str] = None
-    mana_cost: Optional[str] = None
-    name: Optional[str] = None
-    obsolete: Optional[bool] = None
-    power: Optional[str] = None
-    rarity: Optional[str] = None
-    set_code: Optional[str] = None
-    text: Optional[str] = None
-    toughness: Optional[str] = None
-    type: Optional[str] = None
+class Obsolete(TypedDict, total=False):
+    id: str
+    mana_cost: str
+    name: str
+    obsolete: bool
+    power: str
+    rarity: str
+    set_code: str
+    text: str
+    toughness: str
+    type: str
 
 
-@dataclass
-class ObsoleteListMatch:
-    id: Optional[str] = None
-    mana_cost: Optional[str] = None
-    name: Optional[str] = None
-    obsolete: Optional[bool] = None
-    power: Optional[str] = None
-    rarity: Optional[str] = None
-    set_code: Optional[str] = None
-    text: Optional[str] = None
-    toughness: Optional[str] = None
-    type: Optional[str] = None
-
+class ObsoleteListMatch(TypedDict, total=False):
+    id: str
+    mana_cost: str
+    name: str
+    obsolete: bool
+    power: str
+    rarity: str
+    set_code: str
+    text: str
+    toughness: str
+    type: str

@@ -233,10 +233,10 @@ class StrictlyBetterSDK
 
     private $_functional_reprint = null;
 
-    // Idiomatic facade: $client->functional_reprint()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias FunctionalReprint() (PHP method
-    // names are case-insensitive).
-    public function functional_reprint($data = null)
+    // Canonical facade: $client->FunctionalReprint()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->functional_reprint()
+    // resolves here too.
+    public function FunctionalReprint($data = null)
     {
         require_once __DIR__ . '/entity/functional_reprint_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class StrictlyBetterSDK
 
     private $_obsolete = null;
 
-    // Idiomatic facade: $client->obsolete()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Obsolete() (PHP method
-    // names are case-insensitive).
-    public function obsolete($data = null)
+    // Canonical facade: $client->Obsolete()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->obsolete()
+    // resolves here too.
+    public function Obsolete($data = null)
     {
         require_once __DIR__ . '/entity/obsolete_entity.php';
         if ($data === null) {

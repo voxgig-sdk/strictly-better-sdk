@@ -26,9 +26,11 @@ import { StrictlyBetterSDK } from '@voxgig-sdk/strictly-better'
 
 const client = new StrictlyBetterSDK()
 
-// List all functionalreprints
-const functionalreprints = await client.functionalreprint.list()
-console.log(functionalreprints.data)
+// List all functionalreprints (returns FunctionalReprint[])
+const functionalreprints = await client.FunctionalReprint().list()
+for (const functionalreprint of functionalreprints) {
+  console.log(functionalreprint)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,9 +86,10 @@ from strictlybetter_sdk import StrictlyBetterSDK
 
 client = StrictlyBetterSDK()
 
-# List all functionalreprints
-functionalreprints = client.functionalreprint.list()
-print(functionalreprints)
+# List all functionalreprints (returns a list, raises on error)
+functionalreprints = client.FunctionalReprint().list({})
+for functionalreprint in functionalreprints:
+    print(functionalreprint)
 ```
 
 ### PHP
@@ -97,8 +100,8 @@ require_once 'strictlybetter_sdk.php';
 
 $client = new StrictlyBetterSDK();
 
-// List all functionalreprints (throws on error)
-$functionalreprints = $client->functionalreprint()->list();
+// List all functionalreprints (returns an array; throws on error)
+$functionalreprints = $client->FunctionalReprint()->list();
 print_r($functionalreprints);
 ```
 
@@ -121,8 +124,8 @@ require_relative "StrictlyBetter_sdk"
 
 client = StrictlyBetterSDK.new
 
-# List all functionalreprints
-functionalreprints = client.functionalreprint.list
+# List all functionalreprints (returns an Array; raises on error)
+functionalreprints = client.FunctionalReprint.list
 puts functionalreprints
 ```
 
@@ -134,7 +137,7 @@ local sdk = require("strictly-better_sdk")
 local client = sdk.new()
 
 -- List all functionalreprints
-local functionalreprints, err = client:functionalreprint():list()
+local functionalreprints, err = client:FunctionalReprint():list()
 print(functionalreprints)
 ```
 
@@ -147,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = StrictlyBetterSDK.test()
-const result = await client.functionalreprint.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const functionalreprint = await client.FunctionalReprint().load({ id: 'test01' })
+// functionalreprint is a bare FunctionalReprint populated with mock data
+console.log(functionalreprint)
 ```
 
 ### Python
 
 ```python
 client = StrictlyBetterSDK.test()
-result = client.functionalreprint.load({"id": "test01"})
+functionalreprint = client.FunctionalReprint().load({"id": "test01"})
+print(functionalreprint)
 ```
 
 ### PHP
 
 ```php
-$client = StrictlyBetterSDK::test();
-$result = $client->functionalreprint()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = StrictlyBetterSDK::test([
+    "entity" => ["functionalreprint" => ["test01" => ["id" => "test01"]]],
+]);
+$functionalreprint = $client->FunctionalReprint()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -177,15 +185,18 @@ result, err := client.FunctionalReprint(nil).Load(
 ### Ruby
 
 ```ruby
-client = StrictlyBetterSDK.test
-result = client.functionalreprint.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = StrictlyBetterSDK.test({
+  "entity" => { "functionalreprint" => { "test01" => { "id" => "test01" } } },
+})
+functionalreprint = client.FunctionalReprint.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:functionalreprint():load({ id = "test01" })
+local result, err = client:FunctionalReprint():load({ id = "test01" })
 ```
 
 ## How it works
@@ -233,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -31,14 +31,16 @@ from strictlybetter_sdk import StrictlyBetterSDK
 client = StrictlyBetterSDK()
 ```
 
-### 2. List functionalreprints
+### 2. List functionalreprint records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.functionalreprint.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    functionalreprints = client.FunctionalReprint().list({})
+    for functionalreprint in functionalreprints:
+        print(functionalreprint)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = StrictlyBetterSDK.test()
 
-result = client.functionalreprint.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+functionalreprint = client.FunctionalReprint().load({"id": "test01"})
+# functionalreprint contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -164,7 +167,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `FunctionalReprint` | `(data) -> FunctionalReprintEntity` | Create a FunctionalReprint entity instance. |
-| `Obsolete` | `(data) -> ObsoleteEntity` | Create a Obsolete entity instance. |
+| `Obsolete` | `(data) -> ObsoleteEntity` | Create an Obsolete entity instance. |
 
 ### Entity interface
 
@@ -244,7 +247,7 @@ API path: `/api/obsoletes`
 
 ### FunctionalReprint
 
-Create an instance: `const functional_reprint = client.functional_reprint`
+Create an instance: `functional_reprint = client.FunctionalReprint()`
 
 #### Operations
 
@@ -264,14 +267,14 @@ Create an instance: `const functional_reprint = client.functional_reprint`
 
 #### Example: List
 
-```ts
-const functional_reprints = await client.functional_reprint.list()
+```python
+functional_reprints = client.FunctionalReprint().list({})
 ```
 
 
 ### Obsolete
 
-Create an instance: `const obsolete = client.obsolete`
+Create an instance: `obsolete = client.Obsolete()`
 
 #### Operations
 
@@ -296,8 +299,8 @@ Create an instance: `const obsolete = client.obsolete`
 
 #### Example: List
 
-```ts
-const obsoletes = await client.obsolete.list()
+```python
+obsoletes = client.Obsolete().list({})
 ```
 
 
@@ -371,7 +374,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-functionalreprint = client.functionalreprint
+functionalreprint = client.FunctionalReprint()
 functionalreprint.load({"id": "example_id"})
 
 # functionalreprint.data_get() now returns the loaded functionalreprint data

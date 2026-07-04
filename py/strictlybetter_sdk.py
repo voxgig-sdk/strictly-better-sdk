@@ -220,41 +220,21 @@ class StrictlyBetterSDK:
         }
 
 
-    @property
-    def functional_reprint(self):
-        """Idiomatic facade: client.functional_reprint.list() / client.functional_reprint.load({"id": ...})."""
-        from entity.functional_reprint_entity import FunctionalReprintEntity
-        cached = getattr(self, "_functional_reprint", None)
-        if cached is None:
-            cached = FunctionalReprintEntity(self, None)
-            self._functional_reprint = cached
-        return cached
-
-    def FunctionalReprint(self, data=None):
-        # Deprecated: use client.functional_reprint instead.
+    def FunctionalReprint(self, data=None) -> "FunctionalReprintEntity":
+        """Entity factory: client.FunctionalReprint().list({}) / client.FunctionalReprint().load({"id": ...})."""
         from entity.functional_reprint_entity import FunctionalReprintEntity
         return FunctionalReprintEntity(self, data)
 
 
-    @property
-    def obsolete(self):
-        """Idiomatic facade: client.obsolete.list() / client.obsolete.load({"id": ...})."""
-        from entity.obsolete_entity import ObsoleteEntity
-        cached = getattr(self, "_obsolete", None)
-        if cached is None:
-            cached = ObsoleteEntity(self, None)
-            self._obsolete = cached
-        return cached
-
-    def Obsolete(self, data=None):
-        # Deprecated: use client.obsolete instead.
+    def Obsolete(self, data=None) -> "ObsoleteEntity":
+        """Entity factory: client.Obsolete().list({}) / client.Obsolete().load({"id": ...})."""
         from entity.obsolete_entity import ObsoleteEntity
         return ObsoleteEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "StrictlyBetterSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class StrictlyBetterSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.functional_reprint_entity import FunctionalReprintEntity
+    from entity.obsolete_entity import ObsoleteEntity

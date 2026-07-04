@@ -208,26 +208,14 @@ class StrictlyBetterSDK
   end
 
 
-  # Idiomatic facade: client.functional_reprint.list / client.functional_reprint.load({ "id" => ... })
-  def functional_reprint
-    require_relative 'entity/functional_reprint_entity'
-    @functional_reprint ||= FunctionalReprintEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.functional_reprint instead.
+  # Canonical facade: client.FunctionalReprint.list / client.FunctionalReprint.load({ "id" => ... })
   def FunctionalReprint(data = nil)
     require_relative 'entity/functional_reprint_entity'
     FunctionalReprintEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.obsolete.list / client.obsolete.load({ "id" => ... })
-  def obsolete
-    require_relative 'entity/obsolete_entity'
-    @obsolete ||= ObsoleteEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.obsolete instead.
+  # Canonical facade: client.Obsolete.list / client.Obsolete.load({ "id" => ... })
   def Obsolete(data = nil)
     require_relative 'entity/obsolete_entity'
     ObsoleteEntity.new(self, data)

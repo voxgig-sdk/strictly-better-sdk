@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## FunctionalReprintEntity
 
 ```lua
-local functional_reprint = client:functional_reprint(nil)
+local functional_reprint = client:FunctionalReprint(nil)
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ local functional_reprint = client:functional_reprint(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:functional_reprint():list()
+local results, err = client:FunctionalReprint():list()
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ Return the entity name.
 ## ObsoleteEntity
 
 ```lua
-local obsolete = client:obsolete(nil)
+local obsolete = client:Obsolete(nil)
 ```
 
 ### Fields
@@ -168,7 +168,7 @@ local obsolete = client:obsolete(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:obsolete():list()
+local results, err = client:Obsolete():list()
 ```
 
 ### Common Methods

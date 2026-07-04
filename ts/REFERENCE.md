@@ -121,7 +121,7 @@ Alias for `StrictlyBetterSDK.test()`.
 ## FunctionalReprintEntity
 
 ```ts
-const functional_reprint = client.functional_reprint
+const functional_reprint = client.FunctionalReprint()
 ```
 
 ### Fields
@@ -141,7 +141,7 @@ const functional_reprint = client.functional_reprint
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.functional_reprint.list()
+const results = await client.FunctionalReprint().list()
 ```
 
 ### Common Methods
@@ -175,7 +175,7 @@ Return a copy of the entity options.
 ## ObsoleteEntity
 
 ```ts
-const obsolete = client.obsolete
+const obsolete = client.Obsolete()
 ```
 
 ### Fields
@@ -200,7 +200,7 @@ const obsolete = client.obsolete
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.obsolete.list()
+const results = await client.Obsolete().list()
 ```
 
 ### Common Methods
