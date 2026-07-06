@@ -101,11 +101,11 @@ functional_reprint := client.FunctionalReprint(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` | No |  |
-| `original_card` | ``$STRING`` | No |  |
-| `original_set_code` | ``$STRING`` | No |  |
-| `reprint_card` | ``$STRING`` | No |  |
-| `reprint_set_code` | ``$STRING`` | No |  |
+| `functionally_identical` | `bool` | No |  |
+| `original_card` | `string` | No |  |
+| `original_set_code` | `string` | No |  |
+| `reprint_card` | `string` | No |  |
+| `reprint_set_code` | `string` | No |  |
 
 ### Operations
 
@@ -151,16 +151,16 @@ obsolete := client.Obsolete(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `mana_cost` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `obsolete` | ``$BOOLEAN`` | No |  |
-| `power` | ``$STRING`` | No |  |
-| `rarity` | ``$STRING`` | No |  |
-| `set_code` | ``$STRING`` | No |  |
-| `text` | ``$STRING`` | No |  |
-| `toughness` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `id` | `string` | No |  |
+| `mana_cost` | `string` | No |  |
+| `name` | `string` | No |  |
+| `obsolete` | `bool` | No |  |
+| `power` | `string` | No |  |
+| `rarity` | `string` | No |  |
+| `set_code` | `string` | No |  |
+| `text` | `string` | No |  |
+| `toughness` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 

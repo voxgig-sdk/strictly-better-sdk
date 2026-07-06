@@ -14,6 +14,11 @@
 ---@field reprint_set_code? string
 
 ---@class FunctionalReprintListMatch
+---@field functionally_identical? boolean
+---@field original_card? string
+---@field original_set_code? string
+---@field reprint_card? string
+---@field reprint_set_code? string
 
 ---@class Obsolete
 ---@field id? string
@@ -28,6 +33,16 @@
 ---@field type? string
 
 ---@class ObsoleteListMatch
+---@field id? string
+---@field mana_cost? string
+---@field name? string
+---@field obsolete? boolean
+---@field power? string
+---@field rarity? string
+---@field set_code? string
+---@field text? string
+---@field toughness? string
+---@field type? string
 
 local M = {}
 

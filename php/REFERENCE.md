@@ -8,7 +8,7 @@ Complete API reference for the StrictlyBetter PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/strictly-better_sdk.php';
+require_once __DIR__ . '/strictlybetter_sdk.php';
 
 $client = new StrictlyBetterSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `FunctionalReprintEntity` instance. Pass `null` for no initial data
 
 Create a new `ObsoleteEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): StrictlyBetterUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,37 +96,37 @@ $functional_reprint = $client->FunctionalReprint();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` | No |  |
-| `original_card` | ``$STRING`` | No |  |
-| `original_set_code` | ``$STRING`` | No |  |
-| `reprint_card` | ``$STRING`` | No |  |
-| `reprint_set_code` | ``$STRING`` | No |  |
+| `functionally_identical` | `bool` | No |  |
+| `original_card` | `string` | No |  |
+| `original_set_code` | `string` | No |  |
+| `reprint_card` | `string` | No |  |
+| `reprint_set_code` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->FunctionalReprint()->list([]);
+$results = $client->FunctionalReprint()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -135,7 +135,7 @@ Set the entity match criteria.
 Create a new `FunctionalReprintEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -152,42 +152,42 @@ $obsolete = $client->Obsolete();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `mana_cost` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `obsolete` | ``$BOOLEAN`` | No |  |
-| `power` | ``$STRING`` | No |  |
-| `rarity` | ``$STRING`` | No |  |
-| `set_code` | ``$STRING`` | No |  |
-| `text` | ``$STRING`` | No |  |
-| `toughness` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `id` | `string` | No |  |
+| `mana_cost` | `string` | No |  |
+| `name` | `string` | No |  |
+| `obsolete` | `bool` | No |  |
+| `power` | `string` | No |  |
+| `rarity` | `string` | No |  |
+| `set_code` | `string` | No |  |
+| `text` | `string` | No |  |
+| `toughness` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Obsolete()->list([]);
+$results = $client->Obsolete()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -196,7 +196,7 @@ Set the entity match criteria.
 Create a new `ObsoleteEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

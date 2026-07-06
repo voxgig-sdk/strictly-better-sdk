@@ -8,7 +8,7 @@ Complete API reference for the StrictlyBetter Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'strictly-better_sdk'
+require_relative 'StrictlyBetter_sdk'
 
 client = StrictlyBetterSDK.new(options)
 ```
@@ -97,20 +97,20 @@ functional_reprint = client.FunctionalReprint
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` | No |  |
-| `original_card` | ``$STRING`` | No |  |
-| `original_set_code` | ``$STRING`` | No |  |
-| `reprint_card` | ``$STRING`` | No |  |
-| `reprint_set_code` | ``$STRING`` | No |  |
+| `functionally_identical` | `Boolean` | No |  |
+| `original_card` | `String` | No |  |
+| `original_set_code` | `String` | No |  |
+| `reprint_card` | `String` | No |  |
+| `reprint_set_code` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.FunctionalReprint.list(nil)
+results = client.FunctionalReprint.list
 ```
 
 ### Common Methods
@@ -153,25 +153,25 @@ obsolete = client.Obsolete
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `mana_cost` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `obsolete` | ``$BOOLEAN`` | No |  |
-| `power` | ``$STRING`` | No |  |
-| `rarity` | ``$STRING`` | No |  |
-| `set_code` | ``$STRING`` | No |  |
-| `text` | ``$STRING`` | No |  |
-| `toughness` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `id` | `String` | No |  |
+| `mana_cost` | `String` | No |  |
+| `name` | `String` | No |  |
+| `obsolete` | `Boolean` | No |  |
+| `power` | `String` | No |  |
+| `rarity` | `String` | No |  |
+| `set_code` | `String` | No |  |
+| `text` | `String` | No |  |
+| `toughness` | `String` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Obsolete.list(nil)
+results = client.Obsolete.list
 ```
 
 ### Common Methods

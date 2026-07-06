@@ -17,8 +17,7 @@ type FunctionalReprint struct {
 	ReprintSetCode *string `json:"reprint_set_code,omitempty"`
 }
 
-// FunctionalReprintListMatch mirrors the functional_reprint fields as an all-optional match
-// filter (Go analog of Partial<FunctionalReprint>).
+// FunctionalReprintListMatch is the typed request payload for FunctionalReprint.ListTyped.
 type FunctionalReprintListMatch struct {
 	FunctionallyIdentical *bool `json:"functionally_identical,omitempty"`
 	OriginalCard *string `json:"original_card,omitempty"`
@@ -41,8 +40,7 @@ type Obsolete struct {
 	Type *string `json:"type,omitempty"`
 }
 
-// ObsoleteListMatch mirrors the obsolete fields as an all-optional match
-// filter (Go analog of Partial<Obsolete>).
+// ObsoleteListMatch is the typed request payload for Obsolete.ListTyped.
 type ObsoleteListMatch struct {
 	Id *string `json:"id,omitempty"`
 	ManaCost *string `json:"mana_cost,omitempty"`

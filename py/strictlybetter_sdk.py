@@ -221,13 +221,13 @@ class StrictlyBetterSDK:
 
 
     def FunctionalReprint(self, data=None) -> "FunctionalReprintEntity":
-        """Entity factory: client.FunctionalReprint().list({}) / client.FunctionalReprint().load({"id": ...})."""
+        """Entity factory: client.FunctionalReprint().list() / client.FunctionalReprint().load({"id": ...})."""
         from entity.functional_reprint_entity import FunctionalReprintEntity
         return FunctionalReprintEntity(self, data)
 
 
     def Obsolete(self, data=None) -> "ObsoleteEntity":
-        """Entity factory: client.Obsolete().list({}) / client.Obsolete().load({"id": ...})."""
+        """Entity factory: client.Obsolete().list() / client.Obsolete().load({"id": ...})."""
         from entity.obsolete_entity import ObsoleteEntity
         return ObsoleteEntity(self, data)
 

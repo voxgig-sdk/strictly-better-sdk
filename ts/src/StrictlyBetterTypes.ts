@@ -13,7 +13,13 @@ export interface FunctionalReprint {
   reprint_set_code?: string
 }
 
-export type FunctionalReprintListMatch = Partial<FunctionalReprint>
+export interface FunctionalReprintListMatch {
+  functionally_identical?: boolean
+  original_card?: string
+  original_set_code?: string
+  reprint_card?: string
+  reprint_set_code?: string
+}
 
 export interface Obsolete {
   id?: string
@@ -28,5 +34,16 @@ export interface Obsolete {
   type?: string
 }
 
-export type ObsoleteListMatch = Partial<Obsolete>
+export interface ObsoleteListMatch {
+  id?: string
+  mana_cost?: string
+  name?: string
+  obsolete?: boolean
+  power?: string
+  rarity?: string
+  set_code?: string
+  text?: string
+  toughness?: string
+  type?: string
+}
 

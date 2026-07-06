@@ -33,7 +33,7 @@ FunctionalReprint = Struct.new(
   keyword_init: true
 )
 
-# Match filter for FunctionalReprint#list (any subset of FunctionalReprint fields).
+# Request payload for FunctionalReprint#list.
 #
 # @!attribute [rw] functionally_identical
 #   @return [Boolean, nil]
@@ -103,7 +103,7 @@ Obsolete = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Obsolete#list (any subset of Obsolete fields).
+# Request payload for Obsolete#list.
 #
 # @!attribute [rw] id
 #   @return [String, nil]

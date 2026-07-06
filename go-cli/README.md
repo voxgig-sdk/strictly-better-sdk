@@ -17,8 +17,6 @@ go build -o strictly-better-cli ./...
 ```sh
 # One-shot: arguments form a single AQL expression
 ./strictly-better-cli list functional_reprint
-./strictly-better-cli load 1 functional_reprint
-./strictly-better-cli load '{id:1}' functional_reprint
 
 # REPL
 ./strictly-better-cli
@@ -29,8 +27,6 @@ go build -o strictly-better-cli ./...
 | Word     | Signatures                                   | Description                |
 |----------|----------------------------------------------|----------------------------|
 | `list`   | `[entity]` · `[query entity]`                | List records               |
-| `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

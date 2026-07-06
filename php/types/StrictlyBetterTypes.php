@@ -22,7 +22,7 @@ class FunctionalReprint
     public ?string $reprint_set_code = null;
 }
 
-/** Match filter for FunctionalReprint#list (any subset of FunctionalReprint fields). */
+/** Request payload for FunctionalReprint#list. */
 class FunctionalReprintListMatch
 {
     public ?bool $functionally_identical = null;
@@ -47,7 +47,7 @@ class Obsolete
     public ?string $type = null;
 }
 
-/** Match filter for Obsolete#list (any subset of Obsolete fields). */
+/** Request payload for Obsolete#list. */
 class ObsoleteListMatch
 {
     public ?string $id = null;

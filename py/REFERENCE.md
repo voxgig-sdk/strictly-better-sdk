@@ -8,7 +8,7 @@ Complete API reference for the StrictlyBetter Python SDK.
 ### Constructor
 
 ```python
-from strictly-better_sdk import StrictlyBetterSDK
+from strictlybetter_sdk import StrictlyBetterSDK
 
 client = StrictlyBetterSDK(options)
 ```
@@ -91,20 +91,20 @@ functional_reprint = client.FunctionalReprint()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `functionally_identical` | ``$BOOLEAN`` | No |  |
-| `original_card` | ``$STRING`` | No |  |
-| `original_set_code` | ``$STRING`` | No |  |
-| `reprint_card` | ``$STRING`` | No |  |
-| `reprint_set_code` | ``$STRING`` | No |  |
+| `functionally_identical` | `bool` | No |  |
+| `original_card` | `str` | No |  |
+| `original_set_code` | `str` | No |  |
+| `reprint_card` | `str` | No |  |
+| `reprint_set_code` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.FunctionalReprint().list({})
+results = client.FunctionalReprint().list()
 for functional_reprint in results:
     print(functional_reprint)
 ```
@@ -148,25 +148,25 @@ obsolete = client.Obsolete()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `mana_cost` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `obsolete` | ``$BOOLEAN`` | No |  |
-| `power` | ``$STRING`` | No |  |
-| `rarity` | ``$STRING`` | No |  |
-| `set_code` | ``$STRING`` | No |  |
-| `text` | ``$STRING`` | No |  |
-| `toughness` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `id` | `str` | No |  |
+| `mana_cost` | `str` | No |  |
+| `name` | `str` | No |  |
+| `obsolete` | `bool` | No |  |
+| `power` | `str` | No |  |
+| `rarity` | `str` | No |  |
+| `set_code` | `str` | No |  |
+| `text` | `str` | No |  |
+| `toughness` | `str` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Obsolete().list({})
+results = client.Obsolete().list()
 for obsolete in results:
     print(obsolete)
 ```

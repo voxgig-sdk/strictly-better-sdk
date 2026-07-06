@@ -66,8 +66,12 @@ class FunctionalReprintEntity:
     
 
     
-    def list(self, reqmatch: FunctionalReprintListMatch, ctrl=None) -> list[FunctionalReprint]:
+    def list(self, reqmatch=None, ctrl=None) -> list[FunctionalReprint]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.FunctionalReprint().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,
