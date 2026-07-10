@@ -94,7 +94,8 @@ same parameters as `Direct()`.
 ## FunctionalReprintEntity
 
 ```go
-functional_reprint := client.FunctionalReprint(nil)
+functionalReprint := client.FunctionalReprint(nil)
+fmt.Println(functionalReprint.GetName()) // "functional_reprint"
 ```
 
 ### Fields
@@ -115,6 +116,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.FunctionalReprint(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -145,6 +150,7 @@ Return the entity name.
 
 ```go
 obsolete := client.Obsolete(nil)
+fmt.Println(obsolete.GetName()) // "obsolete"
 ```
 
 ### Fields
@@ -170,6 +176,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Obsolete(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

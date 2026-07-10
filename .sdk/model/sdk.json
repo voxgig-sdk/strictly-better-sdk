@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -410,14 +407,17 @@
           "url": "https://www.strictlybetter.eu/api-guide"
         },
         "description": "This API allows users to retrieve and search for obsolete cards in JSON format. Users can also find functional reprints and access various endpoints with a limit on the number of results per request.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://www.strictlybetter.eu"
           }
         ],
+        "summary": "This API allows users to retrieve and search for obsolete cards in JSON format.",
         "title": "Strictly Better API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://www.strictlybetter.eu/api-guide"
       },
       "option": {},
       "target": {
@@ -470,6 +470,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -520,6 +523,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

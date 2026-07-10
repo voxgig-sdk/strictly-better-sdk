@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // List functionalreprint records — the value is the array of records itself.
-    functionalreprints, err := client.FunctionalReprint(nil).List(nil, nil)
+    // List functionalReprint records — the value is the array of records itself.
+    functionalReprints, err := client.FunctionalReprint(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range functionalreprints.([]any) {
+    for _, item := range functionalReprints.([]any) {
         fmt.Println(item)
     }
 }
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-functionalreprint, err := client.FunctionalReprint(nil).List(
+functionalReprint, err := client.FunctionalReprint(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(functionalreprint) // the returned mock data
+fmt.Println(functionalReprint) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -248,9 +248,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    functionalreprint, err := client.FunctionalReprint(nil).List(map[string]any{/* fields */}, nil)
+    functionalReprint, err := client.FunctionalReprint(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // functionalreprint is the returned record
+    // functionalReprint is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -297,7 +297,7 @@ API path: `/api/obsoletes`
 
 ### FunctionalReprint
 
-Create an instance: `functional_reprint := client.FunctionalReprint(nil)`
+Create an instance: `functionalReprint := client.FunctionalReprint(nil)`
 
 #### Operations
 
@@ -318,11 +318,11 @@ Create an instance: `functional_reprint := client.FunctionalReprint(nil)`
 #### Example: List
 
 ```go
-functional_reprints, err := client.FunctionalReprint(nil).List(nil, nil)
+functionalReprints, err := client.FunctionalReprint(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(functional_reprints) // the array of records
+fmt.Println(functionalReprints) // the array of records
 ```
 
 

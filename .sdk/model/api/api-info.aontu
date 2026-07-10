@@ -15,9 +15,9 @@ main: {
           url: "https://www.strictlybetter.eu"
         }
       ]
+      summary: "This API allows users to retrieve and search for obsolete cards in JSON format."
       title: "Strictly Better API"
       version: "1.0.0"
+      website: "https://www.strictlybetter.eu/api-guide"
     }
   }
-}
-
