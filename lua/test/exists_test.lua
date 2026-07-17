@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- StrictlyBetter SDK exists test
 
 local sdk = require("strictly-better_sdk")
 
