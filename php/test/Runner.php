@@ -43,8 +43,8 @@ class StrictlyBetterTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('STRICTLYBETTER_TEST_LIVE');
-        $override = self::getenv('STRICTLYBETTER_TEST_OVERRIDE');
+        $live = self::getenv('STRICTLY_BETTER_TEST_LIVE');
+        $override = self::getenv('STRICTLY_BETTER_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class StrictlyBetterTestRunner
             }
         }
 
-        $explain = self::getenv('STRICTLYBETTER_TEST_EXPLAIN');
+        $explain = self::getenv('STRICTLY_BETTER_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['STRICTLYBETTER_TEST_EXPLAIN'] = $explain;
+            $m['STRICTLY_BETTER_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

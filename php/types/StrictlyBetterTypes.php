@@ -15,33 +15,33 @@ declare(strict_types=1);
 /** FunctionalReprint entity data model. */
 class FunctionalReprint
 {
-    public ?bool $functionally_identical = null;
-    public ?string $original_card = null;
-    public ?string $original_set_code = null;
-    public ?string $reprint_card = null;
-    public ?string $reprint_set_code = null;
+    public ?bool $functionallyIdentical = null;
+    public ?string $originalCard = null;
+    public ?string $originalSetCode = null;
+    public ?string $reprintCard = null;
+    public ?string $reprintSetCode = null;
 }
 
 /** Request payload for FunctionalReprint#list. */
 class FunctionalReprintListMatch
 {
-    public ?bool $functionally_identical = null;
-    public ?string $original_card = null;
-    public ?string $original_set_code = null;
-    public ?string $reprint_card = null;
-    public ?string $reprint_set_code = null;
+    public ?bool $functionallyIdentical = null;
+    public ?string $originalCard = null;
+    public ?string $originalSetCode = null;
+    public ?string $reprintCard = null;
+    public ?string $reprintSetCode = null;
 }
 
 /** Obsolete entity data model. */
 class Obsolete
 {
     public ?string $id = null;
-    public ?string $mana_cost = null;
+    public ?string $manaCost = null;
     public ?string $name = null;
     public ?bool $obsolete = null;
     public ?string $power = null;
     public ?string $rarity = null;
-    public ?string $set_code = null;
+    public ?string $setCode = null;
     public ?string $text = null;
     public ?string $toughness = null;
     public ?string $type = null;
@@ -51,12 +51,12 @@ class Obsolete
 class ObsoleteListMatch
 {
     public ?string $id = null;
-    public ?string $mana_cost = null;
+    public ?string $manaCost = null;
     public ?string $name = null;
     public ?bool $obsolete = null;
     public ?string $power = null;
     public ?string $rarity = null;
-    public ?string $set_code = null;
+    public ?string $setCode = null;
     public ?string $text = null;
     public ?string $toughness = null;
     public ?string $type = null;

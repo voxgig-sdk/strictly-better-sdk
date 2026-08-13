@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ StrictlyBetterUtility.registrar = ->(u) {
   u.prepare_params = StrictlyBetterUtilities::PrepareParams
   u.prepare_path = StrictlyBetterUtilities::PreparePath
   u.prepare_query = StrictlyBetterUtilities::PrepareQuery
+  u.graphql_body = StrictlyBetterUtilities::GraphqlBody
+  u.graphql_errors = StrictlyBetterUtilities::GraphqlErrors
   u.result_basic = StrictlyBetterUtilities::ResultBasic
   u.result_body = StrictlyBetterUtilities::ResultBody
   u.result_headers = StrictlyBetterUtilities::ResultHeaders

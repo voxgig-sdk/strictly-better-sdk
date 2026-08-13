@@ -36,9 +36,10 @@ func TestObsoleteDirect(t *testing.T) {
 			"params": map[string]any{},
 		})
 		if setup.live {
-			// Live mode is lenient: synthetic IDs frequently 4xx and the
-			// list-response shape varies wildly across public APIs. Skip
-			// rather than fail when the call doesn't return a usable list.
+			// Live-mode leniency is a model decision
+			// (main.kit.test.live.strict): synthetic IDs 4xx constantly
+			// against an arbitrary public API, so the default SKIPS here.
+			// A project that owns its test server sets strict and FAILS.
 			if err != nil {
 				t.Skipf("list call failed (likely synthetic IDs against live API): %v", err)
 			}
@@ -91,11 +92,11 @@ func obsoleteDirectSetup(mockres any) *obsoleteDirectSetupResult {
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"STRICTLYBETTER_TEST_OBSOLETE_ENTID": map[string]any{},
-		"STRICTLYBETTER_TEST_LIVE":    "FALSE",
+		"STRICTLY_BETTER_TEST_OBSOLETE_ENTID": map[string]any{},
+		"STRICTLY_BETTER_TEST_LIVE":    "FALSE",
 	})
 
-	live := env["STRICTLYBETTER_TEST_LIVE"] == "TRUE"
+	live := env["STRICTLY_BETTER_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
@@ -103,7 +104,7 @@ func obsoleteDirectSetup(mockres any) *obsoleteDirectSetupResult {
 		client := sdk.NewStrictlyBetterSDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["STRICTLYBETTER_TEST_OBSOLETE_ENTID"]; ok {
+		if entidRaw, ok := env["STRICTLY_BETTER_TEST_OBSOLETE_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {

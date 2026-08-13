@@ -66,11 +66,11 @@ function functional_reprint_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "STRICTLYBETTER_TEST_FUNCTIONAL_REPRINT_ENTID" => [],
-        "STRICTLYBETTER_TEST_LIVE" => "FALSE",
+        "STRICTLY_BETTER_TEST_FUNCTIONAL_REPRINT_ENTID" => [],
+        "STRICTLY_BETTER_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["STRICTLYBETTER_TEST_LIVE"] === "TRUE";
+    $live = $env["STRICTLY_BETTER_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

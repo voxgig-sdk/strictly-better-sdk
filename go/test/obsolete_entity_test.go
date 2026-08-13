@@ -92,7 +92,7 @@ func TestObsoleteEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set STRICTLYBETTER_TEST_OBSOLETE_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set STRICTLY_BETTER_TEST_OBSOLETE_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -160,21 +160,21 @@ func obsoleteBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("STRICTLYBETTER_TEST_OBSOLETE_ENTID")
+	entidEnvRaw := os.Getenv("STRICTLY_BETTER_TEST_OBSOLETE_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"STRICTLYBETTER_TEST_OBSOLETE_ENTID": idmap,
-		"STRICTLYBETTER_TEST_LIVE":      "FALSE",
-		"STRICTLYBETTER_TEST_EXPLAIN":   "FALSE",
+		"STRICTLY_BETTER_TEST_OBSOLETE_ENTID": idmap,
+		"STRICTLY_BETTER_TEST_LIVE":      "FALSE",
+		"STRICTLY_BETTER_TEST_EXPLAIN":   "FALSE",
 	})
 
-	idmapResolved := core.ToMapAny(env["STRICTLYBETTER_TEST_OBSOLETE_ENTID"])
+	idmapResolved := core.ToMapAny(env["STRICTLY_BETTER_TEST_OBSOLETE_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["STRICTLYBETTER_TEST_LIVE"] == "TRUE" {
+	if env["STRICTLY_BETTER_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
 			},
@@ -183,13 +183,13 @@ func obsoleteBasicSetup(extra map[string]any) *entityTestSetup {
 		client = sdk.NewStrictlyBetterSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["STRICTLYBETTER_TEST_LIVE"] == "TRUE"
+	live := env["STRICTLY_BETTER_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["STRICTLYBETTER_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["STRICTLY_BETTER_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

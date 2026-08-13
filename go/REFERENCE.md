@@ -102,11 +102,11 @@ fmt.Println(functionalReprint.GetName()) // "functional_reprint"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `functionally_identical` | `bool` | No |  |
-| `original_card` | `string` | No |  |
-| `original_set_code` | `string` | No |  |
-| `reprint_card` | `string` | No |  |
-| `reprint_set_code` | `string` | No |  |
+| `functionallyIdentical` | `bool` | No |  |
+| `originalCard` | `string` | No |  |
+| `originalSetCode` | `string` | No |  |
+| `reprintCard` | `string` | No |  |
+| `reprintSetCode` | `string` | No |  |
 
 ### Operations
 
@@ -158,12 +158,12 @@ fmt.Println(obsolete.GetName()) // "obsolete"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
-| `mana_cost` | `string` | No |  |
+| `manaCost` | `string` | No |  |
 | `name` | `string` | No |  |
 | `obsolete` | `bool` | No |  |
 | `power` | `string` | No |  |
 | `rarity` | `string` | No |  |
-| `set_code` | `string` | No |  |
+| `setCode` | `string` | No |  |
 | `text` | `string` | No |  |
 | `toughness` | `string` | No |  |
 | `type` | `string` | No |  |

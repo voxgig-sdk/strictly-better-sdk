@@ -72,7 +72,7 @@ class ObsoleteEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set STRICTLYBETTER_TEST_OBSOLETE_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set STRICTLY_BETTER_TEST_OBSOLETE_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -117,22 +117,22 @@ function obsolete_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("STRICTLYBETTER_TEST_OBSOLETE_ENTID");
+    $entid_env_raw = getenv("STRICTLY_BETTER_TEST_OBSOLETE_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "STRICTLYBETTER_TEST_OBSOLETE_ENTID" => $idmap,
-        "STRICTLYBETTER_TEST_LIVE" => "FALSE",
-        "STRICTLYBETTER_TEST_EXPLAIN" => "FALSE",
+        "STRICTLY_BETTER_TEST_OBSOLETE_ENTID" => $idmap,
+        "STRICTLY_BETTER_TEST_LIVE" => "FALSE",
+        "STRICTLY_BETTER_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["STRICTLYBETTER_TEST_OBSOLETE_ENTID"]);
+        $env["STRICTLY_BETTER_TEST_OBSOLETE_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["STRICTLYBETTER_TEST_LIVE"] === "TRUE") {
+    if ($env["STRICTLY_BETTER_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -141,13 +141,13 @@ function obsolete_basic_setup($extra)
         $client = new StrictlyBetterSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["STRICTLYBETTER_TEST_LIVE"] === "TRUE";
+    $live = $env["STRICTLY_BETTER_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["STRICTLYBETTER_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["STRICTLY_BETTER_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

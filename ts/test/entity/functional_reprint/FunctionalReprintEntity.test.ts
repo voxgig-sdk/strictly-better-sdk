@@ -26,8 +26,8 @@ import {
 describe('FunctionalReprintEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when STRICTLYBETTER_TEST_LIVE=TRUE.
-  afterEach(liveDelay('STRICTLYBETTER_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when STRICTLY_BETTER_TEST_LIVE=TRUE.
+  afterEach(liveDelay('STRICTLY_BETTER_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = StrictlyBetterSDK.test()
@@ -63,7 +63,7 @@ describe('FunctionalReprintEntity', async () => {
     const functional_reprint_ref01_ent = client.FunctionalReprint()
     const functional_reprint_ref01_match: any = {}
 
-    const functional_reprint_ref01_list = await functional_reprint_ref01_ent.list(functional_reprint_ref01_match)
+    const functional_reprint_ref01_list = (await functional_reprint_ref01_ent.list(functional_reprint_ref01_match)).map((e: any) => e.data())
 
 
   })

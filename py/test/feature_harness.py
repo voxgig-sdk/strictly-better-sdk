@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import StrictlyBetterControl
-from core.error import StrictlyBetterError
-from core.result import StrictlyBetterResult
-from core.spec import StrictlyBetterSpec
+from strictlybetter_sdk.config import make_config
+from strictlybetter_sdk.features import _make_feature
+from strictlybetter_sdk.core.control import StrictlyBetterControl
+from strictlybetter_sdk.core.error import StrictlyBetterError
+from strictlybetter_sdk.core.result import StrictlyBetterResult
+from strictlybetter_sdk.core.spec import StrictlyBetterSpec
 
 
 # True when this SDK was generated with the named feature.

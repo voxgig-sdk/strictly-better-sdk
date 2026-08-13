@@ -94,11 +94,11 @@ local functional_reprint = client:FunctionalReprint(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `functionally_identical` | `boolean` | No |  |
-| `original_card` | `string` | No |  |
-| `original_set_code` | `string` | No |  |
-| `reprint_card` | `string` | No |  |
-| `reprint_set_code` | `string` | No |  |
+| `functionallyIdentical` | `boolean` | No |  |
+| `originalCard` | `string` | No |  |
+| `originalSetCode` | `string` | No |  |
+| `reprintCard` | `string` | No |  |
+| `reprintSetCode` | `string` | No |  |
 
 ### Operations
 
@@ -151,12 +151,12 @@ local obsolete = client:Obsolete(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
-| `mana_cost` | `string` | No |  |
+| `manaCost` | `string` | No |  |
 | `name` | `string` | No |  |
 | `obsolete` | `boolean` | No |  |
 | `power` | `string` | No |  |
 | `rarity` | `string` | No |  |
-| `set_code` | `string` | No |  |
+| `setCode` | `string` | No |  |
 | `text` | `string` | No |  |
 | `toughness` | `string` | No |  |
 | `type` | `string` | No |  |

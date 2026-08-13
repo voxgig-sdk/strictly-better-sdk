@@ -27,35 +27,35 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "functionally_identical",
+            ["name"] = "functionallyIdentical",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "original_card",
+            ["name"] = "originalCard",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "original_set_code",
+            ["name"] = "originalSetCode",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "reprint_card",
+            ["name"] = "reprintCard",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
           },
           {
             ["active"] = true,
-            ["name"] = "reprint_set_code",
+            ["name"] = "reprintSetCode",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
@@ -99,6 +99,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/functional_reprints",
                 ["parts"] = {
@@ -137,7 +138,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "mana_cost",
+            ["name"] = "manaCost",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -172,7 +173,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "set_code",
+            ["name"] = "setCode",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 6,
@@ -237,6 +238,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/obsoletes",
                 ["parts"] = {

@@ -38,7 +38,7 @@ try {
     // list() returns an array of FunctionalReprint records — iterate directly.
     $functionalreprints = $client->FunctionalReprint()->list();
     foreach ($functionalreprints as $item) {
-        echo $item["functionally_identical"] . "\n";
+        echo $item["functionallyIdentical"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = StrictlyBetterSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $functionalreprint = $client->FunctionalReprint()->list();
 print_r($functionalreprint);
 ```
@@ -225,7 +226,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -247,11 +248,11 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `functionally_identical` |  |
-| `original_card` |  |
-| `original_set_code` |  |
-| `reprint_card` |  |
-| `reprint_set_code` |  |
+| `functionallyIdentical` |  |
+| `originalCard` |  |
+| `originalSetCode` |  |
+| `reprintCard` |  |
+| `reprintSetCode` |  |
 
 Operations: List.
 
@@ -262,12 +263,12 @@ API path: `/api/functional_reprints`
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `mana_cost` |  |
+| `manaCost` |  |
 | `name` |  |
 | `obsolete` |  |
 | `power` |  |
 | `rarity` |  |
-| `set_code` |  |
+| `setCode` |  |
 | `text` |  |
 | `toughness` |  |
 | `type` |  |
@@ -295,11 +296,11 @@ Create an instance: `$functional_reprint = $client->FunctionalReprint();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `functionally_identical` | `bool` |  |
-| `original_card` | `string` |  |
-| `original_set_code` | `string` |  |
-| `reprint_card` | `string` |  |
-| `reprint_set_code` | `string` |  |
+| `functionallyIdentical` | `bool` |  |
+| `originalCard` | `string` |  |
+| `originalSetCode` | `string` |  |
+| `reprintCard` | `string` |  |
+| `reprintSetCode` | `string` |  |
 
 #### Example: List
 
@@ -324,12 +325,12 @@ Create an instance: `$obsolete = $client->Obsolete();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `mana_cost` | `string` |  |
+| `manaCost` | `string` |  |
 | `name` | `string` |  |
 | `obsolete` | `bool` |  |
 | `power` | `string` |  |
 | `rarity` | `string` |  |
-| `set_code` | `string` |  |
+| `setCode` | `string` |  |
 | `text` | `string` |  |
 | `toughness` | `string` |  |
 | `type` | `string` |  |

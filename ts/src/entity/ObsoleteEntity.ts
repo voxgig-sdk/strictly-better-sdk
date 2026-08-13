@@ -37,7 +37,7 @@ class ObsoleteEntity extends StrictlyBetterEntityBase<Obsolete> {
 
 
 
-  async list(this: any, reqmatch?: ObsoleteListMatch, ctrl?: Control): Promise<Obsolete[]> {
+  async list(this: any, reqmatch?: ObsoleteListMatch, ctrl?: Control): Promise<ObsoleteEntity[]> {
 
     const utility = this._utility
 

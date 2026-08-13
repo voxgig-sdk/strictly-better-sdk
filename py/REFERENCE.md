@@ -91,11 +91,11 @@ functional_reprint = client.FunctionalReprint()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `functionally_identical` | `bool` | No |  |
-| `original_card` | `str` | No |  |
-| `original_set_code` | `str` | No |  |
-| `reprint_card` | `str` | No |  |
-| `reprint_set_code` | `str` | No |  |
+| `functionallyIdentical` | `bool` | No |  |
+| `originalCard` | `str` | No |  |
+| `originalSetCode` | `str` | No |  |
+| `reprintCard` | `str` | No |  |
+| `reprintSetCode` | `str` | No |  |
 
 ### Operations
 
@@ -149,12 +149,12 @@ obsolete = client.Obsolete()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `str` | No |  |
-| `mana_cost` | `str` | No |  |
+| `manaCost` | `str` | No |  |
 | `name` | `str` | No |  |
 | `obsolete` | `bool` | No |  |
 | `power` | `str` | No |  |
 | `rarity` | `str` | No |  |
-| `set_code` | `str` | No |  |
+| `setCode` | `str` | No |  |
 | `text` | `str` | No |  |
 | `toughness` | `str` | No |  |
 | `type` | `str` | No |  |

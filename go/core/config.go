@@ -27,35 +27,35 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "functionally_identical",
+						"name": "functionallyIdentical",
 						"req": false,
 						"type": "`$BOOLEAN`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "original_card",
+						"name": "originalCard",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "original_set_code",
+						"name": "originalSetCode",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "reprint_card",
+						"name": "reprintCard",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
-						"name": "reprint_set_code",
+						"name": "reprintSetCode",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 4,
@@ -99,6 +99,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/functional_reprints",
 								"parts": []any{
@@ -119,7 +120,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -137,7 +137,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "mana_cost",
+						"name": "manaCost",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
@@ -172,7 +172,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "set_code",
+						"name": "setCode",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 6,
@@ -237,6 +237,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/obsoletes",
 								"parts": []any{
@@ -257,7 +258,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

@@ -6,27 +6,27 @@ main: kit: entity: functional_reprint: {
 
   fields: [
     {
-      name: "functionally_identical"
+      name: "functionallyIdentical"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "original_card"
+      name: "originalCard"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "original_set_code"
+      name: "originalSetCode"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "reprint_card"
+      name: "reprintCard"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "reprint_set_code"
+      name: "reprintSetCode"
       req: false
       type: "`$STRING`"
     }

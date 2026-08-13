@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# StrictlyBetter SDK exists test
 
 import pytest
 from strictlybetter_sdk import StrictlyBetterSDK

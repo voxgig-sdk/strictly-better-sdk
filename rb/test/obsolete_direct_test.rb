@@ -60,11 +60,11 @@ def obsolete_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "STRICTLYBETTER_TEST_OBSOLETE_ENTID" => {},
-    "STRICTLYBETTER_TEST_LIVE" => "FALSE",
+    "STRICTLY_BETTER_TEST_OBSOLETE_ENTID" => {},
+    "STRICTLY_BETTER_TEST_LIVE" => "FALSE",
   })
 
-  live = env["STRICTLYBETTER_TEST_LIVE"] == "TRUE"
+  live = env["STRICTLY_BETTER_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

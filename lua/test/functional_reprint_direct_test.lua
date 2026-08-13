@@ -61,11 +61,11 @@ function functional_reprint_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["STRICTLYBETTER_TEST_FUNCTIONAL_REPRINT_ENTID"] = {},
-    ["STRICTLYBETTER_TEST_LIVE"] = "FALSE",
+    ["STRICTLY_BETTER_TEST_FUNCTIONAL_REPRINT_ENTID"] = {},
+    ["STRICTLY_BETTER_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["STRICTLYBETTER_TEST_LIVE"] == "TRUE"
+  local live = env["STRICTLY_BETTER_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

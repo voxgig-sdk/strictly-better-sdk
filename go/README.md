@@ -261,11 +261,11 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"functionally_identical"` |  |
-| `"original_card"` |  |
-| `"original_set_code"` |  |
-| `"reprint_card"` |  |
-| `"reprint_set_code"` |  |
+| `"functionallyIdentical"` |  |
+| `"originalCard"` |  |
+| `"originalSetCode"` |  |
+| `"reprintCard"` |  |
+| `"reprintSetCode"` |  |
 
 Operations: List.
 
@@ -276,12 +276,12 @@ API path: `/api/functional_reprints`
 | Field | Description |
 | --- | --- |
 | `"id"` |  |
-| `"mana_cost"` |  |
+| `"manaCost"` |  |
 | `"name"` |  |
 | `"obsolete"` |  |
 | `"power"` |  |
 | `"rarity"` |  |
-| `"set_code"` |  |
+| `"setCode"` |  |
 | `"text"` |  |
 | `"toughness"` |  |
 | `"type"` |  |
@@ -309,11 +309,11 @@ Create an instance: `functionalReprint := client.FunctionalReprint(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `functionally_identical` | `bool` |  |
-| `original_card` | `string` |  |
-| `original_set_code` | `string` |  |
-| `reprint_card` | `string` |  |
-| `reprint_set_code` | `string` |  |
+| `functionallyIdentical` | `bool` |  |
+| `originalCard` | `string` |  |
+| `originalSetCode` | `string` |  |
+| `reprintCard` | `string` |  |
+| `reprintSetCode` | `string` |  |
 
 #### Example: List
 
@@ -341,12 +341,12 @@ Create an instance: `obsolete := client.Obsolete(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `mana_cost` | `string` |  |
+| `manaCost` | `string` |  |
 | `name` | `string` |  |
 | `obsolete` | `bool` |  |
 | `power` | `string` |  |
 | `rarity` | `string` |  |
-| `set_code` | `string` |  |
+| `setCode` | `string` |  |
 | `text` | `string` |  |
 | `toughness` | `string` |  |
 | `type` | `string` |  |

@@ -35,7 +35,9 @@ const client = new StrictlyBetterSDK()
 
 ### 2. List functionalreprint records
 
-`list()` resolves to an array of FunctionalReprint objects — iterate it directly:
+`list()` resolves to an array of FunctionalReprint ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const functionalreprints = await client.FunctionalReprint().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = StrictlyBetterSDK.test()
 
 const functionalreprint = await client.FunctionalReprint().list()
-// functionalreprint is a bare entity populated with mock response data
+// functionalreprint is the entity, populated with mock response data
+// — call functionalreprint.data() for the record itself
 console.log(functionalreprint)
 ```
 
@@ -285,11 +288,11 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `functionally_identical` |  |
-| `original_card` |  |
-| `original_set_code` |  |
-| `reprint_card` |  |
-| `reprint_set_code` |  |
+| `functionallyIdentical` |  |
+| `originalCard` |  |
+| `originalSetCode` |  |
+| `reprintCard` |  |
+| `reprintSetCode` |  |
 
 Operations: list.
 
@@ -300,12 +303,12 @@ API path: `/api/functional_reprints`
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `mana_cost` |  |
+| `manaCost` |  |
 | `name` |  |
 | `obsolete` |  |
 | `power` |  |
 | `rarity` |  |
-| `set_code` |  |
+| `setCode` |  |
 | `text` |  |
 | `toughness` |  |
 | `type` |  |
@@ -333,11 +336,11 @@ Create an instance: `const functional_reprint = client.FunctionalReprint()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `functionally_identical` | `boolean` |  |
-| `original_card` | `string` |  |
-| `original_set_code` | `string` |  |
-| `reprint_card` | `string` |  |
-| `reprint_set_code` | `string` |  |
+| `functionallyIdentical` | `boolean` |  |
+| `originalCard` | `string` |  |
+| `originalSetCode` | `string` |  |
+| `reprintCard` | `string` |  |
+| `reprintSetCode` | `string` |  |
 
 #### Example: List
 
@@ -361,12 +364,12 @@ Create an instance: `const obsolete = client.Obsolete()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `mana_cost` | `string` |  |
+| `manaCost` | `string` |  |
 | `name` | `string` |  |
 | `obsolete` | `boolean` |  |
 | `power` | `string` |  |
 | `rarity` | `string` |  |
-| `set_code` | `string` |  |
+| `setCode` | `string` |  |
 | `text` | `string` |  |
 | `toughness` | `string` |  |
 | `type` | `string` |  |

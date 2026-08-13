@@ -2,36 +2,36 @@
   "existing": {
     "functional_reprint": {
       "FUNCTIONAL_REPRINT00": {
-        "functionally_identical": true,
-        "original_card": "s33",
-        "original_set_code": "s34",
-        "reprint_card": "s35",
-        "reprint_set_code": "s36"
+        "functionallyIdentical": true,
+        "originalCard": "s33",
+        "originalSetCode": "s34",
+        "reprintCard": "s35",
+        "reprintSetCode": "s36"
       },
       "FUNCTIONAL_REPRINT01": {
-        "functionally_identical": true,
-        "original_card": "s65",
-        "original_set_code": "s66",
-        "reprint_card": "s67",
-        "reprint_set_code": "s68"
+        "functionallyIdentical": true,
+        "originalCard": "s65",
+        "originalSetCode": "s66",
+        "reprintCard": "s67",
+        "reprintSetCode": "s68"
       },
       "FUNCTIONAL_REPRINT02": {
-        "functionally_identical": true,
-        "original_card": "s97",
-        "original_set_code": "s98",
-        "reprint_card": "s99",
-        "reprint_set_code": "s9a"
+        "functionallyIdentical": true,
+        "originalCard": "s97",
+        "originalSetCode": "s98",
+        "reprintCard": "s99",
+        "reprintSetCode": "s9a"
       }
     }
   },
   "new": {
     "functional_reprint": {
       "functional_reprint_ref01": {
-        "functionally_identical": true,
-        "original_card": "sc9",
-        "original_set_code": "sca",
-        "reprint_card": "scb",
-        "reprint_set_code": "scc"
+        "functionallyIdentical": true,
+        "originalCard": "sc9",
+        "originalSetCode": "sca",
+        "reprintCard": "scb",
+        "reprintSetCode": "scc"
       }
     }
   }

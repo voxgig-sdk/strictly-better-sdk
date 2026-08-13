@@ -37,7 +37,7 @@ begin
   # list returns an Array of FunctionalReprint records — iterate directly.
   functionalreprints = client.FunctionalReprint.list
   functionalreprints.each do |item|
-    puts "#{item["functionally_identical"]}"
+    puts "#{item["functionallyIdentical"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = StrictlyBetterSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 functionalreprint = client.FunctionalReprint.list()
 puts functionalreprint
 ```
@@ -237,11 +238,11 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `functionally_identical` |  |
-| `original_card` |  |
-| `original_set_code` |  |
-| `reprint_card` |  |
-| `reprint_set_code` |  |
+| `functionallyIdentical` |  |
+| `originalCard` |  |
+| `originalSetCode` |  |
+| `reprintCard` |  |
+| `reprintSetCode` |  |
 
 Operations: List.
 
@@ -252,12 +253,12 @@ API path: `/api/functional_reprints`
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `mana_cost` |  |
+| `manaCost` |  |
 | `name` |  |
 | `obsolete` |  |
 | `power` |  |
 | `rarity` |  |
-| `set_code` |  |
+| `setCode` |  |
 | `text` |  |
 | `toughness` |  |
 | `type` |  |
@@ -285,11 +286,11 @@ Create an instance: `functional_reprint = client.FunctionalReprint`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `functionally_identical` | `Boolean` |  |
-| `original_card` | `String` |  |
-| `original_set_code` | `String` |  |
-| `reprint_card` | `String` |  |
-| `reprint_set_code` | `String` |  |
+| `functionallyIdentical` | `Boolean` |  |
+| `originalCard` | `String` |  |
+| `originalSetCode` | `String` |  |
+| `reprintCard` | `String` |  |
+| `reprintSetCode` | `String` |  |
 
 #### Example: List
 
@@ -314,12 +315,12 @@ Create an instance: `obsolete = client.Obsolete`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `String` |  |
-| `mana_cost` | `String` |  |
+| `manaCost` | `String` |  |
 | `name` | `String` |  |
 | `obsolete` | `Boolean` |  |
 | `power` | `String` |  |
 | `rarity` | `String` |  |
-| `set_code` | `String` |  |
+| `setCode` | `String` |  |
 | `text` | `String` |  |
 | `toughness` | `String` |  |
 | `type` | `String` |  |

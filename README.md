@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = StrictlyBetterSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = StrictlyBetterSDK.test({
+  entity: {
+    functional_reprint: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const functionalreprints = await client.FunctionalReprint().list()
-// functionalreprints is an array of bare FunctionalReprint records populated with mock data
+// functionalreprints is an array of FunctionalReprint entities, populated with mock data
+// — call functionalreprints[0].data() for the record itself
 console.log(functionalreprints)
 ```
 
@@ -110,7 +119,7 @@ import { StrictlyBetterSDK } from '@voxgig-sdk/strictly-better'
 
 const client = new StrictlyBetterSDK()
 
-// List all functionalreprints (returns FunctionalReprint[])
+// List all functionalreprints (returns FunctionalReprintEntity[] — .data() for the record)
 const functionalreprints = await client.FunctionalReprint().list()
 for (const functionalreprint of functionalreprints) {
   console.log(functionalreprint)
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.strictlybetter.eu/api-guide](https://www.strictlybetter.eu/api-guide)
 

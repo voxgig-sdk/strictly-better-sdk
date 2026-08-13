@@ -124,7 +124,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = StrictlyBetterSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 functionalreprint = client.FunctionalReprint().list()
 # functionalreprint contains the mock response record
 ```
@@ -221,7 +222,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -243,11 +244,11 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `functionally_identical` |  |
-| `original_card` |  |
-| `original_set_code` |  |
-| `reprint_card` |  |
-| `reprint_set_code` |  |
+| `functionallyIdentical` |  |
+| `originalCard` |  |
+| `originalSetCode` |  |
+| `reprintCard` |  |
+| `reprintSetCode` |  |
 
 Operations: List.
 
@@ -258,12 +259,12 @@ API path: `/api/functional_reprints`
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `mana_cost` |  |
+| `manaCost` |  |
 | `name` |  |
 | `obsolete` |  |
 | `power` |  |
 | `rarity` |  |
-| `set_code` |  |
+| `setCode` |  |
 | `text` |  |
 | `toughness` |  |
 | `type` |  |
@@ -291,11 +292,11 @@ Create an instance: `functional_reprint = client.FunctionalReprint()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `functionally_identical` | `bool` |  |
-| `original_card` | `str` |  |
-| `original_set_code` | `str` |  |
-| `reprint_card` | `str` |  |
-| `reprint_set_code` | `str` |  |
+| `functionallyIdentical` | `bool` |  |
+| `originalCard` | `str` |  |
+| `originalSetCode` | `str` |  |
+| `reprintCard` | `str` |  |
+| `reprintSetCode` | `str` |  |
 
 #### Example: List
 
@@ -319,12 +320,12 @@ Create an instance: `obsolete = client.Obsolete()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `str` |  |
-| `mana_cost` | `str` |  |
+| `manaCost` | `str` |  |
 | `name` | `str` |  |
 | `obsolete` | `bool` |  |
 | `power` | `str` |  |
 | `rarity` | `str` |  |
-| `set_code` | `str` |  |
+| `setCode` | `str` |  |
 | `text` | `str` |  |
 | `toughness` | `str` |  |
 | `type` | `str` |  |

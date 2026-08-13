@@ -6,29 +6,29 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface FunctionalReprint {
-  functionally_identical?: boolean
-  original_card?: string
-  original_set_code?: string
-  reprint_card?: string
-  reprint_set_code?: string
+  functionallyIdentical?: boolean
+  originalCard?: string
+  originalSetCode?: string
+  reprintCard?: string
+  reprintSetCode?: string
 }
 
 export interface FunctionalReprintListMatch {
-  functionally_identical?: boolean
-  original_card?: string
-  original_set_code?: string
-  reprint_card?: string
-  reprint_set_code?: string
+  functionallyIdentical?: boolean
+  originalCard?: string
+  originalSetCode?: string
+  reprintCard?: string
+  reprintSetCode?: string
 }
 
 export interface Obsolete {
   id?: string
-  mana_cost?: string
+  manaCost?: string
   name?: string
   obsolete?: boolean
   power?: string
   rarity?: string
-  set_code?: string
+  setCode?: string
   text?: string
   toughness?: string
   type?: string
@@ -36,12 +36,12 @@ export interface Obsolete {
 
 export interface ObsoleteListMatch {
   id?: string
-  mana_cost?: string
+  manaCost?: string
   name?: string
   obsolete?: boolean
   power?: string
   rarity?: string
-  set_code?: string
+  setCode?: string
   text?: string
   toughness?: string
   type?: string

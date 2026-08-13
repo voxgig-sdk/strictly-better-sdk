@@ -43,7 +43,7 @@ local functionalreprints, err = client:FunctionalReprint():list()
 if err then error(err) end
 
 for _, item in ipairs(functionalreprints) do
-  print(item["original_card"])
+  print(item["originalCard"])
 end
 ```
 
@@ -219,9 +219,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local functional_reprint, err = client:FunctionalReprint():load()
+    local functional_reprint, err = client:FunctionalReprint():list()
     if err then error(err) end
-    -- functional_reprint is the loaded record
+    -- functional_reprint is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -232,11 +232,11 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `functionally_identical` |  |
-| `original_card` |  |
-| `original_set_code` |  |
-| `reprint_card` |  |
-| `reprint_set_code` |  |
+| `functionallyIdentical` |  |
+| `originalCard` |  |
+| `originalSetCode` |  |
+| `reprintCard` |  |
+| `reprintSetCode` |  |
 
 Operations: List.
 
@@ -247,12 +247,12 @@ API path: `/api/functional_reprints`
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `mana_cost` |  |
+| `manaCost` |  |
 | `name` |  |
 | `obsolete` |  |
 | `power` |  |
 | `rarity` |  |
-| `set_code` |  |
+| `setCode` |  |
 | `text` |  |
 | `toughness` |  |
 | `type` |  |
@@ -280,11 +280,11 @@ Create an instance: `local functional_reprint = client:FunctionalReprint(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `functionally_identical` | `boolean` |  |
-| `original_card` | `string` |  |
-| `original_set_code` | `string` |  |
-| `reprint_card` | `string` |  |
-| `reprint_set_code` | `string` |  |
+| `functionallyIdentical` | `boolean` |  |
+| `originalCard` | `string` |  |
+| `originalSetCode` | `string` |  |
+| `reprintCard` | `string` |  |
+| `reprintSetCode` | `string` |  |
 
 #### Example: List
 
@@ -308,12 +308,12 @@ Create an instance: `local obsolete = client:Obsolete(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `mana_cost` | `string` |  |
+| `manaCost` | `string` |  |
 | `name` | `string` |  |
 | `obsolete` | `boolean` |  |
 | `power` | `string` |  |
 | `rarity` | `string` |  |
-| `set_code` | `string` |  |
+| `setCode` | `string` |  |
 | `text` | `string` |  |
 | `toughness` | `string` |  |
 | `type` | `string` |  |

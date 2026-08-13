@@ -10,51 +10,51 @@
 
 # FunctionalReprint entity data model.
 #
-# @!attribute [rw] functionally_identical
+# @!attribute [rw] functionallyIdentical
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] original_card
+# @!attribute [rw] originalCard
 #   @return [String, nil]
 #
-# @!attribute [rw] original_set_code
+# @!attribute [rw] originalSetCode
 #   @return [String, nil]
 #
-# @!attribute [rw] reprint_card
+# @!attribute [rw] reprintCard
 #   @return [String, nil]
 #
-# @!attribute [rw] reprint_set_code
+# @!attribute [rw] reprintSetCode
 #   @return [String, nil]
 FunctionalReprint = Struct.new(
-  :functionally_identical,
-  :original_card,
-  :original_set_code,
-  :reprint_card,
-  :reprint_set_code,
+  :functionallyIdentical,
+  :originalCard,
+  :originalSetCode,
+  :reprintCard,
+  :reprintSetCode,
   keyword_init: true
 )
 
 # Request payload for FunctionalReprint#list.
 #
-# @!attribute [rw] functionally_identical
+# @!attribute [rw] functionallyIdentical
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] original_card
+# @!attribute [rw] originalCard
 #   @return [String, nil]
 #
-# @!attribute [rw] original_set_code
+# @!attribute [rw] originalSetCode
 #   @return [String, nil]
 #
-# @!attribute [rw] reprint_card
+# @!attribute [rw] reprintCard
 #   @return [String, nil]
 #
-# @!attribute [rw] reprint_set_code
+# @!attribute [rw] reprintSetCode
 #   @return [String, nil]
 FunctionalReprintListMatch = Struct.new(
-  :functionally_identical,
-  :original_card,
-  :original_set_code,
-  :reprint_card,
-  :reprint_set_code,
+  :functionallyIdentical,
+  :originalCard,
+  :originalSetCode,
+  :reprintCard,
+  :reprintSetCode,
   keyword_init: true
 )
 
@@ -63,7 +63,7 @@ FunctionalReprintListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] mana_cost
+# @!attribute [rw] manaCost
 #   @return [String, nil]
 #
 # @!attribute [rw] name
@@ -78,7 +78,7 @@ FunctionalReprintListMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [String, nil]
 #
-# @!attribute [rw] set_code
+# @!attribute [rw] setCode
 #   @return [String, nil]
 #
 # @!attribute [rw] text
@@ -91,12 +91,12 @@ FunctionalReprintListMatch = Struct.new(
 #   @return [String, nil]
 Obsolete = Struct.new(
   :id,
-  :mana_cost,
+  :manaCost,
   :name,
   :obsolete,
   :power,
   :rarity,
-  :set_code,
+  :setCode,
   :text,
   :toughness,
   :type,
@@ -108,7 +108,7 @@ Obsolete = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] mana_cost
+# @!attribute [rw] manaCost
 #   @return [String, nil]
 #
 # @!attribute [rw] name
@@ -123,7 +123,7 @@ Obsolete = Struct.new(
 # @!attribute [rw] rarity
 #   @return [String, nil]
 #
-# @!attribute [rw] set_code
+# @!attribute [rw] setCode
 #   @return [String, nil]
 #
 # @!attribute [rw] text
@@ -136,12 +136,12 @@ Obsolete = Struct.new(
 #   @return [String, nil]
 ObsoleteListMatch = Struct.new(
   :id,
-  :mana_cost,
+  :manaCost,
   :name,
   :obsolete,
   :power,
   :rarity,
-  :set_code,
+  :setCode,
   :text,
   :toughness,
   :type,

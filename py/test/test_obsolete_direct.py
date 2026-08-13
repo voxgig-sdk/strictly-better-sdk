@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from strictlybetter_sdk.utility.voxgig_struct import voxgig_struct as vs
 from strictlybetter_sdk import StrictlyBetterSDK
-from core import helpers
+from strictlybetter_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _obsolete_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "STRICTLYBETTER_TEST_OBSOLETE_ENTID": {},
-        "STRICTLYBETTER_TEST_LIVE": "FALSE",
+        "STRICTLY_BETTER_TEST_OBSOLETE_ENTID": {},
+        "STRICTLY_BETTER_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("STRICTLYBETTER_TEST_LIVE") == "TRUE"
+    live = env.get("STRICTLY_BETTER_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

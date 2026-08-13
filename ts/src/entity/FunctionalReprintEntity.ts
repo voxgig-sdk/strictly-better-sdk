@@ -37,7 +37,7 @@ class FunctionalReprintEntity extends StrictlyBetterEntityBase<FunctionalReprint
 
 
 
-  async list(this: any, reqmatch?: FunctionalReprintListMatch, ctrl?: Control): Promise<FunctionalReprint[]> {
+  async list(this: any, reqmatch?: FunctionalReprintListMatch, ctrl?: Control): Promise<FunctionalReprintEntity[]> {
 
     const utility = this._utility
 

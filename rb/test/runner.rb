@@ -23,8 +23,8 @@ module StrictlyBetterTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("STRICTLYBETTER_TEST_LIVE")
-    override = getenv("STRICTLYBETTER_TEST_OVERRIDE")
+    live = getenv("STRICTLY_BETTER_TEST_LIVE")
+    override = getenv("STRICTLY_BETTER_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module StrictlyBetterTestRunner
       end
     end
 
-    explain = getenv("STRICTLYBETTER_TEST_EXPLAIN")
-    m["STRICTLYBETTER_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("STRICTLY_BETTER_TEST_EXPLAIN")
+    m["STRICTLY_BETTER_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

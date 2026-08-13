@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import StrictlyBetterSDK
-from core.error import StrictlyBetterError
-from core.result import StrictlyBetterResult
-from core.response import StrictlyBetterResponse
-from core.spec import StrictlyBetterSpec
-from feature.base_feature import StrictlyBetterBaseFeature
+from projectname_sdk.core.error import StrictlyBetterError
+from projectname_sdk.core.result import StrictlyBetterResult
+from projectname_sdk.core.response import StrictlyBetterResponse
+from projectname_sdk.core.spec import StrictlyBetterSpec
+from projectname_sdk.feature.base_feature import StrictlyBetterBaseFeature
 
 
 def _client():
