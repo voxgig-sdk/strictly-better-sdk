@@ -40,7 +40,7 @@ class StrictlyBetterSDK
         $utility = new StrictlyBetterUtility();
         $this->_utility = $utility;
 
-        $config = StrictlyBetterConfig::make_config();
+        $config = StrictlyBetterConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

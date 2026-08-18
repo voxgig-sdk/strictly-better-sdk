@@ -28,7 +28,7 @@ class StrictlyBetterSDK
     utility = StrictlyBetterUtility.new
     @_utility = utility
 
-    config = StrictlyBetterConfig.make_config
+    config = StrictlyBetterConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

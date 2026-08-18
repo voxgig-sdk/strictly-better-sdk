@@ -15,7 +15,7 @@ require_relative "../StrictlyBetter_sdk"
 module StrictlyBetterFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = StrictlyBetterConfig.make_config["feature"]
+    f = StrictlyBetterConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 
