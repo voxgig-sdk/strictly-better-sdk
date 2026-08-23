@@ -1,68 +1,43 @@
-# Entity: obsolete
+# Entity: functional_reprint
 
-main: kit: entity: obsolete: {
+main: kit: entity: functional_reprint: {
 
   alias: field: {}
 
   fields: [
     {
-      name: "id"
+      name: "functionallyIdentical"
       req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "manaCost"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "name"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "obsolete"
-      req: false
+      short: "Whether the reprint is functionally identical"
       type: "`$BOOLEAN`"
     }
     {
-      name: "power"
+      name: "originalCard"
       req: false
+      short: "Name of the original card"
       type: "`$STRING`"
     }
     {
-      name: "rarity"
+      name: "originalSetCode"
       req: false
+      short: "Set code of the original card"
       type: "`$STRING`"
     }
     {
-      name: "setCode"
+      name: "reprintCard"
       req: false
+      short: "Name of the reprint card"
       type: "`$STRING`"
     }
     {
-      name: "text"
+      name: "reprintSetCode"
       req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "toughness"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "type"
-      req: false
+      short: "Set code of the reprint"
       type: "`$STRING`"
     }
   ]
 
-  id: {
-    field: "id"
-    name: "id"
-  }
-
-  name: "obsolete"
+  name: "functional_reprint"
   op: {
     list: {
       name: "list"
@@ -70,6 +45,13 @@ main: kit: entity: obsolete: {
         {
           args: {
             query: [
+              {
+                kind: "query"
+                name: "card_name"
+                orig: "card_name"
+                reqd: false
+                type: "`$STRING`"
+              }
               {
                 example: 100
                 kind: "query"
@@ -86,26 +68,19 @@ main: kit: entity: obsolete: {
                 reqd: false
                 type: "`$INTEGER`"
               }
-              {
-                kind: "query"
-                name: "search"
-                orig: "search"
-                reqd: false
-                type: "`$STRING`"
-              }
             ]
           }
           method: "GET"
-          orig: "/api/obsoletes"
+          orig: "/api/functional_reprints"
           parts: [
             "api"
-            "obsoletes"
+            "functional_reprints"
           ]
           select: {
             exist: [
+              "card_name"
               "limit"
               "offset"
-              "search"
             ]
           }
           transform: {

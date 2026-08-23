@@ -232,11 +232,11 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `functionallyIdentical` |  |
-| `originalCard` |  |
-| `originalSetCode` |  |
-| `reprintCard` |  |
-| `reprintSetCode` |  |
+| `functionallyIdentical` | Whether the reprint is functionally identical |
+| `originalCard` | Name of the original card |
+| `originalSetCode` | Set code of the original card |
+| `reprintCard` | Name of the reprint card |
+| `reprintSetCode` | Set code of the reprint |
 
 Operations: List.
 
@@ -246,16 +246,16 @@ API path: `/api/functional_reprints`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `manaCost` |  |
-| `name` |  |
-| `obsolete` |  |
-| `power` |  |
-| `rarity` |  |
-| `setCode` |  |
-| `text` |  |
-| `toughness` |  |
-| `type` |  |
+| `id` | Unique identifier for the card |
+| `manaCost` | Mana cost of the card |
+| `name` | Name of the card |
+| `obsolete` | Whether the card is considered obsolete |
+| `power` | Power value for creatures |
+| `rarity` | Card rarity |
+| `setCode` | Set code where the card appears |
+| `text` | Card text and abilities |
+| `toughness` | Toughness value for creatures |
+| `type` | Card type |
 
 Operations: List.
 
@@ -280,11 +280,11 @@ Create an instance: `local functional_reprint = client:FunctionalReprint(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `functionallyIdentical` | `boolean` |  |
-| `originalCard` | `string` |  |
-| `originalSetCode` | `string` |  |
-| `reprintCard` | `string` |  |
-| `reprintSetCode` | `string` |  |
+| `functionallyIdentical` | `boolean` | Whether the reprint is functionally identical |
+| `originalCard` | `string` | Name of the original card |
+| `originalSetCode` | `string` | Set code of the original card |
+| `reprintCard` | `string` | Name of the reprint card |
+| `reprintSetCode` | `string` | Set code of the reprint |
 
 #### Example: List
 
@@ -307,16 +307,16 @@ Create an instance: `local obsolete = client:Obsolete(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
-| `manaCost` | `string` |  |
-| `name` | `string` |  |
-| `obsolete` | `boolean` |  |
-| `power` | `string` |  |
-| `rarity` | `string` |  |
-| `setCode` | `string` |  |
-| `text` | `string` |  |
-| `toughness` | `string` |  |
-| `type` | `string` |  |
+| `id` | `string` | Unique identifier for the card |
+| `manaCost` | `string` | Mana cost of the card |
+| `name` | `string` | Name of the card |
+| `obsolete` | `boolean` | Whether the card is considered obsolete |
+| `power` | `string` | Power value for creatures |
+| `rarity` | `string` | Card rarity |
+| `setCode` | `string` | Set code where the card appears |
+| `text` | `string` | Card text and abilities |
+| `toughness` | `string` | Toughness value for creatures |
+| `type` | `string` | Card type |
 
 #### Example: List
 

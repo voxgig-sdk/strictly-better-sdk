@@ -36,30 +36,35 @@
               "active": true,
               "name": "functionallyIdentical",
               "req": false,
+              "short": "Whether the reprint is functionally identical",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "originalCard",
               "req": false,
+              "short": "Name of the original card",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "originalSetCode",
               "req": false,
+              "short": "Set code of the original card",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "reprintCard",
               "req": false,
+              "short": "Name of the reprint card",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "reprintSetCode",
               "req": false,
+              "short": "Set code of the reprint",
               "type": "`$STRING`"
             }
           ],
@@ -137,60 +142,70 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the card",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "manaCost",
               "req": false,
+              "short": "Mana cost of the card",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the card",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "obsolete",
               "req": false,
+              "short": "Whether the card is considered obsolete",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "power",
               "req": false,
+              "short": "Power value for creatures",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rarity",
               "req": false,
+              "short": "Card rarity",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "setCode",
               "req": false,
+              "short": "Set code where the card appears",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "text",
               "req": false,
+              "short": "Card text and abilities",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "toughness",
               "req": false,
+              "short": "Toughness value for creatures",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Card type",
               "type": "`$STRING`"
             }
           ],

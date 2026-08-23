@@ -102,11 +102,11 @@ fmt.Println(functionalReprint.GetName()) // "functional_reprint"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `functionallyIdentical` | `bool` | No |  |
-| `originalCard` | `string` | No |  |
-| `originalSetCode` | `string` | No |  |
-| `reprintCard` | `string` | No |  |
-| `reprintSetCode` | `string` | No |  |
+| `functionallyIdentical` | `bool` | No | Whether the reprint is functionally identical |
+| `originalCard` | `string` | No | Name of the original card |
+| `originalSetCode` | `string` | No | Set code of the original card |
+| `reprintCard` | `string` | No | Name of the reprint card |
+| `reprintSetCode` | `string` | No | Set code of the reprint |
 
 ### Operations
 
@@ -157,16 +157,16 @@ fmt.Println(obsolete.GetName()) // "obsolete"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | No |  |
-| `manaCost` | `string` | No |  |
-| `name` | `string` | No |  |
-| `obsolete` | `bool` | No |  |
-| `power` | `string` | No |  |
-| `rarity` | `string` | No |  |
-| `setCode` | `string` | No |  |
-| `text` | `string` | No |  |
-| `toughness` | `string` | No |  |
-| `type` | `string` | No |  |
+| `id` | `string` | No | Unique identifier for the card |
+| `manaCost` | `string` | No | Mana cost of the card |
+| `name` | `string` | No | Name of the card |
+| `obsolete` | `bool` | No | Whether the card is considered obsolete |
+| `power` | `string` | No | Power value for creatures |
+| `rarity` | `string` | No | Card rarity |
+| `setCode` | `string` | No | Set code where the card appears |
+| `text` | `string` | No | Card text and abilities |
+| `toughness` | `string` | No | Toughness value for creatures |
+| `type` | `string` | No | Card type |
 
 ### Operations
 

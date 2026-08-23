@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -288,11 +288,11 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `functionallyIdentical` |  |
-| `originalCard` |  |
-| `originalSetCode` |  |
-| `reprintCard` |  |
-| `reprintSetCode` |  |
+| `functionallyIdentical` | Whether the reprint is functionally identical |
+| `originalCard` | Name of the original card |
+| `originalSetCode` | Set code of the original card |
+| `reprintCard` | Name of the reprint card |
+| `reprintSetCode` | Set code of the reprint |
 
 Operations: list.
 
@@ -302,16 +302,16 @@ API path: `/api/functional_reprints`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `manaCost` |  |
-| `name` |  |
-| `obsolete` |  |
-| `power` |  |
-| `rarity` |  |
-| `setCode` |  |
-| `text` |  |
-| `toughness` |  |
-| `type` |  |
+| `id` | Unique identifier for the card |
+| `manaCost` | Mana cost of the card |
+| `name` | Name of the card |
+| `obsolete` | Whether the card is considered obsolete |
+| `power` | Power value for creatures |
+| `rarity` | Card rarity |
+| `setCode` | Set code where the card appears |
+| `text` | Card text and abilities |
+| `toughness` | Toughness value for creatures |
+| `type` | Card type |
 
 Operations: list.
 
@@ -336,11 +336,11 @@ Create an instance: `const functional_reprint = client.FunctionalReprint()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `functionallyIdentical` | `boolean` |  |
-| `originalCard` | `string` |  |
-| `originalSetCode` | `string` |  |
-| `reprintCard` | `string` |  |
-| `reprintSetCode` | `string` |  |
+| `functionallyIdentical` | `boolean` | Whether the reprint is functionally identical |
+| `originalCard` | `string` | Name of the original card |
+| `originalSetCode` | `string` | Set code of the original card |
+| `reprintCard` | `string` | Name of the reprint card |
+| `reprintSetCode` | `string` | Set code of the reprint |
 
 #### Example: List
 
@@ -363,16 +363,16 @@ Create an instance: `const obsolete = client.Obsolete()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
-| `manaCost` | `string` |  |
-| `name` | `string` |  |
-| `obsolete` | `boolean` |  |
-| `power` | `string` |  |
-| `rarity` | `string` |  |
-| `setCode` | `string` |  |
-| `text` | `string` |  |
-| `toughness` | `string` |  |
-| `type` | `string` |  |
+| `id` | `string` | Unique identifier for the card |
+| `manaCost` | `string` | Mana cost of the card |
+| `name` | `string` | Name of the card |
+| `obsolete` | `boolean` | Whether the card is considered obsolete |
+| `power` | `string` | Power value for creatures |
+| `rarity` | `string` | Card rarity |
+| `setCode` | `string` | Set code where the card appears |
+| `text` | `string` | Card text and abilities |
+| `toughness` | `string` | Toughness value for creatures |
+| `type` | `string` | Card type |
 
 #### Example: List
 

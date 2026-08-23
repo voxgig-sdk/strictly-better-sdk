@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "StrictlyBetter",
+			"slug": "strictly-better",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,22 +37,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "functionallyIdentical",
+						"short": "Whether the reprint is functionally identical",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "originalCard",
+						"short": "Name of the original card",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "originalSetCode",
+						"short": "Set code of the original card",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "reprintCard",
+						"short": "Name of the reprint card",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "reprintSetCode",
+						"short": "Set code of the reprint",
 						"type": "`$STRING`",
 					},
 				},
@@ -114,42 +122,52 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the card",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "manaCost",
+						"short": "Mana cost of the card",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the card",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "obsolete",
+						"short": "Whether the card is considered obsolete",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "power",
+						"short": "Power value for creatures",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rarity",
+						"short": "Card rarity",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "setCode",
+						"short": "Set code where the card appears",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "text",
+						"short": "Card text and abilities",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "toughness",
+						"short": "Toughness value for creatures",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Card type",
 						"type": "`$STRING`",
 					},
 				},

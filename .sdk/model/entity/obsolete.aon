@@ -1,0 +1,132 @@
+# Entity: obsolete
+
+main: kit: entity: obsolete: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the card"
+      type: "`$STRING`"
+    }
+    {
+      name: "manaCost"
+      req: false
+      short: "Mana cost of the card"
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Name of the card"
+      type: "`$STRING`"
+    }
+    {
+      name: "obsolete"
+      req: false
+      short: "Whether the card is considered obsolete"
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "power"
+      req: false
+      short: "Power value for creatures"
+      type: "`$STRING`"
+    }
+    {
+      name: "rarity"
+      req: false
+      short: "Card rarity"
+      type: "`$STRING`"
+    }
+    {
+      name: "setCode"
+      req: false
+      short: "Set code where the card appears"
+      type: "`$STRING`"
+    }
+    {
+      name: "text"
+      req: false
+      short: "Card text and abilities"
+      type: "`$STRING`"
+    }
+    {
+      name: "toughness"
+      req: false
+      short: "Toughness value for creatures"
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      short: "Card type"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "obsolete"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 100
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/obsoletes"
+          parts: [
+            "api"
+            "obsoletes"
+          ]
+          select: {
+            exist: [
+              "limit"
+              "offset"
+              "search"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

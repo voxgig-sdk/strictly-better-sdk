@@ -91,11 +91,11 @@ functional_reprint = client.FunctionalReprint()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `functionallyIdentical` | `bool` | No |  |
-| `originalCard` | `str` | No |  |
-| `originalSetCode` | `str` | No |  |
-| `reprintCard` | `str` | No |  |
-| `reprintSetCode` | `str` | No |  |
+| `functionallyIdentical` | `bool` | No | Whether the reprint is functionally identical |
+| `originalCard` | `str` | No | Name of the original card |
+| `originalSetCode` | `str` | No | Set code of the original card |
+| `reprintCard` | `str` | No | Name of the reprint card |
+| `reprintSetCode` | `str` | No | Set code of the reprint |
 
 ### Operations
 
@@ -148,16 +148,16 @@ obsolete = client.Obsolete()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `str` | No |  |
-| `manaCost` | `str` | No |  |
-| `name` | `str` | No |  |
-| `obsolete` | `bool` | No |  |
-| `power` | `str` | No |  |
-| `rarity` | `str` | No |  |
-| `setCode` | `str` | No |  |
-| `text` | `str` | No |  |
-| `toughness` | `str` | No |  |
-| `type` | `str` | No |  |
+| `id` | `str` | No | Unique identifier for the card |
+| `manaCost` | `str` | No | Mana cost of the card |
+| `name` | `str` | No | Name of the card |
+| `obsolete` | `bool` | No | Whether the card is considered obsolete |
+| `power` | `str` | No | Power value for creatures |
+| `rarity` | `str` | No | Card rarity |
+| `setCode` | `str` | No | Set code where the card appears |
+| `text` | `str` | No | Card text and abilities |
+| `toughness` | `str` | No | Toughness value for creatures |
+| `type` | `str` | No | Card type |
 
 ### Operations
 

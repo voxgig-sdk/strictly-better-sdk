@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "StrictlyBetter",
+      slug = "strictly-better",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -30,22 +33,27 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "functionallyIdentical",
+            ["short"] = "Whether the reprint is functionally identical",
             ["type"] = "`$BOOLEAN`",
           },
           {
             ["name"] = "originalCard",
+            ["short"] = "Name of the original card",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "originalSetCode",
+            ["short"] = "Set code of the original card",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "reprintCard",
+            ["short"] = "Name of the reprint card",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "reprintSetCode",
+            ["short"] = "Set code of the reprint",
             ["type"] = "`$STRING`",
           },
         },
@@ -110,42 +118,52 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "id",
+            ["short"] = "Unique identifier for the card",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "manaCost",
+            ["short"] = "Mana cost of the card",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Name of the card",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "obsolete",
+            ["short"] = "Whether the card is considered obsolete",
             ["type"] = "`$BOOLEAN`",
           },
           {
             ["name"] = "power",
+            ["short"] = "Power value for creatures",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "rarity",
+            ["short"] = "Card rarity",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "setCode",
+            ["short"] = "Set code where the card appears",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "text",
+            ["short"] = "Card text and abilities",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "toughness",
+            ["short"] = "Toughness value for creatures",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "type",
+            ["short"] = "Card type",
             ["type"] = "`$STRING`",
           },
         },

@@ -238,11 +238,11 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `functionallyIdentical` |  |
-| `originalCard` |  |
-| `originalSetCode` |  |
-| `reprintCard` |  |
-| `reprintSetCode` |  |
+| `functionallyIdentical` | Whether the reprint is functionally identical |
+| `originalCard` | Name of the original card |
+| `originalSetCode` | Set code of the original card |
+| `reprintCard` | Name of the reprint card |
+| `reprintSetCode` | Set code of the reprint |
 
 Operations: List.
 
@@ -252,16 +252,16 @@ API path: `/api/functional_reprints`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `manaCost` |  |
-| `name` |  |
-| `obsolete` |  |
-| `power` |  |
-| `rarity` |  |
-| `setCode` |  |
-| `text` |  |
-| `toughness` |  |
-| `type` |  |
+| `id` | Unique identifier for the card |
+| `manaCost` | Mana cost of the card |
+| `name` | Name of the card |
+| `obsolete` | Whether the card is considered obsolete |
+| `power` | Power value for creatures |
+| `rarity` | Card rarity |
+| `setCode` | Set code where the card appears |
+| `text` | Card text and abilities |
+| `toughness` | Toughness value for creatures |
+| `type` | Card type |
 
 Operations: List.
 
@@ -286,11 +286,11 @@ Create an instance: `functional_reprint = client.FunctionalReprint`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `functionallyIdentical` | `Boolean` |  |
-| `originalCard` | `String` |  |
-| `originalSetCode` | `String` |  |
-| `reprintCard` | `String` |  |
-| `reprintSetCode` | `String` |  |
+| `functionallyIdentical` | `Boolean` | Whether the reprint is functionally identical |
+| `originalCard` | `String` | Name of the original card |
+| `originalSetCode` | `String` | Set code of the original card |
+| `reprintCard` | `String` | Name of the reprint card |
+| `reprintSetCode` | `String` | Set code of the reprint |
 
 #### Example: List
 
@@ -314,16 +314,16 @@ Create an instance: `obsolete = client.Obsolete`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `String` |  |
-| `manaCost` | `String` |  |
-| `name` | `String` |  |
-| `obsolete` | `Boolean` |  |
-| `power` | `String` |  |
-| `rarity` | `String` |  |
-| `setCode` | `String` |  |
-| `text` | `String` |  |
-| `toughness` | `String` |  |
-| `type` | `String` |  |
+| `id` | `String` | Unique identifier for the card |
+| `manaCost` | `String` | Mana cost of the card |
+| `name` | `String` | Name of the card |
+| `obsolete` | `Boolean` | Whether the card is considered obsolete |
+| `power` | `String` | Power value for creatures |
+| `rarity` | `String` | Card rarity |
+| `setCode` | `String` | Set code where the card appears |
+| `text` | `String` | Card text and abilities |
+| `toughness` | `String` | Toughness value for creatures |
+| `type` | `String` | Card type |
 
 #### Example: List
 
