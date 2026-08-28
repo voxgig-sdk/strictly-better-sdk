@@ -35,26 +35,18 @@ FunctionalReprint = Struct.new(
 
 # Request payload for FunctionalReprint#list.
 #
-# @!attribute [rw] functionallyIdentical
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] originalCard
+# @!attribute [rw] card_name
 #   @return [String, nil]
 #
-# @!attribute [rw] originalSetCode
-#   @return [String, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] reprintCard
-#   @return [String, nil]
-#
-# @!attribute [rw] reprintSetCode
-#   @return [String, nil]
+# @!attribute [rw] offset
+#   @return [Integer, nil]
 FunctionalReprintListMatch = Struct.new(
-  :functionallyIdentical,
-  :originalCard,
-  :originalSetCode,
-  :reprintCard,
-  :reprintSetCode,
+  :card_name,
+  :limit,
+  :offset,
   keyword_init: true
 )
 
@@ -105,46 +97,18 @@ Obsolete = Struct.new(
 
 # Request payload for Obsolete#list.
 #
-# @!attribute [rw] id
-#   @return [String, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] manaCost
-#   @return [String, nil]
+# @!attribute [rw] offset
+#   @return [Integer, nil]
 #
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] obsolete
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] power
-#   @return [String, nil]
-#
-# @!attribute [rw] rarity
-#   @return [String, nil]
-#
-# @!attribute [rw] setCode
-#   @return [String, nil]
-#
-# @!attribute [rw] text
-#   @return [String, nil]
-#
-# @!attribute [rw] toughness
-#   @return [String, nil]
-#
-# @!attribute [rw] type
+# @!attribute [rw] search
 #   @return [String, nil]
 ObsoleteListMatch = Struct.new(
-  :id,
-  :manaCost,
-  :name,
-  :obsolete,
-  :power,
-  :rarity,
-  :setCode,
-  :text,
-  :toughness,
-  :type,
+  :limit,
+  :offset,
+  :search,
   keyword_init: true
 )
 

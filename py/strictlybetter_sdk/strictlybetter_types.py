@@ -25,11 +25,9 @@ class FunctionalReprint(TypedDict, total=False):
 
 
 class FunctionalReprintListMatch(TypedDict, total=False):
-    functionallyIdentical: bool
-    originalCard: str
-    originalSetCode: str
-    reprintCard: str
-    reprintSetCode: str
+    card_name: str
+    limit: int
+    offset: int
 
 
 class Obsolete(TypedDict, total=False):
@@ -46,13 +44,6 @@ class Obsolete(TypedDict, total=False):
 
 
 class ObsoleteListMatch(TypedDict, total=False):
-    id: str
-    manaCost: str
-    name: str
-    obsolete: bool
-    power: str
-    rarity: str
-    setCode: str
-    text: str
-    toughness: str
-    type: str
+    limit: int
+    offset: int
+    search: str

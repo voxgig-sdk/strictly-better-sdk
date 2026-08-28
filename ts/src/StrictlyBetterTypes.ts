@@ -14,11 +14,9 @@ export interface FunctionalReprint {
 }
 
 export interface FunctionalReprintListMatch {
-  functionallyIdentical?: boolean
-  originalCard?: string
-  originalSetCode?: string
-  reprintCard?: string
-  reprintSetCode?: string
+  card_name?: string
+  limit?: number
+  offset?: number
 }
 
 export interface Obsolete {
@@ -35,15 +33,8 @@ export interface Obsolete {
 }
 
 export interface ObsoleteListMatch {
-  id?: string
-  manaCost?: string
-  name?: string
-  obsolete?: boolean
-  power?: string
-  rarity?: string
-  setCode?: string
-  text?: string
-  toughness?: string
-  type?: string
+  limit?: number
+  offset?: number
+  search?: string
 }
 

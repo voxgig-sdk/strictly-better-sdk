@@ -23,11 +23,9 @@ type FunctionalReprint struct {
 
 // FunctionalReprintListMatch is the typed request payload for FunctionalReprint.ListTyped.
 type FunctionalReprintListMatch struct {
-	FunctionallyIdentical *bool `json:"functionallyIdentical,omitempty"`
-	OriginalCard *string `json:"originalCard,omitempty"`
-	OriginalSetCode *string `json:"originalSetCode,omitempty"`
-	ReprintCard *string `json:"reprintCard,omitempty"`
-	ReprintSetCode *string `json:"reprintSetCode,omitempty"`
+	CardName *string `json:"card_name,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
 }
 
 // Obsolete is the typed data model for the obsolete entity.
@@ -46,16 +44,9 @@ type Obsolete struct {
 
 // ObsoleteListMatch is the typed request payload for Obsolete.ListTyped.
 type ObsoleteListMatch struct {
-	Id *string `json:"id,omitempty"`
-	ManaCost *string `json:"manaCost,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Obsolete *bool `json:"obsolete,omitempty"`
-	Power *string `json:"power,omitempty"`
-	Rarity *string `json:"rarity,omitempty"`
-	SetCode *string `json:"setCode,omitempty"`
-	Text *string `json:"text,omitempty"`
-	Toughness *string `json:"toughness,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Search *string `json:"search,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

@@ -25,11 +25,9 @@ class FunctionalReprint
 /** Request payload for FunctionalReprint#list. */
 class FunctionalReprintListMatch
 {
-    public ?bool $functionallyIdentical = null;
-    public ?string $originalCard = null;
-    public ?string $originalSetCode = null;
-    public ?string $reprintCard = null;
-    public ?string $reprintSetCode = null;
+    public ?string $card_name = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
 }
 
 /** Obsolete entity data model. */
@@ -50,15 +48,8 @@ class Obsolete
 /** Request payload for Obsolete#list. */
 class ObsoleteListMatch
 {
-    public ?string $id = null;
-    public ?string $manaCost = null;
-    public ?string $name = null;
-    public ?bool $obsolete = null;
-    public ?string $power = null;
-    public ?string $rarity = null;
-    public ?string $setCode = null;
-    public ?string $text = null;
-    public ?string $toughness = null;
-    public ?string $type = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
+    public ?string $search = null;
 }
 
